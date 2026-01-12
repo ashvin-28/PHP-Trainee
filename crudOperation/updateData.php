@@ -2,11 +2,7 @@
   include "connection.php";
     session_start();
     $errors=[];
-$id=$_SESSION["id"];
-
-  $errors=[];
-//   $query="select * from employee where emp_id=$id";
-//   $result=mysqli_query($conn,$query);
+    $id=$_SESSION["id"];
     if($_SERVER["REQUEST_METHOD"]=="POST"){
          $firstName=trim($_POST["firstName"]);
          $lastName=trim($_POST["lastName"]);
@@ -56,7 +52,7 @@ $id=$_SESSION["id"];
             $password=$oldPassword;
           }
           $hashPassword=password_hash($password,PASSWORD_DEFAULT);
-          if(!empty($confirmPassword)){
+          if(!empty($confirmPassword ||$confirmPassword==$password)){
             if(password_verify($confirmPassword,$hashPassword)){
                 $confirmPassword=$_POST["password"];
             }else{
@@ -68,10 +64,9 @@ $id=$_SESSION["id"];
           }
           $hasConfirmPassword=password_hash($confirmPassword,PASSWORD_DEFAULT);
          if(empty($errors)){
-
-         if($_FILES["image"]["name"]){
-         move_uploaded_file($tmp_name,$targetdir);
-        $updateDatawithFile="update employee set firstName='$firstName',lastName='$lastName',email='$email',
+            if($_FILES["image"]["name"]){
+             move_uploaded_file($tmp_name,$targetdir);
+            $updateDatawithFile="update employee set firstName='$firstName',lastName='$lastName',email='$email',
              password='$hashPassword',confirmPassword='$hasConfirmPassword',address='$address',phonenumber='$phoneNumber',
              gender='$gender',hobbies='$hob',country='$country', image='$targetdir' where emp_id=$id";
              $updatedQuerywithFile=mysqli_query($conn,$updateDatawithFile);
@@ -86,7 +81,7 @@ $id=$_SESSION["id"];
          else{
             $updateData="update employee set firstName='$firstName',lastName='$lastName',email='$email',
              password='$hashPassword',confirmPassword='$hasConfirmPassword',address='$address',phonenumber='$phoneNumber',
-             gender='$gender',hobbies='$hob',country='$country' where emp_id=$id";
+             gender='$gender',hobbies='$hob',country='$country' where emp_id='$id'";
              $updatedQuery=mysqli_query($conn,$updateData);
              if($updatedQuery){
                 echo "<script>alert('Record updated');
@@ -98,6 +93,6 @@ $id=$_SESSION["id"];
         else{
             $_SESSION["updateerrors"]=$errors;
             header("Location:updateForm.php");
-                    }
+            }
         }
 

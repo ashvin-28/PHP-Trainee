@@ -11,6 +11,7 @@ include "connection.php";
 <body>
     <table border="1px solid black">
          <h1>Employee Table</h1>
+         <button type="button"><a href="employeeForm.php">Add</a></button>
         <tr>
             <th>ID</th>
             <th>firstName</th>

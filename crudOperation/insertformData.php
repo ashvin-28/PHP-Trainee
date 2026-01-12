@@ -17,10 +17,10 @@
          $country=$_POST["countryName"];
          $photo=$_FILES["image"]["name"];
          $tmp_name=$_FILES["image"]["tmp_name"];
-         $uploaddir="./upload/";
-         if (!is_dir($uploaddir)) {
-             mkdir($uploaddir, 0755, true);
-            }
+         $uploaddir="upload/";
+        //  if (!is_dir($uploaddir)) {
+        //      mkdir($uploaddir, 0777, true);
+        //     }
          $targetdir=$uploaddir . $photo;
          
          if($firstName=="" || strlen($firstName<3)){
@@ -59,6 +59,12 @@
             $errors[]="Insert image";
         }
          if(empty($errors)){ 
+            if(move_uploaded_file($tmp_name,$targetdir)){
+                echo "upload";
+            }
+            else{
+                echo "not";
+            }
          move_uploaded_file($tmp_name,$targetdir);        
          $hob=implode(",",$hobbies);
          $hasPassword=password_hash($password,PASSWORD_DEFAULT);
