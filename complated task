@@ -66,16 +66,13 @@ Hello Sir/Ma'am
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-    -Install git & create account i github
-    -Review git documentation
-    -Practice some git command
-    -Perform crud operation(insert,listing,update,delete)
-
-        
-    
+    -Complated crud using adminlte
+    -Working login register 
+    -Complated all validation
+    -add search functionality
 Tomorrow's Plan:
-	- Contnue crud operation with add some validation
-
+	- Contnue login register page
+Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP
 	
 Thank you!
 Best regards,

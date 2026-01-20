@@ -39,32 +39,33 @@
               id="navigation"
             >
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+              <!--  <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     Dashboard
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
-                </a>
+                </a>  -->
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="dashboard.php" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v1</p>
+                      <p>Dashboard</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+               <!--   <li class="nav-item">
                     <a href="welcome.php" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v2</p>
+                      <p>Welcome</p>
                     </a>
-                  </li>
-                  <li class="nav-item">
+                  </li>  -->
+                 <!-- <li class="nav-item">
                     <a href="./index3.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Dashboard v3</p>
                     </a>
                   </li>
+                    -->
                 </ul>
               </li>
               <li class="nav-item">
@@ -117,7 +118,7 @@
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Default Sidebar</p>
                     </a>
-                  </li>
+                  </li>     
                   <li class="nav-item">
                     <a href="./layout/fixed-sidebar.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
