@@ -1,0 +1,39 @@
+div {
+  position: static; /* This is the default and can be omitted */
+  border: 3px solid #73AD21;
+  padding: 10px;
+  margin:10px;
+}
+
+.positioned {
+  position: relative;
+  left: 30px; /* Moves the element 30px to the right of its normal position */
+  top: 5px; /* Moves the element 10px down from its normal position */
+  border: 3px solid #73AD21;
+  padding: 10px;
+}
+
+.parent {
+  position: relative; /* Establishes the positioning context for the child */
+  width: 400px;
+  height: 200px;
+  border: 3px solid green;
+}
+
+.child {
+  position: absolute;
+  top: 80px;
+  right: 0; /* Positions the element 80px from the top and at the right edge of its parent */
+  width: 200px;
+  height: 100px;
+  border: 3px solid red;
+}
+.fixed-element {
+  position: fixed;
+  bottom: 0; /* Sticks to the bottom of the viewport */
+  right: 0; /* Sticks to the right of the viewport */
+  width: 200px;
+  background-color: lightblue;
+  border: 1px solid black;
+}
+
