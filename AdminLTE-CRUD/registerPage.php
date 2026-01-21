@@ -56,62 +56,6 @@
                 crossorigin="anonymous" />
 
         </head>
-<?php
-include "connection.php";
-$errors = [];
-$pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstName = trim($_POST["firstName"]);
-    $lastName = trim($_POST["lastName"]);
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirmPassword"];
-
-    if ($firstName == "" || strlen($firstName < 3)) {
-        $errors[] = "First Name contain at least 3 character";
-    }
-    if ($lastName == "" || strlen($lastName < 3)) {
-        $errors[] = " Last Name contain at least 3 character";
-    }
-    if (!(filter_var($email, FILTER_VALIDATE_EMAIL))) {
-        $errors[] = "Email in specific format";
-    }
-   
-    if($password=="" || strlen($password)<8)
-         {
-             $errors[]="Password contain eight character";
-         }
-    else if(!preg_match($pattern, $password)){
-            $errors[]="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
-    }
-    elseif ($confirmPassword != $password) {
-        $errors[] = "Confirm password has same as password";
-    }
- 
-            
-
-    if (empty($errors)) {
-
-        $hasPassword = password_hash($password, PASSWORD_DEFAULT);
-        $hasConfirmPassword = password_hash($confirmPassword, PASSWORD_DEFAULT);
-    
-        $query = "insert into employee(firstName,lastName,email,password,confirmPassword) values(
-           '$firstName','$lastName','$email','$hasPassword','$hasConfirmPassword')";
-        $result = mysqli_query($conn, $query) or die ('Error querying database.');
-        if ($result) {
-
-            echo "<script>alert('Register Sucessfully');
-                 window.location.href='loginPage.php';
-                </script>";
-        } else {
-           
-        }
-    }
-} 
-?>
-
 
 <body>
     <div class=" m-auto mt-3 w-50 card card-primary card-outline mb-4">
@@ -126,6 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </div>
             <?php
+            session_start();
+
+            $errors=[];
+          if((isset($_SESSION["errors"]))){
+              $errors=$_SESSION["errors"];
+            }
             if ($errors) {
             ?>
                 <div class="alert alert-danger alert-dismissible m-2">
@@ -137,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <li><?php echo $error_message;  ?></li>
 
                         <?php endforeach;
+                          unset($_SESSION["errors"]);
                         ?>
                     </ul>
                 </div>
@@ -145,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ?>
         </div>
 
-        <form class="m-4" method="POST" autocomplete="off">
+        <form  class="m-4" method="POST" action="registerData.php" autocomplete="off">
             <div class="card-body">
 
                 <div class="form-group">

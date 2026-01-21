@@ -64,54 +64,13 @@
     
   </head>
 </head>
-<?php
-   session_start();
-   include "connection.php";
-   $errors=[];
-   
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
-       $email=$_POST["email"];
-       $password=$_POST["password"];
-      
-       if($email=="" || $password==""){
-        $errors[]="Enter email and password";
-       }
-       
-       else{
-           $sql="select * from employee where email='$email'";
-           $result=mysqli_query($conn,$sql);
-           if($result){
-
-             $row=mysqli_num_rows($result);
-             if($row==1)
-              {
-               while($data=mysqli_fetch_assoc($result)){
-                 $hashPassword=$data["password"];
-                 if(password_verify($password,$hashPassword)){
-                   $_SESSION["email"]=$data["email"];
-                   $_SESSION["firstName"]=$data["firstName"];
-                   $_SESSION["lastName"]=$data["lastName"];
-                   $_SESSION["image"]=$data["image"];
-                   
-                   header("Location:listingData.php");
-                  }
-                  else{
-                    $errors[]="Invalid Credintial";
-                  }
-                }
-              }
-              else{
-                $errors[]=" User not registered";
-              }
-            }
-
-       }
-    }
-?>
 
 <body>
       <div class=" m-auto mt-3 w-50 card card-primary card-outline mb-4">
         <?php 
+        session_start();
+        $errors=[];
+        $errors=$_SESSION["errors"];
        if($errors){
     ?>
       <div class="alert alert-danger alert-dismissible m-2">
@@ -123,6 +82,7 @@
                 <li><?php echo $error_message;  ?></li>
 
             <?php endforeach;
+             unset($_SESSION["errors"]);
             ?>
         </ul>
         </div>
@@ -133,7 +93,7 @@
                   <div class="card-header"><div class=" m-auto card-title">Login Page</div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form method="POST" autocomplete="off">
+                  <form action="loginData.php" method="POST" autocomplete="off">
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">

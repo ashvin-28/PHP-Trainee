@@ -1,10 +1,12 @@
- <?php
- 
-    include "connection.php";
-    session_start();
-    $errors=[];
+<?php
+require_once "model/User.php";
 
-     if($_SERVER["REQUEST_METHOD"]=="POST"){
+// include "index.php";
+class userController{
+     public $errors=[];
+    public function store() {
+ 
+      if($_SERVER["REQUEST_METHOD"]=="POST"){
          $firstName=trim($_POST["firstName"]);
          $lastName=trim($_POST["lastName"]);
          $email=$_POST["email"];
@@ -17,11 +19,11 @@
          $country=$_POST["countryName"];
          $photo=$_FILES["image"]["name"];
          $tmp_name=$_FILES["image"]["tmp_name"];
-         $uploaddir="./upload/";
-         if (!is_dir($uploaddir)) {
-             mkdir($uploaddir, 0755, true);
-            }
-         $targetdir=$uploaddir . $photo;
+        //  $uploaddir="upload/";
+        //  if (!is_dir($uploaddir)) {
+        //      mkdir($uploaddir, 0777, true);
+        //     }
+        //  $targetdir=$uploaddir . $photo;
          
          if($firstName=="" || strlen($firstName<3)){
              $errors[]="First Name contain at least 3 character";
@@ -59,32 +61,37 @@
             $errors[]="Insert image";
         }
          if(empty($errors)){ 
-         move_uploaded_file($tmp_name,$targetdir);        
-         $hob=implode(",",$hobbies);
-         $hasPassword=password_hash($password,PASSWORD_DEFAULT);
-         $hasConfirmPassword=password_hash($confirmPassword,PASSWORD_DEFAULT);
+            // if(move_uploaded_file($tmp_name,"uploads/".$photo)){
+            //     echo "upload";
+            // }
+            // else{
+            //     echo "not";
+            // }
+         move_uploaded_file($tmp_name,"uploads/".$photo);        
+        }
+        $hob=implode(",",$hobbies);
+        $hasPassword=password_hash($password,PASSWORD_DEFAULT);
+        $hasConfirmPassword=password_hash($confirmPassword,PASSWORD_DEFAULT);
+       
+ 
+}
+ $data = [
+              "firstName"=>$firstName,
+              "lastName"=>$lastName,
+              "email"=>$email,
+              "hasPassword"=>$hasPassword,
+              "hasConfirmPassword"=>$hasConfirmPassword,
+              "phoneNumber"=>$phoneNumber,
+              "address"=>$address,
+              "gender"=>$gender,
+              "hob"=>$hob,
+              "country"=>$country,
+              "targetdir"=>$photo,
+        ];
+(new User())->insert($data);
+header("Location:index.php");
+ 
+ 
+}
 
-         $query="insert into employee(firstName,lastName,email,password,confirmPassword,address,phonenumber,gender,hobbies,country,image) values(
-           '$firstName','$lastName','$email','$hasPassword','$hasConfirmPassword','$address','$phoneNumber','$gender','$hob','$country','$targetdir')";
-         $result=mysqli_query($conn,$query);
-         if($result){
-
-             echo "<script>alert('Record Inserted');
-                 window.location.href='listData.php';
-                </script>";
-                    }
-         else{
-            echo "no";
-             }
-         }
-         else{
-               $_SESSION["errors"]=$errors;
-            header("Location:employeeForm.php");
-           
-                    }
-         
-     }
-     else{
-        echo "Form not submitted";
-     }
-     ?>
+}

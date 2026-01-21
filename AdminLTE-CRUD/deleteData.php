@@ -8,7 +8,9 @@ $id=$_GET['id'];
 $query="delete from employee where emp_id=$id";
 $result=mysqli_query($conn,$query);
 if($result){
-    echo "<script>alert('Record deleted');
-    window.location.href='listingData.php';
-    </script>";
+     
+
+        echo "<script>alert('Record deleted');
+        window.location.href='listingData.php';
+        </script>";
 }
