@@ -1,10 +1,6 @@
 <?php
-include '../header.php'; 
+include '../header.php';
 include "../sidebar.php";
-if (!isset($_SESSION["email"])) {
-  header("Location:loginPage.php");
-}
-
 ?>
 <div class="app-wrapper">
   <div class="card ">
@@ -12,7 +8,7 @@ if (!isset($_SESSION["email"])) {
       <h3 class="card-title">Employee Table</h3>
     </div>
 
-    <form class="navbar-form" role="search" action="listingData.php" method="POST">
+    <form class="navbar-form" role="search" action="index.php?action=search" method="POST">
       <div class="input-group">
         <input type="text" name="searchInput" class="form-control" placeholder="Search...">
         <span class="input-group-btn">
@@ -25,7 +21,6 @@ if (!isset($_SESSION["email"])) {
     </form>
 
 
-    <!-- /.card-header -->
     <div class="card-body  table-responsive">
       <table id="example1" class="table table-sm display responsive table-bordered table-striped ">
         <thead>
@@ -44,13 +39,14 @@ if (!isset($_SESSION["email"])) {
           </tr>
         </thead>
         <tbody>
-          <tr data-id="1">
-            <?php
-           
-      
-              while ($row = $data->fetch_assoc()) {
-            ?>
-                <td class="row-data" data-name="emp_id"><?php echo $row["emp_id"]?></td>
+          <?php
+
+          $numrows = $data->num_rows;
+          if ($numrows > 0) {
+            while ($row = $data->fetch_assoc()) {
+          ?>
+              <tr data-id="1">
+                <td class="row-data" data-name="emp_id"><?php echo $row["emp_id"] ?></td>
                 <td class="row-data" data-name="firstName"><?php echo $row["firstName"]; ?></td>
                 <td class="row-data" data-name="lastName"><?php echo $row["lastName"]; ?></td>
                 <td class="row-data" data-name="email"><?php echo $row["email"]; ?></td>
@@ -61,25 +57,28 @@ if (!isset($_SESSION["email"])) {
                 <td class="row-data" data-name="country"><?php echo $row["country"]; ?></td>
                 <td class="row-data" data-name="name"><img src="<?php echo $row["image"]; ?>" alt="" width="50px" hight="50px"></td>
                 <td>
-                 <!--  <a href="index.php?action=edit&id=<?php echo $row["emp_id"]; ?>"  class="btn btn-info btn-sm mb-3">
-              --> <a href="views/edit.php?id=<?php echo $row["emp_id"]; ?>"  class="btn btn-info btn-sm mb-3">
+                  <a href="views/edit.php?id=<?php echo $row["emp_id"]; ?>" class="btn btn-info btn-sm mb-3">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Edit
                   </a>
-                  <a href="index.php?action=delete&id=<?php echo $row["emp_id"]; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
-                 <i class="fas fa-trash">
+                  <a href="views/delete.php?id=<?php echo $row["emp_id"]; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
+                    <i class="fas fa-trash">
                     </i>
                     Delete
                   </a>
                 </td>
 
-          </tr>
-      <?php
-              }
-             
-      ?>
-      <!-- Add more rows here -->
+
+              </tr>
+          <?php
+            }
+          } else {
+            echo "no";
+          }
+
+          ?>
+          <!-- Add more rows here -->
         </tbody>
       </table>
     </div>

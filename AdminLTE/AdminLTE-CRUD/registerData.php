@@ -21,19 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!(filter_var($email, FILTER_VALIDATE_EMAIL))) {
         $errors[] = "Email in specific format";
     }
-   
-    if($password=="" || strlen($password)<8)
-         {
-             $errors[]="Password contain eight character";
-         }
-    else if(!preg_match($pattern, $password)){
-            $errors[]="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
-    }
-    elseif ($confirmPassword != $password) {
+
+    if ($password == "" || strlen($password) < 8) {
+        $errors[] = "Password contain eight character";
+    } else if (!preg_match($pattern, $password)) {
+        $errors[] = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+    } elseif ($confirmPassword != $password) {
         $errors[] = "Confirm password has same as password";
     }
- 
-            
+
+
 
     if (empty($errors)) {
 
@@ -43,31 +40,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $query = "insert into employee(firstName,lastName,email,password,confirmPassword) values(
            '$firstName','$lastName','$email','$hasPassword','$hasConfirmPassword')";
-            $result = mysqli_query($conn, $query) or die ('Error querying database.');
-             if ($result) {
+            $result = mysqli_query($conn, $query) or die('Error querying database.');
+            if ($result) {
 
-                    echo "<script>alert('Register Sucessfully');
+                echo "<script>alert('Register Sucessfully');
                         window.location.href='loginPage.php';
                         </script>";
-                     } 
-        } 
-        catch (mysqli_sql_exception $e) {
-                if ($e->getCode() === 1062) {
-                    $errors[] = "The email '$email' is already registered. Please use a different email.";
-                } else {
-                    $errors[] = "A database error occurred. Please try again later.";
-                }
-                $_SESSION["errors"]=$errors;
-                var_dump ( $_SESSION["errors"]);
-                header("Location:registerPage.php");
             }
-      
-    }
-    else {
-             $_SESSION["errors"]=$errors;
-             var_dump ( $_SESSION["errors"]);
-             header("Location:registerPage.php");
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() === 1062) {
+                $errors[] = "The email '$email' is already registered. Please use a different email.";
+            } else {
+                $errors[] = "A database error occurred. Please try again later.";
+            }
+            $_SESSION["errors"] = $errors;
+            var_dump($_SESSION["errors"]);
+            header("Location:registerPage.php");
         }
-} 
-
-
+    } else {
+        $_SESSION["errors"] = $errors;
+        var_dump($_SESSION["errors"]);
+        header("Location:registerPage.php");
+    }
+}

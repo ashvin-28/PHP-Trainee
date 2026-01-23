@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION["email"])) {
   header("Location:loginPage.php");
 }
-include "connection.php"; 
+include "connection.php";
 include "../header.php";
 include "../sidebar.php";
 ?>

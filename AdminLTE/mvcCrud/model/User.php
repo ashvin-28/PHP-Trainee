@@ -2,23 +2,33 @@
 // require_once "config/database.php";
 require_once(__DIR__ . '/../config/database.php');
 
-class User extends database{
-    
-    public function insert($data){
-    return $this->conn->query("INSERT INTO employee_2(firstName, lastName, email, password, confirmPassword, address, phonenumber, gender, hobbies, country, image) 
+class User extends database
+{
+
+    public function insert($data)
+    {
+        return $this->conn->query("INSERT INTO employee_2(firstName, lastName, email, password, confirmPassword, address, phonenumber, gender, hobbies, country, image) 
     VALUES ('{$data['firstName']}', '{$data['lastName']}', '{$data['email']}', '{$data['hasPassword']}', '{$data['hasConfirmPassword']}', '{$data['address']}', '{$data['phoneNumber']}', '{$data['gender']}', '{$data['hob']}', '{$data['country']}', '{$data['targetdir']}')");
-}
-    public function getAll(){
+    }
+    public function getAll()
+    {
         return $this->conn->query("select * from employee_2");
     }
-    public function getById($id){
+    public function getSearch($searchInput)
+    {
+        return $this->conn->query("select * from employee_2 where firstName like '$searchInput%'");
+    }
+    public function getById($id)
+    {
         return $this->conn->query("select * from employee_2 where emp_id =$id");
     }
-    public function delete($id){
+    public function delete($id)
+    {
         return $this->conn->query("delete from employee_2 where emp_id=$id");
     }
-   public function update($data){ 
-    return $this->conn->query("UPDATE employee_2 SET 
+    public function update($data)
+    {
+        return $this->conn->query("UPDATE employee_2 SET 
         firstName= '{$data['firstName']}', 
         lastName= '{$data['lastName']}', 
         email= '{$data['email']}', 
@@ -30,6 +40,6 @@ class User extends database{
         hobbies= '{$data['hobbies']}', 
         country= '{$data['country']}', 
         image= '{$data['targetdir']}' 
-        WHERE emp_id={$data['id']}"); 
-}
+        WHERE emp_id={$data['id']}");
+    }
 }

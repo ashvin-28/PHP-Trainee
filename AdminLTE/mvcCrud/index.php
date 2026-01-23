@@ -1,32 +1,31 @@
-<?php require_once "controller/userController.php";
-
-$action = $_GET['action'] ?? 'list'; 
+<?php
+require_once "controller/userController.php";
+if (!isset($_SESSION["email"])) {
+    header("Location:../AdminLTE-CRUD/loginPage.php");
+}
+$action = $_GET['action'] ?? 'list';
 $controller = new userController();
 if ($action == 'store') {
     $controller->store();
-   
-} elseif ($action == 'delete') {
-    $id = $_GET['id'] ?? null; 
-    if ($id) {
-        (new User())->delete($id);
-        include "index.php";
-    }
 } elseif ($action == 'edit') {
-    $id = $_GET['id'] ?? null; 
+    $id = $_GET['id'] ?? null;
     if ($id) {
 
         $data = (new User())->getById($id);
         include "views/edit.php";
-         die();
+        die();
     }
-} elseif ($action == 'update') { 
+} elseif ($action == 'update') {
     $controller->update();
-    
 } else {
-    $data = (new User())->getAll();
-    if(!$data){
-        $data=null;
+    if ($action == 'search') {
+        $data = $controller->getSearch();
+    } else {
+
+        $data = (new User())->getAll();
+    }
+    if (!$data) {
+        $data = null;
     }
     include "views/list.php";
 }
-?>

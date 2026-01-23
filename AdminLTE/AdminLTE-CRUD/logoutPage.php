@@ -6,4 +6,3 @@
         header("Location:loginPage.php");
     }
     
-?>
