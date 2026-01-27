@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        let templateString = ` Hello's  \\ my name is 
+         "Ashvin"`;
+        //document.getElementById("demo").innerHTML = templateString;
+
+        // string method
+        //let text = "hello wolrd ";
+        let text = "hello wolrd \uD800";
+        console.log(text.length);
+        console.log(text.charAt(0));
+        console.log(text.charCodeAt(0));
+        console.log(text.codePointAt(0));
+        console.log(text.at(1));
+
+        let checkwellFormedorNot = text.isWellFormed();
+        let result = text.toWellFormed();
+        console.log(checkwellFormedorNot);
+        console.log(result);
+        const testArray = text.split();
+        let printArray = " ";
+        for (let i = 0; i < testArray.length; i++) {
+            printArray += testArray[i] + " ";
+        }
+        document.getElementById("demo").innerHTML = printArray;
+
+        let fruits = "apple orange orange";
+        console.log(fruits.replace("orange", "banana"));
+        console.log(fruits.replace(/orange/g, "banana"));
+        console.log(fruits.replaceAll("orange", "banana"));
+        let searchString = "Please locate where 'locate' occurs!";
+        console.log(searchString.indexOf("locate"));
+        console.log(searchString.lastIndexOf("locate"));
+        console.log(searchString.search("locate"));
+        console.log(searchString.search(/locate/));
+        console.log(searchString.match(/locate/));
+        console.log(searchString.match(/locate/g));
+
+        //padends() : pads a string with another string (multiple times) until it reaches a given length.
+        let padEndExample = "5";
+        console.log(padEndExample.padEnd(4, 0));
+    </script>
+</body>
+
+</html>

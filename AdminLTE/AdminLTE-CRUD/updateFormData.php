@@ -86,6 +86,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="image">
+                        <input type="hidden" name="old_image" value="<?= $row['image'] ?>">
+
                     </div>
 
                 </div>

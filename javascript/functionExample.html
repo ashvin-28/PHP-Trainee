@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+         let x=sumFunction(1,2,3,4);
+          function sumFunction(){
+            let sum=0;
+            for(let i=0;i<arguments.length;i++){
+                 sum+=arguments[i];
+            }
+            return sum;
+          }
+        document.getElementById("demo").innerHTML="sum of sumFunction is: " + x;
+    </script>
+</body>
+</html>

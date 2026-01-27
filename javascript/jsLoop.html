@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        let fruits = ["Apple", "Mango", "Banana"];
+        let text = '';
+        for (let i = 0; i < fruits.length; i++) {
+            text += fruits[i] + " ";
+        }
+        //  document.getElementById("demo").innerHTML = text;
+        let color = ["Red", "Green", "Blue"];
+        let colorText = '';
+        let j = 0;
+        while (j < color.length) {
+            colorText += color[j] + " ";
+            j++;
+        }
+        document.getElementById("demo").innerHTML = "Fruits:" + text + "<br> Color:" + colorText;
+
+        let number = 15;
+        do {
+            console.log(number);
+            number++;
+        } while (number < 10);
+    </script>
+</body>
+
+</html>

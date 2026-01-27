@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <script>
+        //let x = 10;
+        let x = undefined;
+        //  let y = x &&= 20;   //&& if first value true than assign second value in variabe
+        let y = x ||= 20;     //|| if first value false than assign second value in variabe
+        document.getElementById("demo").innerHTML = y;
+    </script>
+</body>
+
+</html>

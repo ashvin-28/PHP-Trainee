@@ -5,7 +5,7 @@ session_start();
 class userController
 {
    public function store()
-   { 
+   {
       $user = new User();
       $errors = [];
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p var id="demo"></p>
+  <p var id="checkType"></p>
+  <button type="button" onclick="loadData()">submit</button>
+</body>
+<script>
+  let firstName="Ashvin" ;
+ // let firstName ;    --emptye variable its type undefined
+  const lastName = "Parmar"
+
+  document.getElementById("checkType").innerHTML = typeof (firstName);
+
+  // lastName = "to this";   --typeerror 
+  function loadData() {
+    let firstName = "Krishna";
+    document.getElementById("demo").innerHTML = "welcome " + firstName + " " + lastName;
+  }
+  document.getElementById("demo").innerHTML = "welcome " + firstName + " " + lastName;
+</script>
+
+</html>

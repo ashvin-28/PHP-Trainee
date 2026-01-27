@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tmp_name = $_FILES["image"]["tmp_name"];
     $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
     $oldPassword = $_POST["update_password"];
+    $image = $_POST["old_image"];
 
     $hob = implode(",", $hobbies);
     $targetdir = 'upload/' . $photo;
@@ -81,16 +82,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             if ($_FILES["image"]["name"]) {
                 move_uploaded_file($tmp_name, $targetdir);
-                $query = "UPDATE employee SET firstName='$firstName', lastName='$lastName', email='$email', 
-                              password='$hashPassword', confirmPassword='$hasConfirmPassword', address='$address', 
-                              phonenumber='$phoneNumber', gender='$gender', hobbies='$hob', country='$country', 
-                              image='$targetdir' WHERE emp_id=$id";
             } else {
-                $query = "UPDATE employee SET firstName='$firstName', lastName='$lastName', email='$email', 
-                              password='$hashPassword', confirmPassword='$hasConfirmPassword', address='$address', 
-                              phonenumber='$phoneNumber', gender='$gender', hobbies='$hob', country='$country' 
-                              WHERE emp_id='$id'";
+                $targetdir = $image;
             }
+            $query = "UPDATE employee SET firstName='$firstName', lastName='$lastName', email='$email', 
+                              password='$hashPassword', confirmPassword='$hasConfirmPassword', address='$address', 
+                                 phonenumber='$phoneNumber', gender='$gender', hobbies='$hob', country='$country', 
+                              image='$targetdir' WHERE emp_id=$id";
 
             $result = mysqli_query($conn, $query);
 
