@@ -81,7 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             if ($_FILES["image"]["name"]) {
                 move_uploaded_file($tmp_name, $targetdir);
-                $_SESSION["image"] = $targetdir;
                 $query = "UPDATE employee SET firstName='$firstName', lastName='$lastName', email='$email', 
                               password='$hashPassword', confirmPassword='$hasConfirmPassword', address='$address', 
                               phonenumber='$phoneNumber', gender='$gender', hobbies='$hob', country='$country', 
