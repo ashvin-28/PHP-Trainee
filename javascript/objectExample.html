@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div id="demo"></div>
+     <div id="person"></div>
+    <script>
+        const Car={
+            brand:"Toyota",
+            model:"Corolla",
+            year:2020,
+            displayDetails:function(){
+                return `this car is ${this.brand} ${this.model} from ${this.year}`;
+            }
+        } ;
+  console.log(Car.brand);
+  console.log(Car["model"]);
+  document.getElementById("demo").innerHTML=Car.displayDetails();
+   
+  const Person={
+     name:"Ashvin",
+     age:21,
+     city:"siddhpur"
+  }
+  let personDetail="";
+  for(let x in Person){
+      personDetail+=Person[x] + " ";
+  }
+  document.getElementById("person").innerHTML=personDetail;
+    </script>
+</body>
+</html>

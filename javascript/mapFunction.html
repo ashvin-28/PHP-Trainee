@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        const fruits=new Map([
+            ["Apples",500],
+            ["Banana",300],
+            ["Grapes",200]
+        ])
+        fruits.set("Mangoes",400);
+        let apples=fruits.get("Apples");
+        let mangoes=fruits.get("Mangoes");
+        console.log(apples);
+        console.log(mangoes);
+        console.log(fruits.size);
+        console.log(fruits.delete("Apples"));
+        console.log(fruits.size);
+    //  console.log(fruits.clear());
+        console.log(fruits.size);
+        let text="";
+        fruits.forEach(function(value,key){
+             text+= key + " " + value + "<br>";
+        })
+        document.getElementById("demo").innerHTML=text;
+
+
+    </script>
+</body>
+</html>

@@ -66,11 +66,16 @@ Hello Sir/Ma'am
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-    -Complated crud using oops(mvc)
+    -Complated Admin Dashboard (with simple crud and oops(mvc) crud)
+    -Start Javascript
+          - Complated syntax,variable,comments,operators,conditions,loops
+          -Complated string and string functions
+          -Complated number and number functions
+          -Continue Working User define Function
     
-Tuesday Plan:
-	- Start Introduction to Javascript/Jquery Events
-	- Functions and Ajax(Crud using AJAX)
+Tomorrow's Plan:
+	-Continue Working Javascript
+	
 	
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP
 	

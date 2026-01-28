@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors[] = " Phone number must 10 digit";
         }
     }
+   
 
 
     if (!empty($password)) {

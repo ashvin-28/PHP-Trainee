@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const $name=["Ashvin","Maulik","krishna","Akshay","Madhukar"];
+        console.log($name.length);
+        console.log($name.toString());   //convert array to string
+        console.log($name.at(2));       // return index element
+      //  console.log($name.copyWithin(2,0,1));       // first is target , xsecond which element copy ,third length of which element copy
+        console.log($name.copyWithin(2,4));       // copy in 4 index  element in 2 index position
+
+        const numberArray=[[1,2],[3,4],[5,6]];
+        const newArray=numberArray.flat();    //create new array
+        console.log(newArray);
+        const newMultiplyArray=newArray.flatMap(x=>[x*2]);  //first map array then create new array
+        console.log(newMultiplyArray);
+        
+    </script>
+</body>
+</html>

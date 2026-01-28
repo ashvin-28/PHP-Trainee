@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        const letters=new Set([1,2,3]);
+        for(const x of letters){
+            console.log(x);
+        }
+        console.log(letters);
+        console.log(letters.size);
+        console.log(letters.has(2));
+        console.log(letters.has(4));
+        let sum=0
+        letters.forEach(function(value){
+             sum+=value;
+        })
+        console.log(sum);
+        const lettterIterators=letters.values();
+        console.log(lettterIterators);
+        const lettterIteratorsKeys=letters.keys();
+        console.log(lettterIteratorsKeys);
+        const lettterIteratorsEntries=letters.entries();
+        console.log(lettterIteratorsEntries);
+    </script>
+</body>
+</html>

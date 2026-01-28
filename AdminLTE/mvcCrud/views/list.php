@@ -40,13 +40,13 @@ include "../sidebar.php";
         </thead>
         <tbody>
           <?php
-
+           $rows=1;
           $numrows = $data->num_rows;
           if ($numrows > 0) {
             while ($row = $data->fetch_assoc()) {
           ?>
               <tr data-id="1">
-                <td class="row-data" data-name="emp_id"><?php echo $row["emp_id"] ?></td>
+                <td class="row-data" data-name="emp_id"><?php echo $rows++;?></td>
                 <td class="row-data" data-name="firstName"><?php echo $row["firstName"]; ?></td>
                 <td class="row-data" data-name="lastName"><?php echo $row["lastName"]; ?></td>
                 <td class="row-data" data-name="email"><?php echo $row["email"]; ?></td>
