@@ -1,22 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <div id="demo"></div>
-    <script>
-         let x=sumFunction(1,2,3,4);
-          function sumFunction(){
-            let sum=0;
-            for(let i=0;i<arguments.length;i++){
-                 sum+=arguments[i];
-            }
-            return sum;
-          }
-        document.getElementById("demo").innerHTML="sum of sumFunction is: " + x;
-    </script>
+  <button type="button" onclick="myFunction()">Count!</button>
+  <div id="demo"></div>
+  <script>
+    let x = sumFunction(1, 2, 3, 4);
+    function sumFunction() {
+      let sum = 0;
+      for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+      }
+      return sum;
+    }
+    document.getElementById("demo").innerHTML = "sum of sumFunction is: " + x;
+    // arrow function
+    add = (a, b) => a + b;
+    console.log(add(5, 10));
+    // this call function  call,apply and bind are similar but bind return function 
+    const person1 = { "name": "Ashvin" };
+    function personName(message) {
+      console.log(message + " " + this.name);
+    }
+    // personName.call(person1,"hello");
+    // personName.apply(person1,["hello"]);
+    let name = personName.bind(person1, "hello");
+    name();
+    // IFEE() : An IIFE function is defined and executed at the same time.
+    (function () {
+      console.log("IFEE Function without call");
+    }
+    )();
+    function myCounter() {
+      let count = 0;
+      return function () {
+        count++;
+        return count;
+      };
+    }
+    let count = myCounter();
+    function myFunction() {
+      console.log(count());
+    }
+
+    function createCounter() {
+      let count = 0; // Private variable
+
+      // The returned function is a closure
+      return function () {
+        count++; // Accesses and updates 'count' from the outer scope
+        console.log(`Current count: ${count}`);
+      };
+    }
+
+    const counter = createCounter();
+    counter(); // Output: Current count: 1
+    counter(); // Output: Current count: 2
+    counter(); // Output: Current count: 3
+
+
+
+  </script>
 </body>
+
 </html>

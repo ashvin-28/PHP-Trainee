@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="submit" onclick="this.innerHTML=Date()">Click Me</button>
+    <div id="box" style="width:200px;height:100px;padding:16px;border:1px solid #000;">
+        Move mouse over this box!
+    </div>
+    <input type="text" id="key" placeholder="Enter key">
+    <p id="demo"></p>
+    <p id="clock"></p>
+    <p id="showMessage"></p>
+    <script>
+        let box = document.getElementById("box");
+        box.addEventListener("mouseover", function () {
+            box.innerHTML = "Mouse is over";
+        });
+        box.addEventListener("mouseout", function () {
+            box.innerHTML = "Mouse is out";
+        });
+        box.addEventListener("mousedown", function () {
+            box.innerHTML = "Mouse is down";
+        });
+        box.addEventListener("mouseup", function () {
+            box.innerHTML = "Mouse is up";
+        });
+        box.addEventListener("contextmenu", function () {
+            box.innerHTML = "Mouse is open contextmenu";
+        });
+        let id = document.getElementById("key");
+        id.addEventListener("keydown", function (event) {
+            document.getElementById("demo").innerHTML = "pressed " + event.key;
+        });
+
+        setInterval(()=>{
+            let d=new Date();
+            document.getElementById("clock").innerHTML=d.getHours()+ " : " + d.getMinutes() + " : " + d.getSeconds();
+        },1000);
+       let submit=document.getElementById("submit");
+       submit.addEventListener("click",function(){
+          setTimeout(()=>{
+             document.getElementById("showMessage").innerHTML="Hello after 2 seconds";
+          },2000);
+       });
+    </script>
+</body>
+
+</html>

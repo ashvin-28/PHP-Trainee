@@ -66,13 +66,13 @@ Hello Sir/Ma'am
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-    -Complated Admin Dashboard (with simple crud and oops(mvc) crud)
-    -Start Javascript
-          - Complated syntax,variable,comments,operators,conditions,loops
-          -Complated string and string functions
-          -Complated number and number functions
-          -Continue Working User define Function
-    
+    -Working Javascript
+          -Complated RegExp(search,replace,match method)
+          -Complated Datatypes,type conversion
+          -Complated Errors(References error,type error,range error,uri error,syntax error,silent error)
+          -Complated JS conversions
+          -Complated JS HTML DOM
+          -Complated JS Event
 Tomorrow's Plan:
 	-Continue Working Javascript
 	

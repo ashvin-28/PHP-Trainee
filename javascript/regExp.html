@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        let name="Ashvin Parmar";
+        //let search=name.search("Parmar"); 
+        let search=name.search(/parmar/i); 
+        let match=name.match(/parmar/i)
+        console.log(search);
+        console.log(typeof(search));
+        console.log(typeof(match));
+        let replace=name.replace(/parmar/i, "Sujanpur");
+        console.log(replace);
+        //regExp escape
+
+         const safe=RegExp.escape("[*]");
+         const regex=new RegExp(safe);
+         const oldText="[*] Parmar";
+         console.log(oldText);
+      // const newText=oldText.replace("[*]","Ashvin");
+          const newText=oldText.replace(regex,"Ashvin");
+         console.log(newText);
+    </script>
+</body>
+</html>
