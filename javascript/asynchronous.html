@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+        function myDisplay(some) {
+            document.getElementById("demo").innerHTML = some;
+        }
+        //promises : he Promise Object represents 
+        //the completion or failure of an asynchronous operation and its results.
+        let myPromise = new Promise(function (myResolve, myReject) {
+            let x = 0;
+            if (x == 0) {
+                myResolve("OK");
+            }
+            else {
+                myReject("Error");
+            }
+        });
+        myPromise.then(
+            function (value) {
+                myDisplay(value);
+            },
+            function (error) {
+                myDisplay(error);
+            }
+        )
+
+        //async : async makes a function return a Promise
+        function displayHello(some) {
+            document.getElementById("demo2").innerHTML = some;
+        }
+        async function sayHello() {
+            return "hello";
+        }
+        sayHello().then(
+            function (value) { displayHello(value); },
+            function (error) { displayHello(error); }
+        );
+
+        //await : The await keyword makes the function pause the execution
+        //and wait for a resolved promise before it continues:
+        async function displayValue() {
+            let myPromise = new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve("Ashvin Parmar");
+                }, 3000);
+            });
+            document.getElementById("demo3").innerHTML = await myPromise;
+        }
+        displayValue();
+
+
+    </script>
+</body>
+
+</html>

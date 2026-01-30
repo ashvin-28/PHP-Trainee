@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="carAge"></p>
+    <p id="calculationSum"></p>
+    <p id="calculationSub"></p>
+    <p id="fullName"></p>
+    <script>
+        class Car {
+            constructor(name, year) {
+                this.name = name;
+                this.year = year;
+            }
+            age() {
+                let date = new Date();
+                return date.getFullYear() - this.year;
+            }
+        }
+        let car = new Car("Enova", 2012);
+        document.getElementById("carAge").innerHTML = "Car age is " + car.age();
+
+        class Calculation {
+            constructor(number1, number2) {
+                this.number1 = number1;
+                this.number2 = number2;
+            }
+            sum() {
+                let sum = this.number1 + this.number2;
+                //return `sum of ${this.number1} and ${this.number2} = ${sum}`;
+                return sum;
+            }
+        }
+        class SumSub extends Calculation {
+            constructor(number1, number2, number3) {
+                super(number1, number2);
+                this.number3 = number3;
+            }
+            sub() {
+                let sub = super.sum() - this.number3;
+                return `sub of ${super.sum()} - ${this.number3} = ${sub}`;
+            }
+
+        }
+        let sumsub = new SumSub(10, 20, 5);
+        document.getElementById("calculationSum").innerHTML = "sum: " + sumsub.sum();
+        document.getElementById("calculationSub").innerHTML = sumsub.sub();
+
+        class FullName{
+            constructor(fName,lName){
+                this.fName=fName;
+                this.lName=lName;
+            }
+            static fullname(x){
+                  return x.fName + " " + x.lName;
+            }
+            
+        }
+        fname=new FullName("Ashvin","Parmar");
+        document.getElementById("fullName").innerHTML=FullName.fullname(fname);
+        
+    </script>
+</body>
+
+</html>

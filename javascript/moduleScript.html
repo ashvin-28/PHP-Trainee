@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="message"></p>
+    <p id="add"></p>
+    <script type="module">
+        import message from "./moduleFile.js";
+        document.getElementById("message").innerHTML = message();
+
+        //dynamic module import
+        async function run() {
+            let module = await import("./moduleFile.js");
+            let result = module.add(5, 10);
+            document.getElementById("add").innerHTML = result;
+        }
+        run();
+    </script>
+</body>
+
+</html>

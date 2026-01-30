@@ -10,6 +10,7 @@
 <body>
   <button type="button" onclick="myFunction()">Count!</button>
   <div id="demo"></div>
+  <div id="demo2"></div>
   <script>
     let x = sumFunction(1, 2, 3, 4);
     function sumFunction() {
@@ -64,8 +65,38 @@
     counter(); // Output: Current count: 2
     counter(); // Output: Current count: 3
 
+    // callback() : a function that is passed as an argument to another function,
+    // to be executed or "called back" at a later time
+     function names(fName,callback){
+       callback();
+      console.log(fName);
+     } 
+     function welcome(){
+      console.log("welcome");
+     }
+     names("Ashvin",welcome);
 
+const myNumbers = [4, 1, -20, -7, 5, 9, -6];
+function isPositive(x){
+  return x>=0;
+}
 
+// Call removeNeg with a Callback
+const posNumbers = removeNeg(myNumbers, isPositive);
+
+// Display Result
+document.getElementById("demo2").innerHTML = posNumbers;
+
+// Remove negative numbers
+function removeNeg(numbers, callback) {
+  const myArray = [];
+  for (const x of numbers) {
+    if (isPositive(x)) {
+      myArray.push(x);
+    }
+  }
+  return myArray;
+}
   </script>
 </body>
 

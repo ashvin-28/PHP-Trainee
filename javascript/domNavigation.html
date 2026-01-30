@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        //create new html element
+        let para=document.createElement("p");
+        let node=document.createTextNode("hello");
+        para.appendChild(node);
+        let element=document.getElementById("div1");
+        element.appendChild(para);
+      //para.remove();    //remove element
+    </script>
+</body>
+</html>
