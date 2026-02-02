@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "connection.php";
+include './AdminLTE-CRUD/connection.php';
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["lastName"] = $data["lastName"];
             $_SESSION["image"] = $data["image"];
 
-            header("Location:listingData.php");
+            header("Location:./AdminLTE-CRUD/listingData.php");
           } else {
             $errors[] = "Invalid Credintial";
             $_SESSION["errors"] = $errors;

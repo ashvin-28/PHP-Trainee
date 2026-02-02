@@ -70,7 +70,24 @@ include "../sidebar.php";
                 <td class="row-data" data-name="gender"><?php echo $row["gender"]; ?></td>
                 <td class="row-data" data-name="hobbies"><?php echo $row["hobbies"]; ?></td>
                 <td class="row-data" data-name="country"><?php echo $row["country"]; ?></td>
-                <td class="row-data" data-name="name"><img src="<?php echo $row["image"]; ?>" alt="" width="50px" hight="50px"></td>
+
+                <td class="row-data" data-name="name">
+                 <?php if($row["image"])
+                 {
+                 ?>  
+                <img src="<?php echo $row["image"]; ?>" alt="" width="50px" hight="50px"></td>
+                 <?php
+                 }
+                 else
+                 {
+                 ?>
+                  <img
+                    src="../dist/assets/img/randomImage.png"
+                    class="user-image rounded-circle shadow"
+                    alt="User Image" width="50px" hight="50px" />
+                 <?php
+                 }
+                 ?>
                 <td>
                   <a href="updateFormData.php?id=<?php echo $row["emp_id"]; ?>" class="btn btn-info btn-sm mb-3">
                     <i class="fas fa-pencil-alt">

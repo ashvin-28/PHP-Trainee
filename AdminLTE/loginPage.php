@@ -64,6 +64,15 @@
   <div class=" m-auto mt-3 w-50 card card-primary card-outline mb-4">
     <?php
     session_start();
+    if(isset($_SESSION["registerMessage"])){
+      ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong><?php echo $_SESSION["registerMessage"] ?></strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+      <?php
+    }
     $errors = [];
     if (isset($_SESSION["errors"])) {
 
@@ -93,7 +102,7 @@
     </div>
     <!--end::Header-->
     <!--begin::Form-->
-    <form action="/PHP-Trainee/AdminLTE/AdminLTE-CRUD/loginData.php" method="POST" autocomplete="off">
+    <form action="/PHP-Trainee/AdminLTE/loginData.php" method="POST" autocomplete="off">
       <!--begin::Body-->
       <div class="card-body">
         <div class="mb-3">

@@ -11,7 +11,7 @@ if ($result) {
     if (isset($_SESSION['userId']) && $_SESSION['userId'] == $id) {
         session_unset();
         session_destroy();
-        echo "<script>alert('Your account has been deleted. You are now logged out.'); window.location.href='loginPage.php';</script>";
+        echo "<script>alert('Your account has been deleted. You are now logged out.'); window.location.href='/PHP-Trainee/AdminLTE/loginPage.php';</script>";
         exit();
     } else {
         echo "<script>alert('Record deleted'); window.location.href='listingData.php';</script>";

@@ -1,7 +1,8 @@
       <?php
         session_start();
         if (!isset($_SESSION["email"])) {
-            header("Location:/PHP-Trainee/AdminLTE/AdminLTE-CRUD/loginPage.php");
+         header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
+
         }
         include '../../header.php';
         include "../../sidebar.php";

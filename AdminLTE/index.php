@@ -1,2 +1,2 @@
 <?php
- header("Location:../AdminLTE/AdminLTE-CRUD/loginPage.php");
+ header("Location:../AdminLTE/loginPage.php");

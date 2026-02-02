@@ -1,5 +1,7 @@
 <?php
-include "connection.php";
+include './AdminLTE-CRUD/connection.php';
+
+
 session_start();
 $errors = [];
 $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
@@ -43,7 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = mysqli_query($conn, $query) or die('Error querying database.');
             if ($result) {
 
-                echo "<script>alert('Register Sucessfully');
+                $_SESSION["registerMessage"] = "Register Sucessfully";
+
+                echo "<script>
                         window.location.href='loginPage.php';
                         </script>";
             }

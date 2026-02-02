@@ -1,8 +1,14 @@
 <?php
 require_once "controller/userController.php";
 if (!isset($_SESSION["email"])) {
-    header("Location:../AdminLTE-CRUD/loginPage.php");
+    header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
 }
+if(isset($_SESSION['deleteMessage'])){
+    $deleteMessage=$_SESSION['deleteMessage'];
+    echo "<script>alert('$deleteMessage');</script>";
+    
+}
+unset($_SESSION['deleteMessage']);
 $action = $_GET['action'] ?? 'list';
 $controller = new userController();
 if ($action == 'store') {

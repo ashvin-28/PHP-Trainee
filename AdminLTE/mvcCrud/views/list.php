@@ -8,6 +8,33 @@ include "../sidebar.php";
       <h3 class="card-title">Employee Table</h3>
     </div>
 
+      <?php
+      if (isset($_SESSION["addMessage"])) {
+      ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong><?php echo $_SESSION["addMessage"] ?></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php
+            unset($_SESSION["addMessage"]);
+           ?>
+              
+      <?php
+      }
+      if (isset($_SESSION["updateMessage"])) {
+      ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong><?php echo $_SESSION["updateMessage"] ?></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php
+            unset($_SESSION["updateMessage"]);
+           ?>
+              
+      <?php
+      }
+      ?>
+
     <form class="navbar-form" role="search" action="index.php?action=search" method="POST">
       <div class="input-group">
         <input type="text" name="searchInput" class="form-control" placeholder="Search...">
@@ -20,7 +47,7 @@ include "../sidebar.php";
       </div>
     </form>
 
-
+   
     <div class="card-body  table-responsive">
       <table id="example1" class="table table-sm display responsive table-bordered table-striped ">
         <thead>
@@ -40,13 +67,13 @@ include "../sidebar.php";
         </thead>
         <tbody>
           <?php
-           $rows=1;
+          $rows = 1;
           $numrows = $data->num_rows;
           if ($numrows > 0) {
             while ($row = $data->fetch_assoc()) {
           ?>
               <tr data-id="1">
-                <td class="row-data" data-name="emp_id"><?php echo $rows++;?></td>
+                <td class="row-data" data-name="emp_id"><?php echo $rows++; ?></td>
                 <td class="row-data" data-name="firstName"><?php echo $row["firstName"]; ?></td>
                 <td class="row-data" data-name="lastName"><?php echo $row["lastName"]; ?></td>
                 <td class="row-data" data-name="email"><?php echo $row["email"]; ?></td>

@@ -77,6 +77,8 @@ class userController
                "targetdir" => $targetdir,
             ];
             $user->insert($data);
+            $_SESSION["addMessage"] = "record added";
+
             header("Location:index.php");
          } else {
             $_SESSION["errors"] = $errors;
@@ -183,6 +185,8 @@ class userController
                "targetdir" => $image,
             ];
             $user->update($data);
+              $_SESSION["updateMessage"] = "record updated";
+
             header("Location:index.php");
          } else {
             $_SESSION["errors"] = $errors;
