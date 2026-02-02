@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>jQuery Test</title>
+    <style>
+      .active {
+        color: white;
+        background: green;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="demo">Hello</p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <form bindsubmit="" id="myforms">
+      <input type="text" id="fName" />
+      Male:<input type="radio" name="gender" id="male" value="Male" />
+      Female:<input type="radio" name="gender" id="female" value="Female" />
+      <button id="btn">Submit</button>
+    </form>
+    <p id="boldText"></p>
+    <p id="useActiveStyle">Ashvin Parmar</p>
+    <div id="parent">
+      <p>Child</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // $("#btn").click(function(){
+        //  $("#demo").css("color","red");
+        //  });
+        $("#myforms").submit(function (e) {
+          e.preventDefault();
+          $("#demo2").text("form submit");
+          $("#demo").css("color", "red");
+          let fName = $("#fName").val();
+          $("#demo3").text(fName);
+          $("#fName").val("Parmar");
+          let gender = $("input[name='gender']:checked").val();
+          alert(gender);
+          $("#boldText").html("<b>Hello</b>");
+          $("#useActiveStyle").removeClass("active");
+          $("#useActiveStyle").toggleClass("active");
+        });
+        //  $("#useActiveStyle").addClass("active");
+        $("#parent").find("p").css("color","yellow");
+      });
+    </script>
+  </body>
+</html>

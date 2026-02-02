@@ -67,14 +67,15 @@ Good Evening!
 Hoping you had a great day today,
 Today’s Update:
     -Working Javascript
-          -Complated RegExp(search,replace,match method)
-          -Complated Datatypes,type conversion
-          -Complated Errors(References error,type error,range error,uri error,syntax error,silent error)
-          -Complated JS conversions
-          -Complated JS HTML DOM
-          -Complated JS Event
-Tomorrow's Plan:
-	-Continue Working Javascript
+          -Complated classes,inheritance and static class
+          -Complated callback function
+          -Complated asynchronous function,async await and promises
+          -Complated modules
+          -Complated DOM Navigation
+          -Complated JS windows
+          -Complated popup alert
+Monday Plan:
+	-Continue Working Javascript(Ajax,Jquery)
 	
 	
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP
