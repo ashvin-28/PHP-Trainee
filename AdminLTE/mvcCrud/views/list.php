@@ -8,32 +8,29 @@ include "../sidebar.php";
       <h3 class="card-title">Employee Table</h3>
     </div>
 
+    <?php
+    if (isset($_SESSION["addMessage"])) {
+    ?>
+      <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+        <strong><?php echo $_SESSION["addMessage"] ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php
+      unset($_SESSION["addMessage"]);
+    }
+    if (isset($_SESSION["updateMessage"])) {
+    ?>
+      <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+        <strong><?php echo $_SESSION["updateMessage"] ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       <?php
-      if (isset($_SESSION["addMessage"])) {
+      unset($_SESSION["updateMessage"]);
       ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong><?php echo $_SESSION["addMessage"] ?></strong>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <?php
-            unset($_SESSION["addMessage"]);
-           ?>
-              
-      <?php
-      }
-      if (isset($_SESSION["updateMessage"])) {
-      ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong><?php echo $_SESSION["updateMessage"] ?></strong>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <?php
-            unset($_SESSION["updateMessage"]);
-           ?>
-              
-      <?php
-      }
-      ?>
+
+    <?php
+    }
+    ?>
 
     <form class="navbar-form" role="search" action="index.php?action=search" method="POST">
       <div class="input-group">
@@ -47,7 +44,7 @@ include "../sidebar.php";
       </div>
     </form>
 
-   
+
     <div class="card-body  table-responsive">
       <table id="example1" class="table table-sm display responsive table-bordered table-striped ">
         <thead>

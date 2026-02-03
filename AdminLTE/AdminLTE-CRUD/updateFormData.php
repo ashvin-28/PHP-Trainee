@@ -2,7 +2,8 @@
 session_start();
 
 if (!isset($_SESSION["email"])) {
-    header("Location:loginPage.php");
+           header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
+
 }
 if (isset($_GET['id'])) {
     $id = $_GET["id"];
@@ -82,6 +83,20 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
 
             <div class="form-group">
+                  <?php if ($row["image"]) {
+                  ?>
+                    <img src="<?php echo $row["image"]; ?>" alt="" width="50px" hight="50px">
+                </td>
+              <?php
+                  } else {
+              ?>
+                <img
+                  src="../dist/assets/img/randomImage.png"
+                  class="user-image rounded-circle shadow"
+                  alt="User Image" width="50px" hight="50px" />
+              <?php
+                  }
+              ?>
                 <label for="exampleInputFile">Photo Input</label>
                 <div class="input-group">
                     <div class="custom-file">
@@ -131,7 +146,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="form-group">
                     <label>Select</label>
                     <select class="form-control" name="countryName">
-                        <option value="Select Country" <?php if ($row['country'] == 'Select Country') echo 'selected'; ?>>Select Country</option>
+                        <option value="" selected disabled >Select Country</option>
                         <option value="India" <?php if ($row['country'] == 'India') echo 'selected'; ?>>India</option>
                         <option value="USA" <?php if ($row['country'] == 'USA') echo 'selected'; ?>>USA</option>
                         <option value="Australia" <?php if ($row['country'] == 'Australia') echo 'selected'; ?>>Australia</option>

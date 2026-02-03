@@ -67,15 +67,14 @@ Good Evening!
 Hoping you had a great day today,
 Today’s Update:
     -Working Javascript
-          -Complated classes,inheritance and static class
-          -Complated callback function
-          -Complated asynchronous function,async await and promises
-          -Complated modules
-          -Complated DOM Navigation
-          -Complated JS windows
-          -Complated popup alert
-Monday Plan:
-	-Continue Working Javascript(Ajax,Jquery)
+          -Complated jquery (jquey selectors,event,get-set value,add element,css classes,jquey dimensions)
+          -Complated jquery effects(hide,show,fadein,fadeout,toggle,fadetoggle,slide,custome css using animate,stop,chaining)
+          -Wroking ajax
+          -Complated Changes in AdminLTE (simple crud and mvc crud)
+          
+tomorrow's Plan:
+	-Continue Working Javascript(Ajax)
+	-Perform unit testing in AdminLTE changes
 	
 	
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP

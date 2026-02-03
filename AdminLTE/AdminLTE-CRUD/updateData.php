@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["email"])) {
-    header("Location:loginPage.php");
+    header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
 }
 include "connection.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tmp_name = $_FILES["image"]["tmp_name"];
     $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
     $oldPassword = $_POST["update_password"];
-    $image = $_POST["old_image"];
+    $old_image = $_POST["old_image"];
+    $image = "";
 
     $hob = implode(",", $hobbies);
     $targetdir = 'upload/' . $photo;
@@ -33,17 +34,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!(filter_var($email, FILTER_VALIDATE_EMAIL))) {
         $errors[] = "Email in specific format";
     }
-
-
-    if ($phoneNumber != "") {
-
-        if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
-            $errors[] = " Phone number must 10 digit";
-        }
+    // if ($password == "" || strlen($password) < 8) {
+    //     $errors[] = "Password contain eight character";
+    // } else if (!preg_match($pattern, $password)) {
+    //     $errors[] = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+    // } else if ($confirmPassword != $password) {
+    //     $errors[] = "Confirm password has same as password";
+    // }
+    if ($address == "") {
+        $errors[] = "Insert address";
     }
-   
-
-
+    if ($phoneNumber == "" || (!preg_match('/^[0-9]{10}$/', $phoneNumber))) {
+        $errors[] = " phone number must bi 10 digit";
+    }
+    if ($gender == "") {
+        $errors[] = "Select gender";
+    }
+    if (empty($hobbies)) {
+        $errors[] = "Select hobbies";
+    }
+    if (empty($country)) {
+        $errors[] = "Select country";
+    }
+    if (!$_FILES["image"]["name"] && empty($old_image)) {
+        $errors[] = "upload image";
+    }
     if (!empty($password)) {
         if (!(strlen($password < 8))) {
             if (!preg_match($pattern, $password)) {
@@ -77,38 +92,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $hasConfirmPassword = $oldPassword;
     }
+
     if (empty($errors)) {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
         try {
             if ($_FILES["image"]["name"]) {
                 move_uploaded_file($tmp_name, $targetdir);
-            } else {
-                $targetdir = $image;
+                $image = $targetdir;
+            } else if (!empty($old_image)) {
+                $image = $old_image;
             }
-            $query = "UPDATE employee SET firstName='$firstName', lastName='$lastName', email='$email', 
+            if ($image != "") {
+
+                $query = "UPDATE employee SET firstName='$firstName', lastName='$lastName', email='$email', 
                               password='$hashPassword', confirmPassword='$hasConfirmPassword', address='$address', 
                                  phonenumber='$phoneNumber', gender='$gender', hobbies='$hob', country='$country', 
-                              image='$targetdir' WHERE emp_id=$id";
-
+                              image='$image' WHERE emp_id=$id";
+            } else {
+                $query = "UPDATE employee SET firstName='$firstName', lastName='$lastName', email='$email', 
+                              password='$hashPassword', confirmPassword='$hasConfirmPassword', address='$address', 
+                                 phonenumber='$phoneNumber', gender='$gender', hobbies='$hob', country='$country'
+                              WHERE emp_id=$id";
+            }
             $result = mysqli_query($conn, $query);
 
             if ($result) {
                 if (isset($_SESSION["email"]) && $_SESSION["email"] == $email) {
-                    $_SESSION["image"] = $targetdir;
+                    $_SESSION["firstName"] = $firstName;
+                    $_SESSION["lastName"] = $lastName;
                 }
-                echo "<script>alert('Record updated'); window.location.href='listingData.php';</script>";
+                if (isset($_SESSION["email"]) && $_SESSION["email"] == $email && $image != "") {
+                    $_SESSION["image"] = $image;
+                }
+                $_SESSION["updateMessage"] = "Record updated";
+                echo "<script> window.location.href='listingData.php';</script>";
             }
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) {
-                $errors[] = "The email '$email' is already in use by another account.";
+                $errors[] = "The email '$email' is already registered. Please use a different email.";
             } else {
-                $errors[] = "Database Error: " . $e->getMessage();
+                $errors[] = "A database error occurred. Please try again later.";
             }
-
             $_SESSION["errors"] = $errors;
-            echo "<script>alert('Update Failed: " . end($errors) . "'); window.location.href='updateFormData.php?id=$id';</script>";
-            exit;
+            var_dump($_SESSION["errors"]);
+            $_SESSION["hiddenId"] = $id;
+            header("Location:updateFormData.php");
+            exit();
         }
     } else {
         $_SESSION["errors"] = $errors;

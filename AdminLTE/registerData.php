@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirmPassword = $_POST["confirmPassword"];
+    
 
     if ($firstName == "" || strlen($firstName < 3)) {
         $errors[] = "First Name contain at least 3 character";
@@ -58,11 +59,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $errors[] = "A database error occurred. Please try again later.";
             }
             $_SESSION["errors"] = $errors;
+            $_SESSION['oldData'] = $_POST; 
             var_dump($_SESSION["errors"]);
             header("Location:registerPage.php");
         }
     } else {
         $_SESSION["errors"] = $errors;
+        $_SESSION['oldData'] = $_POST; 
         var_dump($_SESSION["errors"]);
         header("Location:registerPage.php");
     }

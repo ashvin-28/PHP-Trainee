@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["email"])) {
-  header("Location:loginPage.php");
+   header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
 }
 include "connection.php";
 include "../header.php";
@@ -11,7 +11,30 @@ include "../sidebar.php";
   <div class="card ">
     <div class="card-header m-3">
       <h3 class="card-title">Employee Table</h3>
+
     </div>
+    <?php
+    if (isset($_SESSION["updateMessage"])) {
+    ?>
+      <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+        <strong><?php echo $_SESSION["updateMessage"] ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php
+    }
+    unset($_SESSION["updateMessage"]);
+
+    if (isset($_SESSION["addMessage"])) {
+    ?>
+      <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+        <strong><?php echo $_SESSION["addMessage"] ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php
+    }
+    unset($_SESSION["addMessage"]);
+    ?>
+
 
     <form class="navbar-form" role="search" action="listingData.php" method="POST">
       <div class="input-group">
@@ -72,34 +95,32 @@ include "../sidebar.php";
                 <td class="row-data" data-name="country"><?php echo $row["country"]; ?></td>
 
                 <td class="row-data" data-name="name">
-                 <?php if($row["image"])
-                 {
-                 ?>  
-                <img src="<?php echo $row["image"]; ?>" alt="" width="50px" hight="50px"></td>
-                 <?php
-                 }
-                 else
-                 {
-                 ?>
-                  <img
-                    src="../dist/assets/img/randomImage.png"
-                    class="user-image rounded-circle shadow"
-                    alt="User Image" width="50px" hight="50px" />
-                 <?php
-                 }
-                 ?>
-                <td>
-                  <a href="updateFormData.php?id=<?php echo $row["emp_id"]; ?>" class="btn btn-info btn-sm mb-3">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Edit
-                  </a>
-                  <a href="deleteData.php?id=<?php echo $row["emp_id"]; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
-                    <i class="fas fa-trash">
-                    </i>
-                    Delete
-                  </a>
+                  <?php if ($row["image"]) {
+                  ?>
+                    <img src="<?php echo $row["image"]; ?>" alt="" width="50px" hight="50px">
                 </td>
+              <?php
+                  } else {
+              ?>
+                <img
+                  src="../dist/assets/img/randomImage.png"
+                  class="user-image rounded-circle shadow"
+                  alt="User Image" width="50px" hight="50px" />
+              <?php
+                  }
+              ?>
+              <td>
+                <a href="updateFormData.php?id=<?php echo $row["emp_id"]; ?>" class="btn btn-info btn-sm mb-3">
+                  <i class="fas fa-pencil-alt">
+                  </i>
+                  Edit
+                </a>
+                <a href="deleteData.php?id=<?php echo $row["emp_id"]; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">
+                  <i class="fas fa-trash">
+                  </i>
+                  Delete
+                </a>
+              </td>
 
           </tr>
       <?php

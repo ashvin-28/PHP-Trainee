@@ -7,11 +7,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST["email"];
   $password = $_POST["password"];
 
-  if ($email == "" || $password == "") {
-    $errors[] = "Enter email and password";
+  if ($email == "" ) {
+    $errors[] = "Enter email ";
+  }
+  if ($password == "" ) {
+    $errors[] = "Enter Password ";
+  }
+  if(!empty($errors)){
+
+    $_SESSION["oldData"] = $_POST;
     $_SESSION["errors"] = $errors;
     header("Location:loginPage.php");
-  } else {
+  }
+  else {
     $sql = "select * from employee where email='$email'";
     $result = mysqli_query($conn, $sql);
     if ($result) {
@@ -31,13 +39,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           } else {
             $errors[] = "Invalid Credintial";
             $_SESSION["errors"] = $errors;
+            $_SESSION["oldData"] = $_POST;
             var_dump($_SESSION["errors"]);
             header("Location:loginPage.php");
           }
         }
       } else {
-        $errors[] = " User not registered";
+        $errors[] = " $email User is not registered";
         $_SESSION["errors"] = $errors;
+        $_SESSION["oldData"] = $_POST;
         var_dump($_SESSION["errors"]);
         header("Location:loginPage.php");
       }

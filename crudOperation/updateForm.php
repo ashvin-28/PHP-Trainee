@@ -30,6 +30,8 @@ $_SESSION["id"]=$id;
                  <?php foreach ($errors as $e) {
                  echo "<p style='color:red;'>$e</p>";
                 } ?>
+            <input type="hidden" name="id" value="<?php echo $row['emp_id'];?>"  >
+
             <label for="">First Name: </label>
             <input type="text" name="firstName" value="<?php echo $row['firstName'];?>"  >
             <br>

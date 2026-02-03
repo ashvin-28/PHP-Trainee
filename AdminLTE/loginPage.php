@@ -64,14 +64,17 @@
   <div class=" m-auto mt-3 w-50 card card-primary card-outline mb-4">
     <?php
     session_start();
-    if(isset($_SESSION["registerMessage"])){
-      ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong><?php echo $_SESSION["registerMessage"] ?></strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    $oldData = isset($_SESSION['oldData']) ? $_SESSION['oldData'] : [];
+    unset($_SESSION['oldData']);
+    if (isset($_SESSION["registerMessage"])) {
+    ?>
+      <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+        <strong><?php echo $_SESSION["registerMessage"] ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <?php unset($_SESSION["registerMessage"]); ?>
+      </div>
 
-      <?php
+    <?php
     }
     $errors = [];
     if (isset($_SESSION["errors"])) {
@@ -111,16 +114,17 @@
             type="email"
             name="email"
             class="form-control"
+            value="<?php echo $oldData['email'] ?? ''; ?>"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            autocomplete="off" />
+            autocomplete="off"  />
           <div id="emailHelp" class="form-text">
             We'll never share your email with anyone else.
           </div>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" id="exampleInputPassword1" autocomplete="new-password" />
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1" autocomplete="new-password" value="<?php echo  $oldData['password'] ?? ''; ?>" />
         </div>
 
 
@@ -133,7 +137,7 @@
           You have not registered?
           <a href="registerPage.php" class="text-center">Register</a>
         </p>
-     
+
       </div>
 
       <!--end::Footer-->

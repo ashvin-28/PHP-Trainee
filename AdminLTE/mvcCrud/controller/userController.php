@@ -44,7 +44,15 @@ class userController
             $errors[] = "Insert address";
          }
          if ($phoneNumber == "") {
-            $errors[] = "Insert phone number";
+            if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
+               $errors[] = " Phone number must 10 digit";
+            }
+         }
+         if ($phoneNumber != "") {
+
+            if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
+               $errors[] = " Phone number must 10 digit";
+            }
          }
          if ($gender == "") {
             $errors[] = "Select gender";
@@ -63,25 +71,37 @@ class userController
             $hob = implode(",", $hobbies);
             $hasPassword = password_hash($password, PASSWORD_DEFAULT);
             $hasConfirmPassword = password_hash($confirmPassword, PASSWORD_DEFAULT);
-            $data = [
-               "firstName" => $firstName,
-               "lastName" => $lastName,
-               "email" => $email,
-               "hasPassword" => $hasPassword,
-               "hasConfirmPassword" => $hasConfirmPassword,
-               "phoneNumber" => $phoneNumber,
-               "address" => $address,
-               "gender" => $gender,
-               "hob" => $hob,
-               "country" => $country,
-               "targetdir" => $targetdir,
-            ];
-            $user->insert($data);
-            $_SESSION["addMessage"] = "record added";
-
-            header("Location:index.php");
+            try {
+               $data = [
+                  "firstName" => $firstName,
+                  "lastName" => $lastName,
+                  "email" => $email,
+                  "hasPassword" => $hasPassword,
+                  "hasConfirmPassword" => $hasConfirmPassword,
+                  "phoneNumber" => $phoneNumber,
+                  "address" => $address,
+                  "gender" => $gender,
+                  "hob" => $hob,
+                  "country" => $country,
+                  "targetdir" => $targetdir,
+               ];
+               $user->insert($data);
+               $_SESSION["addMessage"] = "record added";
+               header("Location:index.php");
+            } catch (mysqli_sql_exception $e) {
+               if ($e->getCode() === 1062) {
+                  $errors[] = "The email '$email' is already registered. Please use a different email.";
+               } else {
+                  $errors[] = "A database error occurred. Please try again later.";
+               }
+               $_SESSION["errors"] = $errors;
+               $_SESSION["oldData"] = $_POST;
+               var_dump($_SESSION["errors"]);
+               header("Location:views/add.php");
+            }
          } else {
             $_SESSION["errors"] = $errors;
+            $_SESSION["oldData"] = $_POST;
 
             header("Location:views/add.php");
          }
@@ -112,22 +132,43 @@ class userController
          $targetdir = $uploaddir . $photo;
          $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
          $oldPassword = $_POST["update_password"];
-         if ($firstName == "" || strlen($firstName < 3)) {
+         if ($firstName == "" || strlen($firstName) < 3) {
             $errors[] = "First Name contain at least 3 character";
          }
-         if ($lastName == "" || strlen($lastName < 3)) {
+         if ($lastName == "" || strlen($lastName) < 3) {
             $errors[] = " Last Name contain at least 3 character";
          }
          if (!(filter_var($email, FILTER_VALIDATE_EMAIL))) {
             $errors[] = "Email in specific format";
          }
-
-
+         // if ($password == "" || strlen($password) < 6) {
+         //    $errors[] = "Password contain six character";
+         // }
+         // if ($confirmPassword == "" || $confirmPassword != $password) {
+         //    $errors[] = "Confirm password has same as password";
+         // }
+         if ($address == "") {
+            $errors[] = "Insert address";
+         }
+         if ($phoneNumber == "") {
+            if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
+               $errors[] = " Phone number must 10 digit";
+            }
+         }
          if ($phoneNumber != "") {
 
             if (!preg_match('/^[0-9]{10}$/', $phoneNumber)) {
                $errors[] = " Phone number must 10 digit";
             }
+         }
+         if ($gender == "") {
+            $errors[] = "Select gender";
+         }
+         if (empty($hobbies)) {
+            $errors[] = "Select hobbies";
+         }
+         if ($country == "") {
+            $errors[] = "Select country";
          }
 
 
@@ -169,25 +210,35 @@ class userController
             $image = $targetdir;
          }
          if (empty($errors)) {
-
-            $data = [
-               "id" => $id,
-               "firstName" => $firstName,
-               "lastName" => $lastName,
-               "email" => $email,
-               "password" => $hashPassword,
-               "confirmPassword" => $hasConfirmPassword,
-               "phoneNumber" => $phoneNumber,
-               "address" => $address,
-               "gender" => $gender,
-               "hobbies" => implode(",", $hobbies),
-               "country" => $country,
-               "targetdir" => $image,
-            ];
-            $user->update($data);
-              $_SESSION["updateMessage"] = "record updated";
-
-            header("Location:index.php");
+            try {
+               $data = [
+                  "id" => $id,
+                  "firstName" => $firstName,
+                  "lastName" => $lastName,
+                  "email" => $email,
+                  "password" => $hashPassword,
+                  "confirmPassword" => $hasConfirmPassword,
+                  "phoneNumber" => $phoneNumber,
+                  "address" => $address,
+                  "gender" => $gender,
+                  "hobbies" => implode(",", $hobbies),
+                  "country" => $country,
+                  "targetdir" => $image,
+               ];
+               $user->update($data);
+               $_SESSION["updateMessage"] = "record updated";
+               header("Location:index.php");
+            } catch (mysqli_sql_exception $e) {
+               if ($e->getCode() === 1062) {
+                  $errors[] = "The email '$email' is already registered. Please use a different email.";
+               } else {
+                  $errors[] = "A database error occurred. Please try again later.";
+               }
+               $_SESSION["errors"] = $errors;
+               $_SESSION["hiddenId"] = $id;
+               var_dump($_SESSION["errors"]);
+               header("Location:views/edit.php");
+            }
          } else {
             $_SESSION["errors"] = $errors;
             $_SESSION["hiddenId"] = $id;

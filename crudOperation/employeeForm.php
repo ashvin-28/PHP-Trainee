@@ -1,10 +1,10 @@
 <?php
     include "connection.php";
-    $errors=[];
-    session_start();
-    if((isset($_SESSION["errors"]))){
-        $errors=$_SESSION["errors"];
-    }
+    // $errors=[];
+    // session_start();
+    // if((isset($_SESSION["errors"]))){
+    //     $errors=$_SESSION["errors"];
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +18,9 @@
        <div>
         <h3>Employee Form</h3>
         <?php
-         foreach ($errors as $e) {
-                 echo "<p style='color:red;'>$e</p>";
-                }
+         // foreach ($errors as $e) {
+         //         echo "<p style='color:red;'>$e</p>";
+         //        }
         ?>
         <form action= "insertformData.php" method="POST" enctype="multipart/form-data" autocomplete="off" >
             <label for="">First Name: </label>
@@ -79,8 +79,8 @@
     </div>
     <?php
    
-            session_unset();
-            session_destroy();
+            // session_unset();
+            // session_destroy();
     ?>
 </body>
 </html>

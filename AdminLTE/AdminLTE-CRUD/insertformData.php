@@ -3,7 +3,7 @@
     include "connection.php";
     session_start();
     if (!isset($_SESSION["email"])) {
-        header("Location:loginPage.php");
+        header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
     }
     $errors = [];
 
@@ -54,7 +54,7 @@
         if (empty($hobbies)) {
             $errors[] = "Select hobbies";
         }
-        if ($country == "") {
+        if (empty($country)) {
             $errors[] = "Select country";
         }
         if (!($_FILES["image"]["name"])) {
@@ -70,20 +70,33 @@
             $hob = implode(",", $hobbies);
             $hasPassword = password_hash($password, PASSWORD_DEFAULT);
             $hasConfirmPassword = password_hash($confirmPassword, PASSWORD_DEFAULT);
-
-            $query = "insert into employee(firstName,lastName,email,password,confirmPassword,address,phonenumber,gender,hobbies,country,image) values(
+            try {
+                $query = "insert into employee(firstName,lastName,email,password,confirmPassword,address,phonenumber,gender,hobbies,country,image) values(
            '$firstName','$lastName','$email','$hasPassword','$hasConfirmPassword','$address','$phoneNumber','$gender','$hob','$country','$targetdir')";
-            $result = mysqli_query($conn, $query);
-            if ($result) {
-
-                echo "<script>alert('Record Inserted');
+                $result = mysqli_query($conn, $query);
+                if ($result) {
+                    $_SESSION["addMessage"] = "Record added";
+                    echo "<script>
                  window.location.href='listingData.php';
                 </script>";
-            } else {
-                echo "no";
+                } else {
+                    echo "no";
+                }
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() === 1062) {
+                    $errors[] = "The email '$email' is already registered. Please use a different email.";
+                } else {
+                    $errors[] = "A database error occurred. Please try again later.";
+                }
+                $_SESSION["errors"] = $errors;
+                $_SESSION["oldData"] = $_POST;
+                var_dump($_SESSION["errors"]);
+                header("Location:insertEmployeeForm.php");
             }
         } else {
             $_SESSION["errors"] = $errors;
+            $_SESSION["oldData"] = $_POST;
+
             header("Location:insertEmployeeForm.php");
         }
     } else {

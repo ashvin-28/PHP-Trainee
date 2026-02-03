@@ -1,7 +1,7 @@
 <?php
 require_once('../controller/userController.php');
 if (!isset($_SESSION["email"])) {
-       header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
+    header("Location:/PHP-Trainee/AdminLTE/loginPage.php");
 }
 include '../../header.php';
 
@@ -79,6 +79,20 @@ if ($data && $data->num_rows > 0) {
                 </div>
 
                 <div class="form-group">
+                       <?php if ($row["image"]) {
+                  ?>
+                    <img src="../<?php echo $row["image"]; ?>" alt="" width="50px" hight="50px">
+                </td>
+              <?php
+                  } else {
+              ?>
+                <img
+                  src="../dist/assets/img/randomImage.png"
+                  class="user-image rounded-circle shadow"
+                  alt="User Image" width="50px" hight="50px" />
+              <?php
+                  }
+              ?>
                     <label for="exampleInputFile">Photo Input</label>
                     <div class="input-group">
                         <div class="custom-file">
@@ -130,7 +144,7 @@ if ($data && $data->num_rows > 0) {
                 <div class="form-group">
                     <label>Select</label>
                     <select class="form-control" name="countryName">
-                        <option value="Select Country" <?php if ($row['country'] == 'Select Country') echo 'selected'; ?>>Select Country</option>
+                        <option value="" selected disabled>Select Country</option>
                         <option value="India" <?php if ($row['country'] == 'India') echo 'selected'; ?>>India</option>
                         <option value="USA" <?php if ($row['country'] == 'USA') echo 'selected'; ?>>USA</option>
                         <option value="Australia">Australia</option>

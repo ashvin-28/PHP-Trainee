@@ -72,7 +72,8 @@
             </div>
             <?php
             session_start();
-
+            $oldData = isset($_SESSION['oldData']) ? $_SESSION['oldData'] : [];
+            unset($_SESSION['oldData']);
             $errors = [];
             if ((isset($_SESSION["errors"]))) {
                 $errors = $_SESSION["errors"];
@@ -102,22 +103,22 @@
 
                 <div class="form-group">
                     <label for="">First Name: </label>
-                    <input type="text" class="form-control" name="firstName">
+                    <input type="text" class="form-control" name="firstName" value="<?php echo $oldData['firstName'] ?? ''; ?>">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Last Name</label>
-                    <input type="text" class="form-control" name="lastName">
+                    <input type="text" class="form-control" name="lastName" value="<?php echo $oldData['lastName'] ?? ''; ?>">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" name="email" autocomplete="off">
+                    <input type="email" class="form-control" name="email" autocomplete="off" value="<?php echo $oldData['email'] ?? ''; ?>">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Password</label>
-                    <input type="password" class="form-control" name="password" autocomplete="new-password">
+                    <input type="password" class="form-control" name="password" autocomplete="new-password" value="<?php echo $oldData['password'] ?? ''; ?>">
                 </div>
                 <div class="form-group">Confirm Password</label>
-                    <input type="password" class="form-control" name="confirmPassword">
+                    <input type="password" class="form-control" name="confirmPassword" value="<?php echo $oldData['confirmPassword'] ?? ''; ?>">
                 </div>
                 <div class="card-footer m-2">
                     <button type="submit" class="btn btn-primary">Register</button>

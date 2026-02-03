@@ -2,7 +2,6 @@
   include "connection.php";
     session_start();
     $errors=[];
-    $id=$_SESSION["id"];
     if($_SERVER["REQUEST_METHOD"]=="POST"){
          $firstName=trim($_POST["firstName"]);
          $lastName=trim($_POST["lastName"]);
@@ -16,6 +15,8 @@
          $country=$_POST["countryName"];
          $photo=$_FILES["image"]["name"];
          $tmp_name=$_FILES["image"]["tmp_name"];
+         $id=$_POST["id"];
+
          
          $hob=implode(",",$hobbies);
          $targetdir='upload/' . $photo;
