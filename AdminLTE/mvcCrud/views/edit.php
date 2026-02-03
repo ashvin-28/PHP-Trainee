@@ -164,4 +164,3 @@ if ($data && $data->num_rows > 0) {
 }
 
 include "../../footer.php";
-?>

@@ -131,4 +131,3 @@ if ((isset($_SESSION["errors"]))) {
 </div>
 <?php
 include "../footer.php";
-?>
