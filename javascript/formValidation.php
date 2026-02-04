@@ -4,6 +4,8 @@
 <head>
   <title>jQuery Validation</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="validation.js"></script>
+
 
   <style>
     .error {
@@ -35,7 +37,7 @@
     <span class="error" id="genderErr"></span><br><br>
 
     Hobbies:
-    <input type="checkbox" class="hobby" value="cricket" name="hobbbies[]"> Cricket
+    <input type="checkbox" class="hobby" value="cricket" name="hobbies[]"> Cricket
     <input type="checkbox" class="hobby" value="music" name="hobbies[]"> Music
     <span class="error" id="hobbyErr"></span><br><br>
 
@@ -51,7 +53,6 @@
 
   </form>
 
-  <script src="validation.js"></script>
 
 </body>
 

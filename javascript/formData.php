@@ -4,7 +4,7 @@
     $password = $_POST["password"];
     $phonenumber = $_POST["phonenumber"];
     $gender = $_POST["gender"];
-    $hobbies = $_POST["hobbbies"];
+    $hobbies = $_POST["hobbies"];
     $hob=implode(",", $hobbies);
     $city = $_POST["city"];
 

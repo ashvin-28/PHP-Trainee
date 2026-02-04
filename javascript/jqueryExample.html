@@ -32,6 +32,12 @@
         // $("#btn").click(function(){
         //  $("#demo").css("color","red");
         //  });
+          $("input").focus(function(){
+             $(this).css("background-color","red");
+          });
+          $("input").blur(function(){
+             $(this).css("background-color","green");
+          });
         $("#myforms").submit(function (e) {
           e.preventDefault();
           $("#demo2").text("form submit");

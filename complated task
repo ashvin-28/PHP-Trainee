@@ -66,15 +66,12 @@ Hello Sir/Ma'am
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-    -Working Javascript
-          -Complated jquery (jquey selectors,event,get-set value,add element,css classes,jquey dimensions)
-          -Complated jquery effects(hide,show,fadein,fadeout,toggle,fadetoggle,slide,custome css using animate,stop,chaining)
-          -Wroking ajax
-          -Complated Changes in AdminLTE (simple crud and mvc crud)
+          -Complated Changes in simple crud  AdminLTE (adminLTE crud and mvc crud)
+          -Working jquery
+          -Starting Ajax
           
 tomorrow's Plan:
 	-Continue Working Javascript(Ajax)
-	-Perform unit testing in AdminLTE changes
 	
 	
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP

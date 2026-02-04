@@ -8,25 +8,42 @@
 </head>
 
 <body>
+    <!-- Ensure you have access to jQuery, either locally or via a CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <div id="ajaxExp">
 
+    <div id="ajaxExp">
         <button id="btn" onclick="loadData()">Change content</button>
     </div>
     <p id="headerInfo"></p>
+
     <script>
         function loadData() {
-            let xttp = new XMLHttpRequest();
-            xttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    $("#ajaxExp").html(this.responseText);
-                  $("p").html(this.getAllResponseHeaders());
-                   // $("p").html(this.getResponseHeader("Last-Modified"));
+            /*  let xttp = new XMLHttpRequest();
+              xttp.onreadystatechange = function () {
+                  if (this.readyState == 4 && this.status == 200) {
+                      $("#ajaxExp").html(this.responseText);
+                    $("p").html(this.getAllResponseHeaders());
+                     // $("p").html(this.getResponseHeader("Last-Modified"));
+                  }
+              };
+              // xttp.open("GET","ajaxInfo.txt",true);
+              xttp.open("GET", "getInfo.php?name=Ashvin&age=21");
+              xttp.send(); */
+            console.log("loadData function called");
+            $.ajax({
+                url: 'getInfo.php',
+                type: "GET",
+                data: { name: "Ashvin", age: 21 },
+                dataType: 'text',
+                success: function (response) {
+                    console.log("AJAX success:", response);
+                    $("#ajaxExp").html(response);
+                },
+                error: function () {
+                    console.error("AJAX error:");
+                    $("#ajaxExp").html("Error loading data.");
                 }
-            };
-            // xttp.open("GET","ajaxInfo.txt",true);
-            xttp.open("GET", "getInfo.php?name=Ashvin&age=21");
-            xttp.send();
+            });
         }
     </script>
 </body>

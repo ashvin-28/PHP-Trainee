@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX PHP Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>AJAX PHP Example</h1>
+    <button id="fetch-data">Fetch Data</button>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function () {
+            // Attach click event to the button
+            $('#fetch-data').click(function () {
+                // $("#result").html("hello <b>Ashvin </b>");
+                // Make an AJAX request to PHP script
+                $.ajax({
+                    url: 'fetchData.php',
+                    type: 'GET',
+                    success: function (response) {
+                      //  $('#result').text(response[0].name).append(response[1].name).append(response[2].name);
+
+                        $('#result').empty(); 
+
+                        // Loop through the JSON array returned by the PHP script
+                        $.each(response, function (index, item) {
+                            // Append each item's name to the result div
+                            $('#result').append('<p>Item ' + (index + 1) + ': ' + item.name + '</p>');
+                            
+                        });
+                    },
+                
+                    error: function () {
+                        alert("Check the [Network Tab](https://developer.chrome.com) in your browser to see the error.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

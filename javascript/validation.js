@@ -18,8 +18,16 @@ $(document).ready(function () {
       isValid = false;
     }
     let password = $("#password").val();
-    if (password == "" || password.length < 8) {
-      $("#passErr").text("Password contain 8 character");
+    let strongPasswordRegex =
+      /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-+={}[\]|\\:;"'<>,.?/_₹]).{8,16}$/;
+
+    if (password == "") {
+      $("#passErr").text("Insert password");
+      isValid = false;
+    } else if (!password.match(strongPasswordRegex)) {
+      $("#passErr").text(
+        "Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character",
+      );
       isValid = false;
     }
     let mobile = $("#mobile").val();
@@ -41,9 +49,12 @@ $(document).ready(function () {
     }
 
     if (isValid) {
+      // e.preventDefault();
+      // return false;
       alert("form submitted sucessfully");
       console.log(name);
       this.submit();
+
       // window.location.href = "formData.php";
     }
   });
