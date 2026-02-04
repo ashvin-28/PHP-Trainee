@@ -137,6 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["errors"] = $errors;
             var_dump($_SESSION["errors"]);
             $_SESSION["hiddenId"] = $id;
+            $_SESSION["oldData"] = $_POST;
             header("Location:updateFormData.php");
             exit();
         }
@@ -145,6 +146,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var_dump($_SESSION["errors"]);
         $_SESSION["hiddenId"] = $id;
         echo $_SESSION["hiddenId"];
+        $_SESSION["oldData"] = $_POST;
+
         header("Location:updateFormData.php");
     }
 }
