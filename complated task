@@ -66,12 +66,12 @@ Hello Sir/Ma'am
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-          -Complated Changes in simple crud  AdminLTE (adminLTE crud and mvc crud)
-          -Working jquery
-          -Starting Ajax
+          -Complated jquery and jquery effect(hide,show,animate,toggle,fadein,fadeout,slideup,slidedown,stop,callback,chaining)
+          -Complated jquery validation display proper error message and after submit retrive data into other page
+          -Working Ajax
           
 tomorrow's Plan:
-	-Continue Working Javascript(Ajax)
+	-Continue Working Ajax
 	
 	
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP

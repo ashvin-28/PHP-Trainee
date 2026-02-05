@@ -24,7 +24,7 @@
   <!--begin::Accessibility Features-->
   <!-- Skip links will be dynamically added by accessibility.js -->
   <meta name="supported-color-schemes" content="light dark" />
-  <link rel="preload" href="../AdminLTE/dist/css/adminlte.css" as="style" />
+  <link rel="preload" href="/PHP-Trainee/AdminLTE/dist/css/adminlte.css" as="style" />
   <!--end::Accessibility Features-->
   <!--begin::Fonts-->
   <link
@@ -48,7 +48,7 @@
     crossorigin="anonymous" />
   <!--end::Third Party Plugin(Bootstrap Icons)-->
   <!--begin::Required Plugin(AdminLTE)-->
-  <link rel="stylesheet" href="../../AdminLTE/dist/css/adminlte.css" />
+  <link rel="stylesheet" href="..//AdminLTE/dist/css/adminlte.css" />
   <!--end::Required Plugin(AdminLTE)-->
   <!-- apexcharts -->
   <link
@@ -163,7 +163,7 @@
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
   crossorigin="anonymous"></script>
 <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-<script src="../../AdminLTE/dist/js/adminlte.js"></script>
+<script src="/PHP-Trainee/AdminLTE/dist/js/adminlte.js"></script>
 <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
 
 <script

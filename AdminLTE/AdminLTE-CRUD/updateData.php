@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if (empty($hobbies)) {
         $errors[] = "Select hobbies";
+        $_SESSION["hobbies"]="hobbies";
     }
     if (empty($country)) {
         $errors[] = "Select country";
@@ -138,6 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             var_dump($_SESSION["errors"]);
             $_SESSION["hiddenId"] = $id;
             $_SESSION["oldData"] = $_POST;
+            $_SESSION["hobbies"];
             header("Location:updateFormData.php");
             exit();
         }
@@ -147,6 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["hiddenId"] = $id;
         echo $_SESSION["hiddenId"];
         $_SESSION["oldData"] = $_POST;
+        $_SESSION["hobbies"];
 
         header("Location:updateFormData.php");
     }

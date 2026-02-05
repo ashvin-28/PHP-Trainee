@@ -23,7 +23,18 @@ $query = "select * from employee where emp_id=$id";
 $result = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_assoc($result)) {
     $id = $row["emp_id"];
-    $hobbyArr = explode(",", $row["hobbies"]);
+  
+    if(isset($_SESSION["hobbies"])){
+       // echo $_SESSION["hobbies"];
+         $hobbyArr = [];
+         unset($_SESSION["hobbies"]);
+    }
+    else if(isset($oldData["hobbies"]) && ($oldData["hobbies"])){
+        $hobbyArr=$oldData["hobbies"];
+    }
+    else{
+          $hobbyArr = explode(",", $row["hobbies"]);
+    }
     $oldPassword = $row['password'];
 
 ?>
@@ -135,11 +146,11 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <label>Hobbies:</label>
 
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="hobbies[]" value="Playing" <?php echo (in_array('Playing', $oldData['hobbies'] ?? [])) || (in_array("Playing", $hobbyArr)) ? 'checked' : ''; ?>>
+                        <input class="custom-control-input" type="checkbox" name="hobbies[]" value="Playing" <?php echo  (in_array("Playing", $hobbyArr)) ? 'checked' : ''; ?>>
                         <label for="customCheckbox1" class="custom-control-label">Playing</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" name="hobbies[]" value="Reading" <?php echo (in_array('Reading', $oldData['hobbies'] ?? [])) || (in_array("Reading", $hobbyArr)) ? 'checked' : ''; ?>>
+                        <input class="custom-control-input" type="checkbox" name="hobbies[]" value="Reading" <?php echo (in_array("Reading", $hobbyArr)) ? 'checked' : ''; ?>>
                         <label for="customCheckbox1" class="custom-control-label">Reading</label>
                     </div>
                 </div>
