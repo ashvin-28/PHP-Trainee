@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <title>Form Validation</title>
+     <style>
+          .error {
+               color: red;
+               font-size: 14px;
+          }
+     </style>
+     <script>
+          function validateForm() {
+               let name = document.getElementById('name').value;
+
+               let email = document.getElementById('email').value;
+               let password = document.getElementById('password').value;
+               let phonenumber = document.getElementById('mobile').value;
+               let gender = document.querySelector("input[name='gender']:checked");
+               let hobbies = document.querySelectorAll(".hobby:checked");
+               let city=document.getElementById("city").value;
+               document.getElementById('nameErr').innerHTML = '';
+               document.getElementById('emailErr').innerHTML = '';
+               document.getElementById('passErr').innerHTML = '';
+               document.getElementById('mobErr').innerHTML = '';
+               document.getElementById('genderErr').innerHTML = '';
+               document.getElementById('hobbyErr').innerHTML = '';
+               document.getElementById('cityErr').innerHTML = '';
+
+               let isValid = true;
+               if (name == "") {
+                    document.getElementById('nameErr').innerHTML = 'Enter Name';
+                    isValid = false;
+               }
+               if (email == "") {
+                    document.getElementById('emailErr').innerHTML = 'Enter Email';
+                    isValid = false;
+               }
+               else if (!email.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
+                    document.getElementById('emailErr').innerHTML = 'Email is specefic format';
+                    isValid = false;
+               }
+               if (password == "") {
+                    document.getElementById('passErr').innerHTML = 'Enter Password';
+                    isValid = false;
+               }
+               else if (!password.match(/^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-+={}[\]|\\:;"'<>,.?/_₹]).{8,16}$/)) {
+                    document.getElementById('passErr').innerHTML = 'Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character';
+                    isValid = false;
+               }
+               if (phonenumber == "" || phonenumber.length != 10) {
+                    document.getElementById('mobErr').innerHTML = 'phone number 10 digit';
+                    isValid = false;
+               }
+               if (!gender) {
+                    document.getElementById('genderErr').innerHTML = 'select gender';
+                    isValid = false;
+               }
+               if (hobbies.length==0) {
+                    document.getElementById('hobbyErr').innerHTML = 'select hobbies';
+                    isValid = false;
+               } 
+               if (city==0) {
+                    document.getElementById('cityErr').innerHTML = 'select city';
+                    isValid = false;
+               } 
+               if (isValid) {
+                    console.log(name);
+                    alert('Form submitted successfully!');
+                    return true;
+               } else {
+                    return false;
+               }
+          }
+     </script>
+</head>
+
+<body>
+
+     <form id="myForm" method="POST" onsubmit="return validateForm()">
+          Name: <input type="text" id="name" name="name">
+          <span class="error" id="nameErr"></span><br><br>
+
+          Email: <input type="text" id="email" name="email">
+          <span class="error" id="emailErr"></span><br><br>
+
+          Password: <input type="password" id="password" name="password">
+          <span class="error" id="passErr"></span><br><br>
+
+          Mobile: <input type="number" id="mobile" name="phonenumber">
+          <span class="error" id="mobErr"></span><br><br>
+
+          Gender:
+          <input type="radio" name="gender" value="male"> Male
+          <input type="radio" name="gender" value="female"> Female
+          <span class="error" id="genderErr"></span><br><br>
+
+          Hobbies:
+          <input type="checkbox" class="hobby" value="cricket" name="hobbies[]"> Cricket
+          <input type="checkbox" class="hobby" value="music" name="hobbies[]"> Music
+          <span class="error" id="hobbyErr"></span><br><br>
+
+          City:
+          <select id="city" name="city">
+               <option value="">Select</option>
+               <option value="Ahmedabad">Ahmedabad</option>
+               <option value="Surat">Surat</option>
+          </select>
+          <span class="error" id="cityErr"></span><br><br>
+
+          <button name="btnSubmit" type="submit">Submit</button>
+
+     </form>
+
+</body>
+
+</html>

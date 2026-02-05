@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 <body>
+  <p id="demo"></p>
 
+  <button onclick="clearInterval(myVar)">Stop time</button>
+  <button onclick="start()">Start time</button>
 
-<p id="demo"></p>
+  <script>
 
-<button onclick="clearInterval(myVar)">Stop time</button>
-<button onclick="start()">Start time</button>
+    let myVar;
+    function myTimer() {
+      const d = new Date();
+      document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+    }
+    function start() {
+      clearInterval(myVar);
 
-<script>
-
-let myVar;
-function myTimer() {
-  const d = new Date();
-  document.getElementById("demo").innerHTML = d.toLocaleTimeString();
-}
-function start(){
-   clearInterval(myVar);
-
-   myVar= setInterval(myTimer ,1000);
-}
-start();
-</script>
-
+      myVar = setInterval(myTimer, 1000);
+    }
+    start();
+  </script>
 </body>
 </html>
