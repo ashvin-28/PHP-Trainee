@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <label for="file">File:</label>
+    <input type="file" id="file" name="file">
+    <label for="">Hobbies</label>
+   <input type="checkbox" class="hobby" name="hobbies[]" id="Reading" value="Reading"> Reading
+   <input type="checkbox" class="hobby" name="hobbies[]" id="Playing" value="Playing"> Playing
+    <input type="submit" value="Submit">
+</form>
+<div id="responseMessage"></div>
+<script src="formData.js"></script>
+</body>
+</html>

@@ -28,6 +28,8 @@
   <link rel="preload" href="/PHP-Trainee/AdminLTE/dist/css/adminlte.css" as="style" />
   <!--end::Accessibility Features-->
   <!--begin::Fonts-->
+ <!--jquery cdn-->
+   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"

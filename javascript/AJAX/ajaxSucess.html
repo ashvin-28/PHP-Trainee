@@ -27,12 +27,13 @@
                     },
                     datatype: 'json',
                     success: function (response) {
-                        let responseValue = JSON.parse(response);
                         //  $("#sucessData").html(response);
+                        let responseValue = JSON.parse(response);
                         console.log(response);
                         $("#sucessData").html(JSON.stringify(responseValue));
-                        // $("#sucessData").html(responseValue[1]);
+                         $("#sucessData").html(responseValue[1]);
                         console.log(responseValue);
+                        console.log(JSON.stringify(responseValue));
 
                     }
                 });

@@ -66,13 +66,11 @@ Hello Sir/Ma'am
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-          -Complated jquery and jquery effect(hide,show,animate,toggle,fadein,fadeout,slideup,slidedown,stop,callback,chaining)
-          -Complated jquery validation display proper error message and after submit retrive data into other page
-          -Working Ajax
-          
+          -Revice js object topics for object method,constructor,prototype 
+          -Understand the ajax serialize and FormData how its work and its different and practice 
+          -Working ajax crud  
 tomorrow's Plan:
-	-Continue Working Ajax
-	
+	-Continue Working ajax crud
 	
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP
 	
