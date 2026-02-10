@@ -1,11 +1,11 @@
-var isEditMode;
-$("#tableContainer").load("/PHP-Trainee/AdminLTE/ajaxCrud/list.php");
-$(document).ready(function () {
-  closeModel();
+
+$(document).ready(function(){
   $("#tableContainer").load("/PHP-Trainee/AdminLTE/ajaxCrud/list.php");
+
 });
 $("#insertForm").submit(function (e) {
   e.preventDefault();
+ 
   $(".error").text("");
   let isValid = true;
   let firstName = $("#firstName").val();
@@ -20,12 +20,12 @@ $("#insertForm").submit(function (e) {
   let phoneNumber = $("#phoneNumber").val();
   let photo = $("#image")[0];
   countryName = $("#countryName").val();
-  isEditMode = $("#emp_id").val() != "" && $("#emp_id").val() != undefined;
-  if (firstName == "" || firstName.length < 3) {
+  var isEditMode = $('#emp_id').val() != '' && $('#emp_id').val() != undefined;
+  if (firstName == "") {
     $("#firstNameError").text("First Name contain at least 3 character");
     isValid = false;
   }
-  if (lastName == "" || lastName.length < 3) {
+  if (lastName == "") {
     $("#lastNameError").text("Last Name contain at least 3 character");
     isValid = false;
   }
@@ -36,10 +36,11 @@ $("#insertForm").submit(function (e) {
     $("#emailError").text("Email is specefic format");
     isValid = false;
   }
-  if (!isEditMode) {
-    if (password == "") {
-      $("#passwordError").text("Insert password");
-      isValid = false;
+ if(!isEditMode){
+
+   if (password == "") {
+     $("#passwordError").text("Insert password");
+     isValid = false;
     } else if (!password.match(strongPasswordRegex)) {
       $("#passwordError").text(
         "Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character",
@@ -93,19 +94,32 @@ $("#insertForm").submit(function (e) {
       type: "POST",
       url: "/PHP-Trainee/AdminLTE/ajaxCrud/insertData.php",
       data: formData,
-      dataType: "json",
       processData: false,
       contentType: false,
       success: function (response) {
-        $("#alertBox").removeClass("d-none");
+       
+        console.log("hello");
+        console.log(response);
         if (response.status == "success") {
-          resetFormAndMode();
-          let modal = bootstrap.Modal.getInstance($("#adminPopupForm"));
-          if (modal) modal.hide();
 
+          console.log(response.message);
+         
+          $("#message").text(response.message);
+          $("#insertForm")[0].reset();
+
+          var modalElement =$("#adminPopupForm");
+          var modal = bootstrap.Modal.getInstance(modalElement); 
+          if (modal) {
+            modal.hide(); 
+          } 
+          else {
+            $("#adminPopupForm").modal("hide");
+          }
           $("#tableContainer").load("/PHP-Trainee/AdminLTE/ajaxCrud/list.php");
         } else {
-          $("#alertBox").addClass("alert-danger");
+            $("#alertBox").removeClass("d-none");
+            $("#alertBox").addClass("alert-danger");
+          console.log(response.message);
           $("#message").text(response.message);
         }
       },
@@ -135,55 +149,36 @@ function deleteData(id) {
     });
   }
 }
-function editData(id) {
-  $("#updatedImage").removeClass("d-none");
-  isEditMode = true;
-  $("#alertBox").addClass("d-none");
-  $.ajax({
-    url: "/PHP-Trainee/AdminLTE/ajaxCrud/getSingleRecord.php",
-    type: "POST",
-    data: { id: id },
-    dataType: "json",
-    success: function (data) {
-      $("#emp_id").val(data.emp_id);
-      $("#firstName").val(data.firstName);
-      $("#lastName").val(data.lastName);
-      $("#email").val(data.email);
-      $("#address").val(data.address);
-      $("#phoneNumber").val(data.phonenumber);
-      $("#countryName").val(data.country);
-      $("#updatedImage").attr("src", data.image);
+function editData(id){
+   $.ajax({
+            url: "/PHP-Trainee/AdminLTE/ajaxCrud/getSingleRecord.php",
+            type: "POST",
+            data: { id: id },
+            dataType: "json",
+            success: function (data) {
+                $("#emp_id").val(data.emp_id);
+                $("#firstName").val(data.firstName);
+                $("#lastName").val(data.lastName);
+                $("#email").val(data.email);
+                $("#address").val(data.address);
+                $("#phoneNumber").val(data.phonenumber);
+                $("#countryName").val(data.country);
 
-      $("input[name='gender'][value='" + data.gender + "']").prop(
-        "checked",
-        true,
-      );
+                $("input[name='gender'][value='" + data.gender + "']").prop("checked", true);
 
-      $(".hobbies").prop("checked", false);
-      data.hobbies.split(",").forEach((h) => {
-        $(".hobbies[value='" + h + "']").prop("checked", true);
-      });
+                $(".hobbies").prop("checked", false);
+                data.hobbies.split(",").forEach(h => {
+                    $(".hobbies[value='" + h + "']").prop("checked", true);
+                });
 
-      $("button[type='submit']").text("Update");
-    },
-  });
+                
+
+                $("button[type='submit']").text("Update");
+            }
+        });
 }
 
-function closeModel() {
-  resetFormAndMode();
+function closeModel(){
   $("#alertBox").addClass("d-none");
-}
-function resetFormAndMode() {
   $("#insertForm")[0].reset();
-  $("#emp_id").val("");
-  isEditMode = false;
-  $("button[type='submit']").text("Submit");
-  $(".error").text("");
-
 }
-function addData() {
-  $("#alertBox").addClass("d-none");
-  $("#updatedImage").addClass("d-none");
-
-}
-

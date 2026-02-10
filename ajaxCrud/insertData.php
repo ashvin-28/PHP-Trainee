@@ -46,7 +46,7 @@ try {
         if (mysqli_query($conn, $query)) {
             $_SESSION["sucess_message"]='Employee added successfully';
             $response['status'] = 'success';
-            $response['message'] = 'Employee added successfully';
+            // $response['message'] = 'Employee added successfully';
         } else {
             $response['status'] = 'error';
             $response['message'] = 'Insert failed';
@@ -83,7 +83,7 @@ try {
         if (mysqli_query($conn, $query)) {
             $_SESSION["update_message"]='Employee Updated successfully';
             $response['status'] = 'success';
-            $response['message'] = 'Employee updated successfully';
+            // $response['message'] = 'Employee updated successfully';
         } else {
             $response['status'] = 'error';
             $response['message'] = 'Update failed';
@@ -93,7 +93,7 @@ try {
 } catch (mysqli_sql_exception $e) {
     if ($e->getCode() == 1062) {
         $response['status'] = 'error';
-        $response['message'] = $email.' User already exists';
+        $response['message'] = 'Email already exists';
     } else {
         $response['status'] = 'error';
         $response['message'] = 'Database error';
