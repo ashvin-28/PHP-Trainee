@@ -1,62 +1,72 @@
-<?php 
-session_start(); 
-if (!isset($_SESSION['email'])) { 
-    header("Location:../loginPage.php"); 
-} 
-include "connection.php"; 
-include "../header.php"; 
-include "../sidebar.php"; 
+<?php
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("Location:../loginPage.php");
+}
+include "connection.php";
+include "../header.php";
+include "../sidebar.php";
 ?>
 
-<!-- Content Wrapper -->
 <div class="app-content">
     <div class="container-fluid">
         <div class="row">
-            <!-- Left Side: Form -->
-            <div class="col-md-5">
-                <div class="card card-primary">
+
+            <div class="col-lg-5">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add New Product</h3>
+                        <h3 class="card-title fw-bold" id="productTitle">Add Product</h3>
                     </div>
-                    <form action="" id="insertForm" method="POST">
-                        <div class="card-body">
+
+                    <form id="insertForm">
+                        <div class="card-body" id="productExist">
+
                             <input type="hidden" id="product_id" name="product_id">
-                            <div class="form-group mb-3">
-                                <label for="productName">Product Name</label>
-                                <input type="text" name="productName" id="productName" class="form-control" placeholder="Enter product name">
-                                <span id="productError" class="error text-danger"></span>
+
+                            <div class="mb-3">
+                                <label class="form-label">Product Name</label>
+                                <input type="text" id="productName" name="productName"
+                                    class="form-control" placeholder="Enter product name">
+                                <small class="text-danger" id="productError"></small>
                             </div>
-                            <div id="repeater-container">
-                                <label>Variants</label>
-                            </div>
-                            <button type="button" id="add-btn" class="btn btn-secondary mt-2">
-                                <i class="fas fa-plus"></i> Add Variant
+
+
+                            <button type="button" id="add-btn"
+                                class="btn btn-outline-primary btn-sm mt-2 mb-2">
+                                Add Variant
                             </button>
+                            <div id="repeater-container">
+                            </div>
+
                         </div>
-                        <div class="card-footer">
-                            <input type="submit" id="btnSubmit" name="submit" value="Submit Product" class="btn btn-primary w-100">
+
+                        <div class="card-footer button-container">
+                            <input type="submit" id="btnSubmit" value="Submit" class="btn btn-primary">
+                           <input type="button" id="btnReset" value="Reset" class="btn btn-outline-success">
+
                         </div>
+
                     </form>
                 </div>
             </div>
 
-            <!-- Right Side: Table -->
-            <div class="col-md-7">
-                <div class="card">
+            <div class="col-lg-7">
+                <div class="card card-outline card-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">Product List</h3>
+                        <h3 class="card-title fw-bold">Product List</h3>
                     </div>
-                    <div class="card-body p-0">
-                        <div id="tableContainer">
-                            <!-- Table will be loaded here via JS -->
-                        </div>
+
+                    <div class="card-body p-2">
+                        <div id="tableContainer"></div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="forms.js"></script>
+
 <?php include "../footer.php"; ?>

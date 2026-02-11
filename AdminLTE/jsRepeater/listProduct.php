@@ -1,10 +1,6 @@
 <?php
 include "connection.php";
 ?>
-
-
-
-
         <!-- /.card-header -->
         <div class="card-body  table-responsive">
             <table id="example1" class="table table-sm display responsive table-bordered table-striped ">
@@ -33,7 +29,6 @@ include "connection.php";
                                 <td class="row-data" data-name="productName"><?php echo $row["productName"]; ?></td>
 
 
-                                <!-- Table row me -->
                                 <td>
 
                                     <button class="edit-btn btn btn-sm btn-primary edit-btn" onclick="editData(<?php echo $row['product_id'];  ?>)" data-bs-toggle="modal" data-bs-target="#adminPopupForm">
