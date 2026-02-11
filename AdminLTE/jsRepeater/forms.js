@@ -127,10 +127,6 @@ function editData(id) {
     dataType: "json",
     success: function (data) {
       if (!data || data.length === 0) return;
-      //  for (let index = 0; index < data.length; index++) {
-      //    console.log(data[index]);
-        
-      //  }
       $("#productName").val(data[0].productName);
       $("#product_id").val(data[0].product_id);
 
