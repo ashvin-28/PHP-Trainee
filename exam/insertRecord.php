@@ -1,9 +1,8 @@
 <?php
-include './connection.php'; // Database connection file
+include './connection.php'; 
 header('Content-Type: application/json');
 $response = [];
 
-// Sanitize inputs (ensure your connection.php handles mysqli_real_escape_string)
 $id = $_POST['id'] ?? '';
 $OrderNumber = $_POST['OrderNumber'];
 $CustomerName = $_POST['CustomerName'];
@@ -16,10 +15,8 @@ $DeliveryOptions = $_POST['DeliveryOptions'] ?? [];
 $OrderDate = $_POST['OrderDate'];
 $DeliveryAddress = $_POST['DeliveryAddress'];
 
-// Convert array to string
 $DeliveryOptionsString = implode(',', $DeliveryOptions);
 
-// File Upload Handling
 $InvoiceFile = '';
 if (!file_exists('uploads')) {
     mkdir('uploads', 0777, true);
@@ -31,9 +28,7 @@ if (!empty($_FILES['InvoiceFile']['name'])) {
     move_uploaded_file($_FILES['InvoiceFile']['tmp_name'], $InvoicePath);
 }
 
-// Database Operations
 if ($id == '') {
-    // INSERT
     $sql = "INSERT INTO orderManagement (OrderNumber, CustomerName, CustomerEmail, ProductName, OrderAmount, PaymentMethod, OrderStatus, DeliveryOptions, OrderDate, DeliveryAddress, InvoiceFile) 
             VALUES ('$OrderNumber', '$CustomerName', '$CustomerEmail', '$ProductName', '$OrderAmount', '$PaymentMethod', '$OrderStatus', '$DeliveryOptionsString', '$OrderDate', '$DeliveryAddress', '$InvoiceFile')";
     
@@ -45,7 +40,6 @@ if ($id == '') {
         $response['message'] = 'Insert failed: ' . mysqli_error($conn);
     }
 } else {
-    // UPDATE
     $updateFileSql = $InvoiceFile != '' ? ", InvoiceFile='$InvoiceFile'" : "";
     $query = "UPDATE orderManagement SET 
               OrderNumber='$OrderNumber', 
@@ -71,4 +65,3 @@ if ($id == '') {
 }
 
 echo json_encode($response);
-?>
