@@ -1,0 +1,346 @@
+16/02/2026
+INTRODUCION OF MAGENTO2
+  1.What is magento2
+      Magento 2 is an open-source eCommerce platform, written in the general-purpose coding language PHP across multiple frameworks.One of the most powerful content management systems on the eCommerce platform market.
+       its is also adobe commmerce means its paid for large b2b bussiness can use its support live search and feature product recommandation.
+      What is E-commerce:
+        The term e-commerce refers to a business concept that enables organisations and people to buy and sell commodities and services on the Internet. Ecommerce is available through a computer, tablet, smartphone, and other intelligent devices in four primary market sectors
+        Business to Business (B2B):Alibaba,IndiaMart
+		Business to Consumer (B2C):Amazon,Flipkart
+		Consumer to Consumer (C2C):eBay
+		Consumer to Business (C2B)
+ 2.Why magento2
+ 	  Magento 2 was developed to address the limitations of Magento 1 and to meet the rapidly evolving, high-performance needs of modern e-commerce.
+   	  Magento 2 is compatible with the latest technologies such as PHP7 which means faster load time in comparison to Magento 1.
+	  EASIER CHECK-OUT PROCESS:n Magento 2, the check-out process consists of only two quick steps, allowing clients to do better shopping and reduce cart erosion. It gives guest check-out options without login or registration.
+	  The Magento 2 administration interface is easier to use and easier to operate. It is very adaptable and created so that administrators can easily access relevant data and easily manage goods. This contributes to reducing time in the administration of a shop online and is very useful.
+	  It enables several integrated payment gateway methods such as Paypal, Google Checkouts, Braintree, etc.
+3.Which type of project created in magento2
+      	Large-scale B2C Fashion & Luxury Retailers: Websites requiring high-resolution visuals, complex product configurations, and personalized experiences (e.g., clothing, footwear, jewelry).
+		Complex B2B Wholesale Portals: Platforms designed for manufacturers or distributors with tiered pricing, bulk ordering, and specific customer group access.
+		International/Multi-Storefront Operations: Brands selling across multiple countries, using different languages and currencies under one backend.
+		Headless Commerce Solutions: High-performance, fast-loading stores using PWA (Progressive Web Application) frontends (like Hyvä, ScandiPWA, or Vue Storefront) with Magento in the backend.
+		Automotive & Electronics Accessories: Stores with extensive catalogs, advanced filtering, and bundle products (e.g., selling car parts or home electronics). 
+		Advantege and disvadvantage of magento2
+		magento architecture(mvvm)
+		what is ebay and ebay and magento how integrated
+
+Hours : 7:00
+
+Install Magento on local with all the ways.
+      Install PHP8.4
+      Install Apache2
+      Install opensearch=3.0.0
+      
+Hours : 1:00
+
+17/02/2026
+Install Magento2:
+   Step1 : PHP8.4 install  also install (sudo apt install php-bcmath) restart apache2 (sudo systemctl restart apache2) additional require extention(sudo apt install php8.4-common php8.4-cli php8.4-intl php8.4-curl php8.4-gd php8.4-mysql php8.4-xml php8.4-zip php8.4-soap php8.4-mbstring php8.4-sockets)
+   Step2 : Apache2(2.4) install
+   Step3 : Install opensearch=3.0.0
+   Step4 : Install composer2.9.3
+   Step5 : Create magento2 project directory  cd /var/www/html
+   Step6 : mkdir (mkdir magento2) cd magento2
+   Step7 : Access file system owner export PATH=$PATH:/var/www/html/magento2/bin
+   Step8 : Install magento2 community edition 
+   (composer create-project --repository-url=https://repo.magento.com/magento/ project-community-edition:2.4.8-p3) check magento version(php bin/magento --version)	
+   Step9 : Authentication (Login Adobe marketplace and geenrate public and private key)
+   Step10 : Create database (echo "CREATE DATABASE magento2" | mysql -u root -p)
+   Step11 : install magento stepup
+   				(php bin/magento setup:install \
+					--base-url="http://testmagento.com/" \
+					--db-host="localhost" \
+					--db-name="magento2" \
+					--db-user="root" \
+					--db-password="admin123" \
+					--admin-firstname="admin" \
+					--admin-lastname="adminx" \
+					--admin-email="user@test.com" \
+					--admin-user="admin" \
+					--admin-password="admin123" \
+					--language="en_US" \
+					--currency="USD" \
+					--timezone="America/Chicago" \
+					--use-rewrites="1" \
+					--backend-frontname="admin"
+					)
+ Step12 : Deploy sample data (php bin/magento sampledata:deploy)
+ Step13 : Enable magento module (php bin/magento module:enable --all)
+ Step14 : upgrade setup (php bin/magento setup:upgrade)
+ Step15 : check url (php bin/magento config:show | grep base_url)
+ Step16 : Deploy static content ( php bin/magento setup:static-content:deploy -f)
+ Step17 : Flush cache (php bin/magento cache:flush)
+ Step18 : file and folder permission (find . -type d -exec chmod 755 {} \; , find . -type f -exec 
+ 					chmod 644 {} \; ,  chmod u+x bin/magento) 
+
+ Step19 : check virtual host configuration (sudo nano /etc/apache2/sites-available/000-default.conf)
+ Step20 : modfiy ( sudo nano /etc/apache2/apache2.conf ) and (sudo nano /etc/apache2/sites-available/
+ 					000-default.conf) for documentroot
+ Step21 : sudo systemctl restart apache2
+ Step22 : php8.2 version disable (sudo a2dismode php8.2)
+           Developer mode set (php bin/magento deploy:mode:set developer)
+ Step23 : disabled two factor authentication(sudo php bin/magento module:disable 		
+ 					Magento_AdminAdobeImsTwoFactorAuth Magento_TwoFactorAuth)
+ Step24 : upgrade (sudo php bin/magento setup:upgrade)
+ Step25 : flush cache (sudo php bin/magento cache:flush)
+ Step26 : Base url change (php bin/magento 
+ 					setup:store-config:set--base-url-secure="https://ashvin.m248-p3.com")
+ Step27 : admin change(php bin/magento setup:config:set --backend-frontname="ashvin"
+)
+setup upgrade : php bin/magento setup:upgrade 
+
+18/02/2026
+ Change frontendurl and adminurl
+  Step1: change url in admin core_config_data file
+  Step2: create new virtualhost (<VirtualHost ashvin.m248-p3.com:80>
+    ServerName ashvin.m248-p3.com
+    ServerAdmin webmaster@localhost
+    DocumentRoot "/var/www/html/magento2/pub"
+    <Directory "/var/www/html/magento2/pub">
+        #Options Indexes FollowSymLinks
+        AllowOverride All
+        #Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/magento_error.log
+    CustomLog ${APACHE_LOG_DIR}/magento_access.log combined
+	</VirtualHost>)
+	Step3 : set url in hosts 127.0.1.1	ashvin.m2488-p3.com
+	Step4 : change adminurl(php bin/magento setup:config:set
+				  --backend-frontname="ashvin")
+	Step5  : show base url (php bin/magento config:show web/secure/base_url)
+	Step6 : show adminurl (php bin/magento info:adminuri)
+	Step7 : rm -rf generated/*
+  Step8 : php bin/magento c:f
+  Step9 : chmod -R 777 var/ generated/ pub/
+
+  create custom conf file and change url
+
+  create 000-def.conf file under this create virtual host
+  change url in core_config_data file
+  change url in hots file
+  disable 000-default.conf (sudo a2dissite 000-default.conf)
+  enable 000-def.conf (sudo a2ensite 000-default.conf)
+  restart apache2 (sudo systemctl restart apache2)
+  sudo rm -rf generated/*
+ php bin/magento c:f
+ sudo chmod -R 777 var/ generated/ pub/
+
+ work url on https ssl installation
+ go to admin and yes frotend and adminhtml
+ install openssl (sudo apt-get install openssl)
+ enable ssl (sudo a2enmod ssl)
+
+19/02/2026
+generate ssl private key and certfile (sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \-keyout /etc/ssl/private/private.key \-out /etc/ssl/certs/sslfile.crt
+)
+disable conf file(sudo a2dissite 000-def.conf)
+enable new conf file 000-ssl.conf(sudo a2ensite 000-ssl.conf)
+(<VirtualHost *:443>
+ 
+    ServerName ashvin.m2488-p3.com
+    ServerAdmin admin@localhost
+ 
+    DocumentRoot /var/www/html/magento2/pub
+ 
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/sslfile.crt
+    SSLCertificateKeyFile /etc/ssl/private/private.key
+ 
+    <Directory /var/www/html/magento2/pub>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+ 
+    ErrorLog ${APACHE_LOG_DIR}/magento_ssl_error.log
+    CustomLog ${APACHE_LOG_DIR}/magento_ssl_access.log combined
+ 
+</VirtualHost>)
+restart apache2 server(sudo systemctl restart apache2)
+ flushed cahche ( php bin/magento c:f)
+ set permission var/generated/pub(sudo chmod -R 777 var/ generated/ pub/)
+
+ How to enable https to http or http to https
+ Step1 : change url in admin core_config_data file and adminhtml nd frontend set 0 for unsecure and 1 for secure
+ Step 2 : disable https secure conf file(sudo a2dissite 000-ssl.conf)
+ Step3 : enable http unsecure conf file(sudo a2ensite 000-def.conf)
+ Step4 : sudo systemctl restart apache2
+ Step5 : clear cache and flush (pip/magento c:f)
+ Step6 : set permision (sudo chmod -R 777 var/generated/pub/)
+ hours: 3:00:00
+ hours: 1:00:00 (activity)
+ Watch basic video on magento2
+ Video1 : Magento intro
+ Video2 :magento categories (go to catlog in admin panel nd select category add root category add sub category also also change category side)
+ also show product in  select product in catlog and c=modify product
+ Video3 : how to process orders (go to sales inside orders also view order detail edit and create new order)
+ inside sales also view credit memo edit 
+ Video4 : How to manage admin (system inside select all users and you can add new user nd add user permission )
+ Video5 : view report (report inside you can view orders invoice shiiping order total order count) 
+ Video6 : Customer Management (manage all customer create new customer customer groups)
+ Video7 : manual magento2 backup (you can make backup  database,media or system)
+ Video8 : Customer reviews (marketing inside select all reviews to check all user review submit by main site also new review create modify review and search specefic review  and store inside select rating also create rating for customer to rate each product like create excitement rating this display in main website nd customer also rate using select *)
+ Video9 : manage store (website,store,store views)
+ Video10 : transactional email templated and setup (click marketing and click edit template and add new template (select template write template name load template) ) als store inside configuration  click customer customer configuration and select our template in Default Welcome Email)
+ Video11 : backend search terms  Synonyms & optimization(user searched peroduct detail display in marketing inside search terms also maange this search search synonym to create group for similar search(someone search diffrenet name like shoes,footwear so create gorup for similar search))
+ Video12 : cart coupons and catlog price rules (inside marketing  you can set catlog price rule (for disount to specefic product specefic time) cart price rules (for generate coupon code in checkout for specefic product rules))\
+ Hours: 4:30:000
+
+
+20/02/2026
+Video13 : Setup meta robots tags and robot text (inside design setup search   
+          engine robots to display this in frontend write robots.txt in url)
+Video14 : magento2 notification overview (check notification click system and 
+          select notification)
+Video15 : sitemap setup(it is used to quickly navigate website using properly 
+          organized text version inside marketing select sitemap and create sitemap and generate) sitemapautomatic create to click store inside configuration inside catlog select sitemap.xml
+Video16 : management of cms content page(inside content click page for view and 
+          edit pages and create new page for define page url page content)
+Video17 : customer groups (inside customer select customer group to view and create new group now add new customer to select group )
+
+Hours : 2:00:00
+
+Configuration :
+Indexer cmd php bin/magento indexer:reindex
+Cron View crontab -l
+
+GENERAL:
+General : Country Options (
+            Field             Scope                   Description
+            Default Country Store View  The country where your store is located.
+            Allow Countries Website The countries where you accept orders.
+            Zip/Postal Code is Optional for Global  Countries that do not require a ZIP or postal code in the shipping address.
+            European Union Countries  Global  Countries that are members of the European Union.
+            Top Destinations  Store View  The primary countries that you target for sales.
+           )
+          State Options (
+            Field                  Scope           Description
+            State is required for     Global  The countries (where you conduct business) that require a region or state to be included in the postal address.
+            Allow to Choose State 
+            if It is Optional for Country Global  For countries where it is not required, determines if the Region/State field is included in the postal address of the customer.
+
+            Yes - Includes the Region/State field in the customer address, even if not required by the country.
+            No - Omits the Region/State field from the customer address if not required by the country.
+              )
+          Locale Options(
+                   Field    Scope           Description
+                Timezone  Website The time zone of the primary market that is 
+                                    served by the website. Usually the timezone is the same as that used in the physical location of your business.
+                Locale  Store View  The language, currency, and system of   
+                                    measurement that is used in the market served by the store view.
+                Weight Unit Store View  The unit of measurement that is
+                                         typically used for shipments from the locale. Options: lbs / kgs
+                First Day of Week Store View  The day that is considered to be 
+                                              the first day of the week in the market served by the store view.
+                Weekend Days  Store View  The days that fall on the weekend in
+                                           the market served by the store view.
+                    )
+          Store Information(
+                 Field      Scope             Description
+              Store Name  Store View  The name of the store that is associated
+                                       with the store view.
+              Store Phone Store View  The primary telephone number of
+                                     the store (associated with the store view) is open for business. For example: Mon - Fri, 9-5, Sat 9-noon PST
+              Country     Website    The country of the business that operates 
+                                      the website.
+              Region/State  Website   The region or state of the business that  
+                                      operates the website.
+              ZIP/Postal Code Website The ZIP or postal code of the business 
+                                      that operates the website.
+              City  Website           The city location of the business that 
+                                      operates the website.
+              Street Address  Website The street or mailing address of the 
+                                      business that operates the website.
+              Street Address Line 2 Website The second line of the business
+                                             street address, if needed.
+              VAT Number  Website The Value Added Tax number of the business 
+                                  that owns the Commerce installation, if applicable.
+          )
+          Single Store Mode (
+                        Field               Scope           Description
+                  Enable Single-Store Mode  Global  When enabled for  
+                                            single-store installations, hides the configuration Scope box and related field labels Options: Yes / No
+                                          Note: Single-store mode is ignored for stores with more than one view.
+                                          Enabling single store mode will copy all catalog and product store specific data from default store view to all store view scope. It will only copy catalog and product data if the store have only one storeview. If store have one disabled storeview and one enabled storeview it won’t copy catalog and product data.
+                                          Enabling single store mode ignores storeview-specific configuration settings for content-specific data. Instead, it uses configuration settings defined on the global level scope to ensure consistency between the Admin UI and storefront.
+
+          )
+
+
+Web : Url options (
+       Field  Scope Description
+    Add Store Code to URLs  Global  If Web Server Rewrites are enabled, inserts the Store Code of the current view in the URL. Options: Yes / No.
+    When this field is set to Yes, you must include store codes in your browser URLs to ensure that URL rewrites are mapped correctly and all pages are opened successfully. This avoids 404 Page Not Found errors.
+    Auto-redirect to Base URL Store View  (For single-store setups) If there is a broken link on your site, redirects traffic to the base URL, rather than to a page with a “404 Page Not Found” message. Options: No / Yes (302 Found) / Yes (301 Moved Permanently)
+    Important: Do not use auto-redirect to base URL for multi-store setups.
+    Catalog media URL format  Global  Defines the URL format assigned to products and categories. Options: Unique hash per image variant (Legacy mode) defines converted filename as a unique hash value. Image optimization based on query parameters defines image optimization process depending on query parameters.
+            )
+      Search Engine Optimization(
+           Field  Scope Description
+            Use Web Server Rewrites Store View  PHP-based systems typically include a file called index.php in the root folder. By default, the file name appears in the URL just after the name of the root folder. When this is enabled, the system omits index.php from the URL. This usability best practice makes each URL more concise, and has no impact on performance or site rank. Options: Yes / No
+           ) 
+      Base URls(
+           Field  Scope Description
+          Base URL  Store View  The full address of the Commerce root folder that is not running over an encrypted (SSL) channel. The URL must end with a forward slash.
+          Base Link URL Store View  A markup tag that is used as a placeholder for the base URL.
+          Base URL for Static View Files  Store View  A path that points to the location of static files used by the theme, such as css, fonts, images, and JavaScript. A placeholder is used to represent the base URL. If your Commerce installation has multiple sites with the same folder structure, you can have a different folder for each site. Set the configuration scope to the correct site before entering the base URL for static view files. You can also specify a folder outside of your Commerce installation.
+          Base URL for User Media Files Store View  A path that points to the location of catalog images and other media files. A placeholder is used to represent the base URL. If your Commerce installation has multiple sites with the same folder structure, you can have a different media folder for each. This gives you the ability to back up and roll back each media folder separately. You can also specify a media folder outside of your Commerce installation.
+      )
+      Base URLS Secure(
+          
+             Enable HTTP Strict Transport Security (HSTS) Store View  When enabled, HSTS provides a measure of security against “man in the middle” attacks, and prevents users from overriding the “invalid certificate” message. Options: Yes / No
+            Upgrade Insecure Requests Store View  When enabled, converts unsecure (HTTP) requests received from the browser to the secure (HTTPS) protocol. Options: Yes / No
+            Offloader Header  Global  Specifies the offloader_header value in your server configuration to identify the protocol between the client and load balancer. Most Commerce installations use the default value, X-Forwarded-Proto (XFP) to identify the protocol as either HTTP or HTTPS.
+       ) 
+    Default pages(
+             Field  Scope Description
+            Default Web URL Store View  Indicates the landing page that is associated with the base URL. This is set by default to “cms” to indicate a page from the Commerce content management system (CMS). You can also use a different type of landing page, such as a blog. For example, if a blog is installed on the server at magento/blog, you can enter the name of the “blog” folder as a relative path to the selection of pages.
+            CMS Home Page Store View  To choose the home page for the store, simply select the CMS page from the list. By default, the CMS Home Page lists the entire selection of CMS pages that are available for your store.
+            Default No-route URL  Store View  Contains the URL of the default page that you want to appear when a 404 Page not Found error occurs. The default value is cms/noroute/index.
+            CMS No Route Page Store View  Identifies a specific CMS page that you want to appear when a 404 Page Not Found error occurs. The default page is 404 Not Found.
+            CMS No Cookies Page Store View  Identifies a specific CMS page that appears when cookies are not enabled for the browser. The page explains why cookies are used, and how to enable them for each browser. The default page is Enable Cookies.
+            Show Breadcrumbs for CMS Pages  Store View  Determines if a breadcrumb trail appears on all CMS pages in the catalog. Options: Yes / No
+     )
+     Session Validation Settings(
+            Field Scope Description
+            Validate REMOTE_ADDR  Global  Verifies that the IP Address of a request matches $_SESSION data. The session terminates if a different IP address is detected. Options: Yes / No
+            Validate HTTP_VIA Global  Verifies incoming proxy data and checks that the proxy address of a request matches $_SESSION data. The session terminates if a different proxy address is detected. Options: Yes / No
+            Validate HTTP_x_FORWARDED_FOR Global  Verifies outgoing proxy data and checks that the forwarded-for address of a request matches $_SESSION data. The session terminates if a different forwarded-for address is detected. Options: Yes / No
+            Validate HTTP_USER_AGENT  Global  USER_AGENT refers to the browser or device that is used to access the website. It verifies that the name and version of the browser, and operating system, matches $_SESSION data. The session terminates if a different user agent is detected from one request to another in the same session. Options: Yes / No
+     )
+     Browsers Capatibilites Detection(
+ 
+                 Field  Scope Description
+                Redirect to CMS-page if Cookies are Disabled  Store View  If cookies are disabled by the browser, it automatically redirects to the CMS No Cookies Page. Options: Yes / No
+                Show Notice if JavaScript is Disabled Store View  If JavaScript is disabled by the browser, it displays a notice that prompts the user to enable JavaScript Options: Yes / No (disables)
+                Show Notice if Local Storage is Disabled  Store View  Displays a message if the local cache is disabled. Options: Yes / No
+               )
+
+  Currenct Setup
+  Store Email addresses (
+          1. General Contact This is the main contact email for your store, 
+             typically used for general inquiries.
+          2. Sales Representative This email address is used for all 
+             communication related to sales.
+          3. Customer Support This email is for customer service inquiries.
+          4. Two Custom Email These can be used for additional purposes such as 
+             technical support or marketing.
+      )
+
+ Content Management : 
+           WYSIWYG Options : is a Magento built-in editor that allows users to
+                             create content in the back-end without tampering with code. Users will be able to see the result instantly, as the front-end. 
+New Relic Reporting : 
+      New relic integration : is a software analytics service that helps to
+                              analyze and improve application interactions.
+      Enable cron : Magento 2 Cron Scheduler is the extension aimed to increase 
+                    revenue through a high site performance ensured by proper cron jobs processing. Efficiently track and manage all tasks running in the website background with the easy-to-use Cron Scheduler tool.
+Advance reporting (
+       Field Scope Description
+      Advanced Reporting Service  Global  Enables the integration of Advanced Reporting for your Commerce installation.
+      Industry  Website Identifies your business industry to personalize Advanced Reporting.
+      Time of day to send data  Global  Determines the time each day when your store data is sent to Advanced Reporting. The time is based on a 24-hour clock, and includes the minute, hour, and second in your time zone.
+
+           )
+  Hours : 6:30:000

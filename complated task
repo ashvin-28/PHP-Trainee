@@ -66,15 +66,15 @@ Hello Sir/Ma'am
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-    -Complated crud using adminlte
-    -Complated login and register
-    -Complated all validation
-Tomorrow's Plan:
-	- Work on oops crud(mvc)
+    -Change frontendurl and adminurl Task
+    -Create custom conf file and change url
+    -Work on change url http to https
     
+Tomorrow's Plan:
+    -Work on change url http to https
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP
 	
 Thank you!
 Best regards,
 [Ashvin Parmar]
------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
