@@ -90,6 +90,7 @@ Install Magento2:
 )
 setup upgrade : php bin/magento setup:upgrade 
 
+Hours : 8:30:00
 18/02/2026
  Change frontendurl and adminurl
   Step1: change url in admin core_config_data file
@@ -130,7 +131,7 @@ setup upgrade : php bin/magento setup:upgrade
  go to admin and yes frotend and adminhtml
  install openssl (sudo apt-get install openssl)
  enable ssl (sudo a2enmod ssl)
-
+Hours :8:30:00
 19/02/2026
 generate ssl private key and certfile (sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \-keyout /etc/ssl/private/private.key \-out /etc/ssl/certs/sslfile.crt
 )
@@ -344,3 +345,1409 @@ Advance reporting (
 
            )
   Hours : 6:30:000
+
+  23/02/2026
+  Currency setup
+  Step1 : Go to store->configuration->general->currency setup
+  Step2 : select default display currency indian rupee
+  Step3 : allowed currency select indian afganistand and us dollar
+  Step4 : Save config
+  Step5 : Go to store->currency rates
+  Step6 : set currency value as per base currency us dollar
+  Step7 : save currency rates
+  Step8 : clear flush and chache
+
+Hours : 1:00:00
+creadit memo : A credit memo in Magento 2 is an official document used to process a full or partial refund for an order, reversing the payment and updating inventory
+CATLOG
+Catlog configuration
+     Product Fields Auto-Generation
+     (
+      Field Scope Description
+      Mask for SKU  Global  Determines the default value of the SKU field based on placeholder values from other fields and any additional text that is entered. Default placeholder:
+      Product Name - {{name}}
+      Mask for Meta Title Global  Determines the default value of the Meta Title field based on placeholder values from other fields and any additional text that is entered. Default placeholder:
+      Product Name - {{name}}
+      Mask for Meta Keywords  Global  Determines the default value of the Meta Keywords field based on placeholder values from other fields and any additional text that is entered. Default placeholder:
+      Product Name - {{name}}
+      Mask for Meta Description Global  Determines the default value of the Meta Description field based on placeholder values from other fields and any additional text that is entered. Default placeholder:
+      Product Name - {{name}}
+      Description - {{description}}
+     )
+     Storefront
+     Product Alerts
+     Product Alerts Run Settings
+     Product Image Placeholders(
+      Field Scope Description
+      Base Image  Store View  Identifies the placeholder file chosen for the base image.
+      Small Image Store View  Identifies the placeholder file chosen for the small image.
+      Swatch  Store View  Identifies the placeholder file chosen for the swatch.
+      Thumbnail Store View  Identifies the placeholder file chosen for the thumbnail.
+      Choose File   Navigates to the file and uploads it as the placeholder image for the type.
+     )
+    Recently Viewed/Compared Products
+    Product Video
+    Price
+    Layered Navigation(
+       Field  Scope Description
+      Display Product Count Store View  Determines if the product count appears after each attribute, price range, and category. Options: Yes / No
+      Price Navigation Step Calculation Store View  Determines the method used to determine the price navigation step). Options:
+      Automatic (equalize price ranges) - Bases the calculation on the price range of products in the group.
+      Automatic (equalize product counts) - Bases the calculation on the number of products in the group. Establishes a threshold for the minimum number of products in the group, to prevent them from being divided into smaller groups.
+      Manual - Uses the division limit that you enter for price intervals.
+    )
+    Search Engine Optimization(
+        Popular Search Terms - As you will notice this setting is enabled by default - it will implement popular search terms from searches executed by your visitors.
+        Product URL Suffix - This setting determines the suffix applied to your product URLs (e.g. yourdomain.com/category/product.html). In case, you need to change it, please apply the suffix only, without a period (.) as it will be automatically generated.
+        Category URL Suffix - Works exactly the same as the above-described setting, but it is applicable to your category URLs instead.
+        Use Categories Path for Product URLs - This setting control whether the category path is included in the product URLs (e.g. yourdomain.com/category/product/). If the product in question falls under multiple categories, it will be accessible by separated URLs associated with each of the categories.
+        Create Permanent Redirect for URLs if URL Key Changed - When you are adding products and categories Magento automatically creates URL keys for them. If enabled this setting will automatically create a Permanent Redirect in case the old URL key has changed.
+        Page Title Separator - This setting determines the character which separates the category name and the product name in the browser title bar in case no meta title is specified. Please note that this is not related to the URL address but the browser title bar. If you leave the default hyphen (-) character the Page Title will appear as “Product - Name”.
+        Use Canonical Link Meta Tag For Categories - Canonical meta tags are used to identify the URL address that needs to be indexed by search engines in case there are multiple URLs pointing to the same category.  Enabling the use of canonical meta tags will positively improve your SEO.
+        Use Canonical Link Meta Tag For Products - The description above applies to this setting as well, but for URLs associated with your products instead.
+         
+    )
+    Category Top Navigation(
+           Field  Scope Description
+           Maximal Depth Global  Determines the number of subcategory levels in the top navigation. The default value of 0 places no limit on the number of levels.
+
+    )
+   Catalog Search(
+       Field  Scope Description
+        Minimal Query Length  Store View  The minimum number of characters allowed in a catalog search. The value set for this option must be compatible with the corresponding range set in your OpenSearch or Elasticsearch configuration. For example, if you set this value to 2 in Adobe Commerce, you must also update the value in your search engine configuration. Default value: 3
+        Maximum Query Length  Store View  The maximum number of characters allowed in a catalog search. The value set for this option must be compatible with the corresponding range set in your OpenSearch sor Elasticsearch configuration. For example, if you set this value to 300 in Adobe Commerce, you must update the value in your search engine configuration. Default value: 128
+        Number of top search results to cache Store View  The number of popular search terms and results to cache for faster responses. Entering a value of 0 caches all search terms and results when entered a second time. Default value: 100
+        Enable EAV Indexer  Global  Determines whether to enable or disable the Product EAV indexer. This feature improves indexation speed and restricts the indexer from use by third-party extensions. Default option: Yes for enabled
+        Autocomplete Limit  Store View  The maximum number of search queries to display below the search field for search autocomplete. Restricting this amount increases performance of searches and reduces the displayed list size. Default value: 8
+        Search Engine Global  Identifies the search engine required to process requests for catalog data. The search engine configuration options are the same for both OpenSearch and Elasticsearch. Options: OpenSearch or Elasticsearch
+        OpenSearch Server Hostname  Global  Specifies the name of the OpenSearch or Elasticsearch host server.
+        OpenSearch Server Port  Global  Specifies the number of the server port used by OpenSearch or Elasticsearch. Default value: 9200
+        OpenSearch Index Prefix Global  Assigns a prefix to identify the OpenSearch or Elasticsearch index. Default value: magento2
+        Enable OpenSearch HTTP Auth Global  If enabled, uses HTTP authentication to prompt for a username and password before accessing the OpenSearch or Elasticsearch server. Options: Yes / No
+        OpenSearch HTTP Username  Global  When Enable Elasticsearch HTTP Auth is set to Yes, specifies the username for OpenSearch or Elasticsearch HTTP authentication.
+        OpenSearch HTTP Password  Global  When Enable Elasticsearch HTTP Auth is set to Yes, specifies the password for OpenSearch or Elasticsearch HTTP authentication.
+        OpenSearch Server Timeout Global  Determines the number of seconds before a request to the OpenSearch or Elasticsearch server times out. Default value: 15
+        Test Connection   Validates the OpenSearch or Elasticsearch connection.
+        Enable Search Recommendations Store View  Determines if search recommendations are offered when a search returns no results and appear under the Related search terms section on the search results page. Options: Yes / No
+        When set to Yes, additional options display for Search Recommendations Count and Shows Results Count for Each Recommendation.
+        Search Recommendations Count  Store View  Specifies the number of search terms offered as recommendations. By default, no more than five are shown.
+        Show Results Count for Each Recommendation  Store View  When set to Yes, the number of products found for the proposed search recommendation is shown in the brackets. Options: Yes / No
+        Enable Search Suggestions Store View  Determines if search suggestions appear for common misspellings. When enabled, search suggestions are offered for any request that returns no results and appear under the Did you mean section on the Search results page. Search suggestions can impact the performance of search. When set to Yes, additional options display for Enable Search Recommendations and associated fields. Options: Yes / No
+        Search Suggestions Count  Store View  Determines the number of search suggestions that are offered. For example: 2
+        Show Results Count for Each Suggestion  Store View  Determines if the number of search results is shown for each suggestion. Depending on theme, the number usually appears in brackets after the suggestion. Options: Yes / No
+        Minimum Terms to Match  Store View  Specifies a value that corresponds to the number of terms from your query that the search results should match in order to be returned. This ensures optimal results relevancy for shoppers. Percent values correlate to a number, and if needed, rounded down and used as the minimum number of terms to match in your query. The value can be a negative or positive integer, negative or positive percent, a combination of the two, or multiple combinations. To learn more, see minimum_should_match parameter in the OpenSearch documentation.
+   )
+   Downloadable Product Options(
+        Field Scope Description
+        Order Item Status to Enable Downloads Website Determines the status that an order must have before downloads become available. Options: Pending / Invoiced
+        Default Maximum Number of Downloads Website Determines the default number of downloads available to a customer.
+        Shareable Website Determines if customers must log in to their accounts to access the download link. Options:
+        Yes - Allows the link to be sent by email, which can then be shared with others.
+        No - Requires customers to log in to their accounts to access the download link.
+        Default Sample Title  Store View  The default title for all sample files.
+        Default Link Title  Store View  The default link for all downloadable titles.
+        Opens Links in New Window Website Determines if the download link opens in a new browser window. Options: Yes / No
+        Use Content Disposition Store View  Determines how the link to the downloadable content is delivered, as an email attachment or as an inline link in a browser window. Options:
+        Attachment - The download link is delivered as an email attachment.
+        Inline - The download link is delivered as an inline link on a web page.
+        Disable Guest Checkout if Cart Contains Downloadable Items  Website Determines if guests who are purchase downloadable products must register for an account and log in to complete the checkout process. Options:
+        Yes - If the cart contains downloadable products, the guest has to either register for an account, or login to an existing account to complete the purchase.
+        No - The download link is delivered as an inline link in the body of the email message.
+        Note: Guest checkout is only available for download products if Sharable is set to Yes.
+   )
+  Date & Time Custom Options(
+        Field Scope Description
+        Enable Catalog Events Functionality Website Determines whether the Events module is enabled.
+        Enable Catalog Event Widget on Frontend Store View  Determines if the Event Widget is available in the storefront. This is a static block with information about events in your site.
+        Number of Events to be Displayed in the Event Slider Widget Store View  Determines the number of events that appear in the event slider widget on the category pages. To override, use the limit="x" variable.
+        Events to Scroll per Click in Event Slider Widget Store View  Determines the number of events that appear in the event slider widget on CMS pages, such as the home page. To override, use the scroll="x" variable.
+  )
+Catlog Inventory
+    Stock Options(
+     Field  Scope Description
+      Decrease Stock When Order is Placed Global  If set to Yes, decreases the quantity in stock when the order is placed. With Manage Stock enabled, reservations are entered for the ordered products and quantities. Options: Yes / No
+      Set Items’ Status to be in Stock When Order is Cancelled  Store View  If set to Yes, returns item to stock when order is canceled. With Manage Stock enabled, the reservation is cleared for the canceled products and quantities. Options: Yes / No
+      Display Out of Stock Products Global  If set to Yes, displays products that are out of stock. If product alerts are also enabled, customers can sign up to be notified when the product becomes available. Options: Yes / No
+      Only X left Threshold Website Establishes the threshold for the Only x left message. For example, if set to 3, the message appears when there are three or fewer of an item in stock. The message does not appear if the value is set to 0.
+      Display products availability in Stock on Storefront  Store View  If set to Yes, displays an In Stock or Out of Stock message on the product page. Options: Yes / No
+      Enable Inventory Check On Cart Load Global  Determines if an inventory check is performed when loading a product in the cart. Disabling this inventory check can improve performance for checkout steps, especially when there are many items in the cart. However, if you skip pre-validation, customers could see out of stock errors later in the checkout process. Options: Yes / No
+      Synchronize with Catalog  Global  When set to Yes, inventory data is adjusted according to the catalog changes (such as product removals, product SKU changes, and product type changes) and keeps consistency between inventory and catalog. Options: Yes / No
+    )
+    Product Stock Options(
+      Field Scope Description
+      Manage Stock  Global  Determines if you use full inventory control to manage the items in your catalog. Options:
+      Yes - Activates full inventory control to track the number of items currently in stock.
+      No - Does not track the number of items currently in stock.
+      Backorders  Global  Determines how your store manages backorders. A backorder does not change the processing status of the order. Funds are still authorized or captured immediately when the order is placed, regardless of whether the product is in stock. When the product becomes available, it is shipped. Options:
+      No Backorders - Does not accept backorders when product is out of stock.
+      Allow Qty Below 0 - Accepts backorders when the quantity falls below zero.
+      Allow Qty Below 0 and Notify Customer - Accepts backorders when the quantity falls below zero, but notifies customers that orders can still be placed.
+      Use deferred Stock update Global  Adobe Commerce (Adobe Commerce only) Determines whether to defer stock update if backorders are allowed (the Back orders option is set to anything besides the No backorders default value). It works for a single product or an entire website, and uses the Job Queue mechanism to allow the inventory quantity indicators to update asynchronously after the orders are placed. This option also works with Asynchronous order placement in combination with Inventory Management.
+      Maximum Qty Allowed in Shopping Cart  Global  Determines the maximum number of a product that can be purchased in a single order. By default, the maximum quantity is set to 10,000.
+      Out-of-Stock Threshold  Global  Determines the stock level at which a product is considered to be out of stock. Options:
+      Positive amount - With Backorders disabled, enter a positive amount. With Backorders enabled, this amount is ignored.
+      Zero - With Backorders enabled, entering 0 allows for infinite backorders.
+      Negative amount - With Backorders enabled, we recommend entering a negative amount. The amount is added to the Salable Quantity. For example, enter -50 to allow orders up to this amount.
+      Minimum Qty Allowed in Shopping Cart  Global  Determines the minimum amount of an item that is available for purchase according to customer group. By default, the minimum quantity is set to 1. Click Add Minimum Qty to enter a different value for a specific customer group.
+      Notify for Quantity Below Global  Determines the stock level at which notification is sent that the inventory has fallen below the threshold.
+      Enable Qty Increments Global  Determines if items can be sold in quantity increments. Options: Yes / No
+      Qty Increments  Global  Establishes the number of products that make up a quantity increment.
+      Automatically Return Credit Memo Item to Stock  Global  Determines if items included on credit memos are automatically returned to inventory. Options: Yes / No
+    )
+    Admin bulk operations
+      Bulk : Magento 2 Bulk Actions are tools that allow administrators to perform tasks on multiple items simultaneously within the Magento admin panel.
+      (
+        Field Scope Description
+        Run asynchronously  Global  Determines if you run bulk operations asynchronously for mass product actions including bulk assign sources, unassign sources, and transfer inventory to source. It collects bulk actions up to the Asynchronous batch size, then runs those actions. This feature is disabled by default. We recommend reviewing your performance with bulk actions before enabling. Options:
+        Yes - Runs all bulk operations for Inventory Management asynchronously. To enable, you must configure an asynchronous queue manager.
+        No - Default. Does not run bulk operations asynchronously.
+      )
+
+    Inventory Indexer Settings
+    Distance Provider for Distance Based SSA(
+       Field  Scope Description
+      Provider  Global  Determines the provider to use for the Distance Priority Source Selection Algorithm. This feature is enabled by default. Options:
+      Google MAP - Uses Google services to calculate the distance and time between the shipping destination address and source locations (address and GPS coordinates). This option requires a Google API key and may incur 
+      charges through Google.
+      Offline Calculation - Calculates the distance using an embedded database to determine the closest source to the shipping destination address. To use this option, you might require developer assistance to initially download the database location content for all countries you ship to using a command line.
+    )
+    Google Distance Provider(
+      Field  Scope Description
+      Google API key  Global  Enter the Google API key for the Google MAP provider. The key is from the Google Maps Platform and should have Geocoding API and Distance Matrix API enabled. For details, see Configure the Distance Priority Algorithm in the Inventory Management Guide.
+      Computation mode  Global  Determines the directions and paths to calculate the distance from the shipping address and all sources assigned to the stock. By default, calculations use the driving mode. Options:
+      Driving - Default setting, requests standard driving directions using the road network.
+      Walking - Requests walking directions using pedestrian paths and sidewalks (where available).
+      Bicycling - Requests bicycling directions using bicycle paths and preferred streets (currently only available in the US and some Canadian cities).
+      Value Global  Indicates what to calculate and return for the distance and time for the source locations to the shipping destination address. The Distance Priority Algorithm recommends the source with the shortest distance or time to the shipping destination address, which delivers faster and possibly cheaper to fulfill shipments. Options:
+      Distance - Returns the distance between points in metrics (kilometers and meters) or imperial (miles and feet).
+      Time to Destination - Returns the time required to travel from the source locations to the shipping address in hours and minutes.
+    )
+XML Sitemap
+    Magento XML sitemap is a file that contains links to all pages of a website. You submit this file to Google Search Console so that search bots can crawl and index your pages, which, correspondingly, are ranked in Google.It helps search engines like Google find and index the content.”
+    Categories Options(
+          Field Scope Description
+          Frequency Store View  Determines how often sitemap categories are updated. Options: Always / Hourly / Daily / Weekly / Monthly / Yearly / Never
+          Priority  Store View  A value between 0.0 and 1.0 that determines the priority of category sitemap updates in relation to other content. Zero (0.0) has the lowest priority.
+          Field Scope Description
+          Frequency Store View  Determines how often sitemap categories are updated. Options: Always / Hourly / Daily / Weekly / Monthly / Yearly / Never
+          Priority  Store View  A value between 0.0 and 1.0 that determines the priority of category sitemap updates in relation to other content. Zero (0.0) has the lowest priority.
+       )
+    Products Options
+    CMS Pages Options
+    Store Url Options
+    Generation Settings(
+      Field Scope Description
+      Enabled Store View  Determines if an XML sitemap is available for the store. Options: Yes / No
+    )
+    Sitemap File Limits
+    Search Engine Submission Settings
+    What is a robots.txt file?
+    A robots.txt file is a guide for web crawlers. It instructs search engine crawlers on which pages to access or not to access pages and URLs on your website. You can find this file in the root folder of your site.
+    (
+       Field  Scope Description
+       Enable Submission to Robots.txt Store View  Enables directives to be submitted for the robots.txt file. Options: Yes / No
+    )
+
+RSS Feeds
+RSS stands for Really Simple Syndication or RDF Site Summary. It is an XML-based data format that is used to publish your content online to customers and who register to follow the update of your products and promotions. Let the subscribers get information about any updates in your products, new blogs, discounts offered with an automated email.
+Fetch the latest update from your store and blog using rss feed in magento2
+
+Why does one need to set up the RSS Feed in Magento 2?
+Fetch the latest update from your store   or blog
+Easy announcements
+Easy promotions
+Boost Magento SEO
+Boost sales
+
+Email to friends
+    Email templates(
+          Field Scope Description
+          Enabled Store View  Activates the process that gives customers the ability to send email to friends about products in your store. Options: Yes / No
+    )
+
+CUSTOMER
+Login as Customer Settings(
+    Option  Scope Description
+    Enable Login as Customer  Global  Determines if Login as Customer is enabled in the global scope. Options: Yes / No
+    Disable Page Cache for Admin User Global  Determines if page cache for the admin user is disabled in the global scope. Options: Yes / No
+    Store View to Log in  Global  Auto-Detection (default) uses the default store setting for that company user. Use Manual Selection if you want the Admin user to select the store view when logging in as customer.
+    Title for Login as Customer opt-in checkbox Website Adds a title for the Login as customer checkbox.
+    Login as Customer checkbox tooltip  Website Adds a tooltip for the Log in as customer checkbox.
+)
+Newsletter
+The newsletter is a part of marketing instruments that allow sending to customers news, discounts, and other marketing emails. Registered customers can manage their subscription from their account dashboard.
+Newsletters are an essential part of eCommerce marketing. With this you have a list of your customer’s emails, you can easily inform them about new products, specials, promos, with updates and news, etc on your Magento store.
+Customer configuration
+     Account sharing options(
+          Field Scope Description
+          Share Customer Accounts Global  Determines the scope of customer accounts in the store hierarchy. Options:
+          Global - Customer account information is shared with every website and store in the Commerce installation.
+          Per Website - Customer account information is limited to the website where the account was created.
+     )
+    Online Customers Options(
+         Field  Scope Description
+          Online Minutes Interval Global  Determines the length of time that a customer’s online activity is accessible from the Admin. Leave empty for a default interval of 15 minutes.
+          Customer Data Lifetime  Global  Determines the number of minutes before unsaved data that is entered by the customer expires. By default, unsaved data expires after 60 minutes.
+
+    )
+    Vat Number : A VAT identification number is the unique number that identifies a taxable person (business) or non-taxable legal entity that is registered for VAT. It is also known as a VAT registration number. VAT numbers are used to identify the tax status of a customer.
+    Create new account options
+    Password options
+    Account Information Options
+    Name and Address Options
+    Login Options
+    Address Templates(
+        Template  Scope Description
+        Text  Store View  The template is used for all addresses that are printed.
+        Text One Line Store View  This template defines the order of address entities in the customer’s shopping cart address book list. Progress during checkout.
+        HTML  Store View  This template defines the order of address fields located under the Customer Addresses area in the Admin panel (Customers > Manage Customers). This also affects those on the Add New Address page when a customer creates a billing or shipping address on their account page.
+        PDF Store View  The template defines the display of billing and shipping addresses in the printed invoices, shipments, and credit memos.
+        )
+    CAPTCHA
+  Wish list
+    Auto Generated Specific Coupon Codes
+    Persistant shopping cart : A Persistent Shopping Cart allows retention of unpurchased items that are left in the cart and saves them for a period configured in Persistence Lifetime. Cookies should be allowed in the customer browser to use persistent shopping cart.A persistent shopping cart saves a reference to the customer's account on the current device, ensuring cart contents remain accessible when the logged-in session expires. If a customer is remembered, the contents of their shopping cart remains accessible on the current device when the logged-in session expires.
+
+SALES
+General
+Checkout totals sort orders
+Hours : 7:30:000
+24/02/2026
+Categories  ->Go to catlog->categories
+Before you add products to your catalog, you should establish the basic category structure of your catalog. Products can be assigned to zero or more categories. Usually, categories are created in advance, before products are added to the catalog. However, you can also add categories on the fly while creating a product. The category structure of the catalog is reflected by the main menu — or top navigation — of the store.
+
+Control                     Description
+Add Root Category           Creates a root category.
+Add Subcategory             Adds a subcategory below the current category or 
+                            subcategory.
+Collapse All / Expand       All Either collapses or expands the category tree.
+Delete                      Removes the current category or subcategory from the 
+                            tree.
+Save                        Saves any changes made to the category.
+
+Create root category
+click add root category  default category 2
+inside this root add to sub category man and women
+store->all stores click main website and change root category  default category 2 
+
+Create hidden categories
+On the Admin sidebar, go to Catalog > Categories.
+In the category tree, select the category you want to hide and do the following:
+Set Is Active to Yes.
+Set Include in Menu to No.
+In the Display Settings section, set Anchor to No.
+
+Content
+Setting Scope Description
+Category Image  Store View  Specifies an image for the top of the category page. Methods:
+
+Upload - Uploads an image file from your local computer to the gallery and uses it as the category image.
+
+Select from Gallery - Prompts you to choose an existing image from the gallery.
+
+Page Builder camera icon - Either drag an image file to the camera tile or browse to the image and select it from your local file system.
+Description Store View  Specifies a description that appears on the category page.
+
+Edit with Page Builder - Opens the Page Builder workspace, where you can edit the description.
+
+Show / Hide Editor - Toggles the display between page builder editor and HTML modes.
+Add CMS Block Store View  Adds an existing CMS block to the category page.
+and display setting->display mode select static block and products or static block olny
+
+Display setting
+Display settings determine which content elements appear on a category page and the order in which products appear. You can enable CMS blocks, set the anchor status of the category, and manage sorting options from the Display Settings tab. For examples of how categories are reflected in the storefront, see Catalog Navigation.
+
+Anchor 
+What is the Magento 2 anchor category?
+Magento 2 anchor category is the definition of the category in which the Magento native Layered Navigation can be displayed. If you need to set it as the anchor category then you need to go to Product > Categories > Display settings and switch the Anchor option to Yes. After that, don’t forget to save the changes.
+
+What is the difference between the Magento anchor category and non-anchor?
+Magento anchored category contains products assigned to it and all subcategories. A non-anchored Magento category contains only products directly related to it. Only the category block is shown by default, and products cannot be filtered.
+
+Improve your store's navigation and enhance your SEO rankings by implementing user-friendly navigation with the Improved Layered Navigation extension. It allows providing your customers with easy-to-use navigation, improving their experience, and eliminating the hassle of finding products.
+
+Field Description
+Display Mode  Determines the content elements displayed on the category page. Options: Products Only / Static Block Only / Static Block and Products
+Anchor  When set to Yes, displays products from the sub-categories in the category even if they haven’t been explicitly added to the category, and enables the display of the filter by attribute section in the layered navigation. Options: Yes / No
+Available Product Listing Sort By (Required) The default values are Position, Name, and Price. To customize the sorting option, deselect the Use All Available Attributes checkbox and select the attributes you want to use. You can define and add attributes as needed. This setting does not apply to the Live Search Product Listing Page Widget.
+Default Product Listing Sort By (Required) To define the default Sort By option, deselect the Use Config Settings checkbox and select an attribute. This setting does not apply to the Live Search Product Listing Page Widget.
+Layered Navigation Price Step By default, Commerce displays the price range in increments of 10, 100, and 1000, depending on the products in the list. To change the Price Step range, deselect the Use Config Settings checkbox.
+
+Search engine optimization
+Field Scope Description
+URL Key Store View  Determines the online address of the category page. The URL key is added to the base URL of the store, and appears in the address bar of a browser. In the configuration, you can either include or exclude the category URL key in the product URL. The URL Key should be all lowercase characters, with non-trailing hyphens between these characters instead of spaces. Do not include a suffix such as .html, because it is managed in the configuration.
+Meta Title  Store View  The title appears in the title bar and tab of your browser, and is also the title on a search engine results page (SERP). The meta title should be unique to the page and s in length.
+Meta Keywords Store View  Relevant keywords for the category. Consider using keywords that customers might use to find products in the category.
+Meta Description  Store View  The meta description provides a brief overview of the page for search results listings. An ideal length is between 150-160 characters in length, with a maximum of 255 characters. Although not visible to the customer, some search engines include the meta description on the search results page.
+
+Add thumbnail in product
+catlog->product->click edit product to add thumbnail->click image and video->select image->save
+
+Products in category
+For a category, use the Products in Category section to review the products that are currently assigned to the category. The search filters at the top of each column are used to add and remove products from the category. You can also use category rules ( Adobe Commerce Adobe Commerce only) to dynamically change the product selection when a set of conditions is met. To learn more, see Visual Merchandiser).
+
+Design 
+The Design section gives you control over the look and feel of a category, all associated product pages, and page layout. You can customize a category page and its associated products for a promotion, or to differentiate the category. For example, you might develop a distinctive design for a brand or special line of products, or apply an update for a specific time period.
+
+Field Description
+Use Parent Category Settings  Allows the current category to inherit the design settings from the parent category. If used, all other fields in the Design section become unavailable. Options: Yes / No
+Theme Applies a custom theme to the category.
+Layout  Applies a different layout to the category page. Options:
+No layout updates - By default, layout updates are not available for category pages.
+Empty - Use to define your own page layout. (Requires an understanding of XML.)
+1 column - Applies a one-column layout to the category page.
+2 columns with left bar - Applies a two-column layout with a left sidebar to the category page.
+2 columns with right bar - Applies a two-column layout with a right sidebar to the category page.
+3 columns - Applies a three-column layout to the category page.
+Page – Full Width - (Requires Page Builder) Applies the full-width layout for CMS pages to the category page.
+Category – Full Width - (Requires Page Builder) Applies the full-width layout for category pages to the category page.
+Product – Full Width - (Requires Page Builder) Applies the full-width layout for product pages to the category page.
+Custom Layout Update  Lists the available custom layout update files on the server. Choose the custom layout update that you want to apply to the category.
+Apply Design to Products  When selected, applies the custom settings to all products in the category
+
+Schedule design update
+The Scheduled Design Update section determines the range of dates when a custom design is applied to category pages.
+Field Description
+Schedule Update From/To Determines the range of dates when a custom layout is applied to the category.
+ Hours : 7:00:00
+Login as customer :
+Login user than with allow remote shopping asistance
+Go to customer->all customer->search for customer to login->click edit->click login as customer
+
+Configuration 
+CUSTOMER :
+Login as customer
+   Enable extenstion : yes/no for login as customer is enable or not
+   Disable Page Cache For Admin User : yes/no for cache disable for admin user
+   Store To Login To select auto-detection(defualt) or manual for multiple website select one for manualy
+   Title for Login as Customer opt-in checkbox : title for user login than checkbox allows to login as customer
+   Login as Customer checkbox tooltip :  tooltip message display when user login than Title for Login as Customer opt-in checkbox newa ?icon display tooltip message
+News letter 
+Enabled : yes/no to enable newsletter in storefront loginuser acount
+Allow Guest Subscription : yes/no for subscribe guest user or not
+Need to Confirm: Set to ‘Yes,’ if customers need to confirm subscription in the first confirmation email they receive from you.
+Confirmation Email Sender: Fill in the sender of the confirmation email.
+Confirmation Email Template: Choose the template for the confirmation email.
+Success Email Sender: Select the sender of the success email. Visitors will receive this email when they agree to subscribe to the newsletters. 
+Success Email Template: Choose the template for the success email.
+Unsubscription Email Sender: Select the sender of the unsubscription email. Visitors will receive this email when they refuse to subscribe to the newsletters.
+Unsubscription Email Template: Choose the template for the unsubscription email.
+Hours:1:30:000
+25/02/2026
+PRODUCT
+All products in the catalog are accessible from the Products page in the Admin, where you can create products and edit existing ones. For a multi-site installation, each website can offer a different selection of products for sale from the same catalog.
+
+The Products list includes all products in the catalog, indicates the websites where they are available, and if they are currently enabled for sale. In Adobe Commerce B2B installations with shared catalogs enabled, the grid includes a column that indicates which products have alternate discount pricing in a shared catalog.
+
+You can browse through the list page by page, or search for specific products. Use the standard controls to sort and filter the list, and apply actions to selected products.
+
+Limit product display
+To configure the product display limitation:
+
+On the Admin sidebar, go to Stores > Settings > Configuration.
+
+Expand Advanced and choose Admin.
+
+Expand Expansion selector the Admin Grids section and do the following:
+
+Set Limit Number of Products in Grid to Yes.
+
+(Optional) Enter a value in the Records Limit field to limit the number of products in the grid to a specific value. The default minimum value is 20000.
+When complete, click Save Config.
+
+Product type
+ Simple Product / Configurable Product / Grouped Product / Virtual Product / Bundle Product / Downloadable Product / Gift Card
+
+Product visibility 
+invisible individuly not display both catlog and search
+search display in search
+catlog display in catlog
+search,catlog display in both search and catlog
+ Page controls
+Control Description
+Add Product Initiates the process to create a new simple product. To choose a specific product type, click the down arrow. Options: Simple Product / Configurable Product / Grouped Product / Virtual Product / Bundle Product / Downloadable Product / Gift Card
+Actions Lists all actions that can be applied to selected products in the list. To apply an action to a product or group of products, select the checkbox in the first column of each product. Options: Delete / Change Status / Update Attributes / Assign Inventory Source / Unassign Inventory Source / Transfer Inventory To Source
+Filters Initiates a catalog search based on the current filters.
+Default View  Indicates the current grid column layout. If there are saved grid column views, you can choose another.
+Columns Lists all actions that can be applied to selected products in the list. To apply an action to a product or group of products, select the checkbox in the first column of each product.
+Search by keyword The search box, in the top-left corner, is used to find products by keyword.
+Edit  Opens the product in edit mode. You can accomplish the same thing by clicking anywhere on the row.
+Default columns
+Column  Description
+(Checkbox)  Selects multiple records to be subject to an action. The checkbox in the first column of each selected record is marked. Options:
+Select All - Selects all records found that match the current filter settings.
+Select All on This Page - Selects only the records found on the current page that match the filter settings.
+ID  A unique, sequential number that is assigned when a new product is saved for the first time.
+Thumbnail Displays a thumbnail of the main product image.
+Name  The product name.
+Type  The product type.
+Attribute Set The name of the attribute set that is used as a template for the product.
+SKU The unique Stock Keeping Unit that is assigned to the product.
+Price The unit price of the product.
+Quantity  The quantity that is in stock.
+Salable Quantity  The sum of all available units of this product.
+Visibility  Indicates where the product is visible in the catalog. Options: Not Visible Individually / Catalog / Search / Catalog, Search
+Status  Indicates the status of the product. Options: Enabled and Disabled
+Websites  Indicates the websites where the product is available.
+Action  Opens the product in Edit mode.
+Shared Catalog  Adobe Commerce B2B (Available with Adobe Commerce B2B only) Indicates the shared catalogs that contain custom pricing for the product.
+
+Create product
+Enable Product setting
+The online status of the product is indicated by the switch at the top of the form. To change the online status, set the Enable Product switch to Yes or No.
+
+Control Description
+Toggle yes  Indicates that the product is online.
+Toggle no Indicates that the product is offline.
+Attribute set
+The name of the attribute set appears in the upper-left corner and determines the fields that appear in the product record. To choose a different attribute set, click the down arrow next to the default attribute set name.
+Expand/collapse
+To expand or collapse a section, click either the expand Expansion selector or collapse Collapse selector icon.
+
+Save menu
+The Save menu includes several options that let you save and continue, save and create a product, save and duplicate the product, or save and close.
+
+Command Description
+Save  Save the current product and continue working.
+Save & New  Save and close the current product, and begin a new product based on the same product type and template.
+Save & Duplicate  Save and close the current product, and open a new duplicate copy.
+Save & Close  Save the current product and return to the Products workspace.
+
+Default field values
+To save time when creating products, the default value of several product fields references values from another field. You can either accept the default value or enter another. The following fields have automatically generated default values:
+
+Field Default
+SKU Based on product name.
+Meta Title  Based on product name.
+Meta Keywords Based on product name.
+Meta Description  Based on product name and description.
+The placeholders that represent the value of another field are enclosed in double-curly braces. Any attribute code that is included in the product attribute set can be used as a placeholder
+
+Edit the placeholder value
+On the Admin sidebar, go to Stores > Settings > Configuration.
+
+In the left panel, expand Catalog and choose Catalog underneath.
+
+Expand Expansion selector the Product Fields Auto-Generation section and make any needed changes to the placeholder values.
+
+For example, if there is a specific keyword that you want to include for every product or a phrase that you want to include in every meta description, enter the value directly into the appropriate field.
+When complete, click Save Config.
+
+Related Products, Up-Sells, and Cross-Sells 
+Related Products
+Related products are meant to be purchased in addition to the item the customer is viewing. The customer can place the item in the shopping cart by simply clicking the checkbox. The placement of the Related Products block varies according to defined theme and page layout. In the example below, the Related Products block appears at the bottom of the Product View page. With a two-column layout, the Related Products block often appears in the right sidebar.
+
+Up-sells
+Up-sell products are items that your customer might prefer instead of the product currently considered. An item offered as an up sell might be of a higher quality, more popular, or have better profit margin. Up-sell products appear on the product page under a heading such as You may also be interested in the following products.
+
+Cross-sells
+Cross-sell items are similar to impulse purchases positioned next to the cash register in the checkout line. Products offered as a cross-sell appear on the shopping cart page, just before the customer begins the checkout process.
+
+Product settings - Customizable Options
+Adding customizable options to a product is an easy way to offer a selection of options with text, selection, and date input types. Customizable options are a good solution if your inventory needs are simple. However, because they are based on variations of a single SKU, they cannot be used to manage stock or as the basis of price rule conditions. If you have multiple products with the same options, you can set up one product and import the options to the other products.
+
+When a customer purchases a product with a customizable option, a description of each selected option appears below the product description, and any associated markup (or markdown) is automatically applied to the price of the item.
+
+Type  Description
+Text  An input line or text box where the customer can enter the required information. Options:
+Field - A single-line input field for text.
+Area - A multiple-line input field. This type does not support advanced formatting like HTML. Use Max Characters to limit the length of text that can be entered and ensure correct representation of the entered text in the Admin.
+File  Allows the customer to upload a file.
+Select  Allows the customer to select a single option or multiple options, depending on input type used. Options:
+Drop-down - A drop-down list of options that allows only one selection.
+Radio Buttons - A set of options that allows only one selection.
+Checkbox - A checkbox is a variation of a yes/no option. If the product has more than one checkbox, multiple selections can be made.
+Multiple Select - A drop-down list box of options that accepts multiple selections. To choose multiple options, hold down the Ctrl (PC) or Command (Mac) key and click each option.
+Date  Allows the customer to enter a date or time or choose the value from a calendar. Options:
+Date - An input field for a date value. The date can be typed directly into the field or selected from a list or calendar. The input method and format is determined by the date and time options configuration.
+Date & Time - An input field for a date and time value.
+Time - An input field for a time value.
+
+Image type 
+Base Images
+The Base image is the main image on the product detail page. It is the largest and highest-quality one among the four types. If the image you upload is larger than the image container, customers can click to zoom in the image. 
+Thumbnail Image
+Thumbnail images often appear in the thumbnail gallery on the product detail page. Besides, you can find these images in the shopping cart and in the Related Items section. 
+Small Image
+These images are often found on the homepage, category page, search result pages and New product list. Also, they are used in the up-sells section on the product detail page and cross-sells sections on the shopping cart.
+Swatch Image
+When your product has many colours, each colour option is illustrated with a swatch image. So, customers can clearly see their wished item just by clicking on the swatch image.
+
+Configurable product
+A configurable product displays as a single product with dropdown options for variations (like color or size). Each variation is a separate simple product with its own SKU, enabling individual inventory tracking—unlike simple products with custom options.
+
+Best for: Products with multiple options (color, size, material, etc.) where you need to track inventory for each variation. Initial setup takes longer but provides better scalability.
+
+Display variation images in cart thumbnails
+If you have different images for each variation, you can configure the system to display the correct image for the shopping cart thumbnail.
+
+On the Admin sidebar, go to Stores > Settings > Configuration.
+
+In the left panel, expand Sales and choose Checkout.
+
+Expand Expansion selector the Shopping Cart section.
+
+Set Configurable Product Image to Product Thumbnail Itself.
+
+Click Save Config.
+Hours:8:30:000
+26/02/2026
+Add attribute
+in a bag attribute add other bag type attribute
+go to product add product add attribute
+than fill field and save in new attribute set
+
+Advance pricing
+go to add product click advance pricing
+set special price 
+cost
+customer group price
+minimum advertised price
+display actual price
+
+Advance inventory
+go to add product click advance inventory
+Manage Stock: Uncheck "Use Config Settings" to enable/disable inventory tracking for this specific item.
+Qty: Set the current stock quantity.
+Out-of-Stock Threshold: Define when the product is considered out of stock.
+Minimum/Maximum Qty Allowed in Shopping Cart: Set limits on how many items a customer can purchase at once.
+Backorders: Allow customers to order products even when stock is zero.
+Notify for Quantity Below: Set a threshold to receive low-stock alerts.
+Qty Uses Decimals: Enable if products can be sold in partial units (e.g., kg or meters).
+Allow Multiple Boxes for Shipping: Indicate if the item can be split into multiple shipping packages.
+Hours:2:00:00
+Grouped products
+What Is a Magento 2 Grouped Product?
+A Magento 2 grouped product is a type of complex product made up of multiple standalone simple products grouped together for convenience. While these items appear on a single product page, each one is purchased individually. This gives your customers the flexibility to choose exactly what they need—either buying all items in the group or just selecting specific ones.
+
+Unlike bundle products (we compare the two types below), grouped products don’t rely on custom options or dynamic pricing. Instead, they simply collect related items under one umbrella, making them perfect for merchandising complementary goods.
+
+A grouped product is essentially a collection of simple associated products.
+
+All child products are assigned and unassigned from the grouped product globally for all websites, stores, and store views at the same time.
+
+Grouped child products can be simple, downloadable, or virtual products without custom options.
+
+Each item purchased appears individually in the shopping cart, rather than as part of the group.
+
+A grouped product does not have its own price in the catalog. The grouped product price is derived from the price of the individual products that are included in the group.
+
+The thumbnail image in the shopping cart can be set to display the image from the grouped parent product or associated product.
+
+
+Virtual product
+A virtual product in Magento 2 refers to non-physical goods that don’t require packing, shipping, or downloading. This makes them ideal for selling services, subscriptions, warranties, memberships, or any intangible offering. Unlike Magento’s downloadable products, which also don’t involve shipping but must include a downloadable file, virtual products don’t need to be stored or transferred digitally at all.
+
+Think of Magento virtual products as a variation of simple products, only without the physical aspect. While simple products require weight, shipping methods, and inventory handling, virtual products in Magento 2 eliminate all those logistics. They’re created to sell non-tangible services, making them perfect for industries like online consulting, insurance, or tech support.
+
+Feature Virtual Product Downloadable Product  Simple Product
+Weight  No  No  Yes
+Size/Dimensions No  No  Yes
+Shipping  No  No  Yes
+Inventory Management  Yes (no warehouse needed) Yes (no warehouse needed) Yes (warehouse or physical stock required)
+Downloadable Content  No  Yes (requires file upload or URL) No
+Typical Usage Services, warranties, subscriptions Software, eBooks, digital media Physical products: apparel, accessories, etc
+Virtual products are used for non-tangible products such as services, subscriptions, and warranties.
+
+Virtual products are much like simple products, but without weight.
+
+Shipping options do not appear during checkout unless there is a tangible product in the cart.
+Order complated
+go to sales orders view order and click invoice add comment for invoice and update order complated
+
+Set indian time
+go to store configuration  general  locale options and select indian timezone
+
+
+Bundled product
+A bundle product in Magento 2 is a customizable product type that empowers customers to create their own product sets by selecting from a range of pre-defined components. Think of it as a build-your-own product kit — whether it’s a complete camping set with options for tents, boats, and grills, or a personalized computer where customers choose specific CPUs, RAM, and storage drives. For instance, you can see a Magento 2 bundle product frontend interface showcasing customizable product options and dynamic pricing below:
+
+Magento 2 Product Types Comparison Table
+Feature Configurable Product  Grouped Product Bundle Product
+Purpose Offer variations of a single product  Sell related simple products together Let customers build a custom product set
+Cart Behavior One variation per product Multiple individual products added separately Sold as a single product with multiple components
+Pricing Based on chosen variation (fixed) Price per simple product  Fixed or dynamic pricing per selection
+Customization Attribute-based (e.g., size, color) No customization  High customization (selectable and optional items)
+Inventory Tracking  Per variation (simple product)  Per simple product  Per bundled item (simple product)
+Shipping  Single shipment Separate shipments possible Can be shipped together or separately
+Use Case Example  T-shirt with size and color options Desk + Chair set where each is optional Camera bundle with lens, tripod, and bag options
+Customer Control  Choose one variation  Choose quantity per item  Choose which items to include and configure each
+SKU Handling  Each variant has a separate SKU Each simple product has its own SKU Each component has a SKU; bundle has its own SKU
+Display Format  Swatches or dropdowns List of items with quantity fields  Step-by-step or dropdown-based component selection
+Hours:6:30:000
+
+27/02/2026
+Out-of-Stock Threshold
+This setting determines when the product status changes to "Out of Stock" in the storefront, helping to manage inventory buffers. 
+
+Positive Number (Default: 0): The product is marked "Out of Stock" when the quantity reaches this number (e.g., set to 2 to mark out-of-stock when only 2 remain).
+Negative Number: Used when backorders are allowed, this number defines how far below zero inventory can go before the product is finally marked out-of-stock (e.g., 
+ means you can sell 10 units past zero).
+ Backorders (Three Options)
+This setting controls customer ability to purchase items that are temporarily out of stock. 
+
+No Backorders: Customers cannot purchase the product if the stock is 0 or less.
+Allow Qty Below 0: Customers can purchase the product even if the stock is 0 or less. The inventory quantity will go negative.
+Allow Qty Below 0 and Notify Customer: Customers can purchase the product, and a message is displayed on the storefront notifying them that the item is on backorder. 
+
+Qty uses decimal
+In Magento 2, the Qty Uses Decimals option within the Advanced Inventory settings determines whether a product can be ordered in fractional amounts (e.g., 1.5, 2.75) or only in whole numbers (1, 2, 3). 
+
+Yes: Allows customers to enter decimals for quantity. Ideal for products sold by weight, length, volume, or area (e.g., fabrics, liquids, raw materials).
+No (Default): Restricts customers to whole numbers only. Ideal for individual items (e.g., phones, t-shirts).  
+
+Swatch image
+In Magento 2, a swatch image (or visual swatch) is a functional image element used to represent product variations—specifically for color, pattern, or material—within a configurable product. Instead of using a simple text dropdown menu, a swatch image allows customers to click a small thumbnail or color block to select different variations (like a specific color of a t-shirt or a texture of a sofa) directly on product or category pages. 
+
+Tax rules 
+create rules for indian 10% and us 20% in tax zone rates
+select  rules text rules 
+in proceed to checkput select country for add specefic tax
+
+Hours:2:00:00
+
+Configuration 
+CUSTOMERS
+Login as customer
+newsletter
+customer configuration 
+       account sharing options 
+           share customer account :per website and global\
+       online customer options
+           online minutte interval : how many time customer login 
+           Customer Data Lifetime : Determines the number of minutes before unsaved data that is entered by the customer expires. By default, unsaved data expires after 60 minutes.
+       Create New Account Options
+       Password Options
+       Name and Address Options
+       Login Options
+       Address Templates
+       CAPTCHA
+
+Wish list
+    general options
+    Enabled : Activates the wish list module for your store. Options: Yes / No
+    Show in Sidebar : Specifies visibility of the wish lists in the sidebar.
+    Options: Yes / No
+
+    share options
+    Email Sender : Determines the store contact that appears as the sender of the message sent when a wish list is shared. Default contact: General Contact
+    Email Template : Determines the email template that is used for the message sent when a wish list is shared. Default template: Share Wishlist
+    Max Emails Allowed to be Sent : Determines the maximum number of emails that can be sent in a batch. Setting a maximum limit can help reduce the load on the server. The maximum number allowed is 10,000. Default value: 10
+    Email Text Length Limit : Determines the maximum number of characters that can be included in the message. The maximum number allowed is 10,000. Default value: 255
+
+    my wish list link
+    Display Wish List Summary : Configures the display of the Wish List Summary in the customer account dashboard. Options: Display number of items in wish list / Display item quantities
+    
+Hours:5:00:00
+    cart price rules
+    marketing go to cart price rules click add new rule 
+    normal rules not generate coupne
+    rules generate coupne code 
+          Manage Coupon Codes 
+          Code Length Global  Defines the length of the coupon code, excluding the prefix, suffix, and separators.
+          Code Format Global  Defines the coupon code format. Options include:
+          Alphanumeric - Any combination of letters and numbers.
+          Alphabetical - Letters only.
+          Numeric - Numbers only.
+          Code Prefix Global  A value that is appended to the beginning of all coupon codes. If you do not want to use a prefix, leave the field blank.
+          Code Suffix Global  A value that is appended to the end of all codes. If you do not want to use a suffix, leave the field blank.
+          Dash Every X Characters Global  The interval for inserting a dash (-) into all coupon codes. If you do not want to use a dash, leave the field blank.
+          Note: Coupon codes that differ by only a dash are considered to be different codes.
+Hours:1:30:000
+
+02/03/2026
+Order processing
+View an order
+On the Admin sidebar, go to Sales > Operations > Orders.
+
+Find the order in the grid.
+
+In the Action column, click View.
+
+Check order status:
+
+A Pending order can be modified, put on hold, canceled, or invoiced and shipped.
+
+A Processing order can no longer be substantially edited or canceled, but the billing and shipping address can be edited.
+
+A Completed order can be reordered.
+
+The customer’s email may be edited at any point in the order workflow by editing the customer. The email cannot be edited if the order was placed by a guest.
+
+Process an order
+When a customer places an order, a sales order is created as a temporary record of the transaction. The sales order has a status of Pending until payment is received. While in Pending status, orders can be edited or canceled up until the time that payment is received and an invoice is generated. An easy way to think of it is that orders become invoices, and invoices become shipments. The Orders grid lists all orders, regardless of where they are in the workflow. To learn how to help customers with an order, see Update an order.
+
+Order view descriptions
+Tab Description
+Information Display detailed information about the order and account, including the billing and shipping addresses, payment and delivery methods, items orders, totals, and notes.
+Invoices  Lists each invoice that is associated with the order.
+Credit Memos  Lists each credit memo that is associated with the order.
+Shipments Lists each shipment record that is associated with the order.
+Comments History  Lists all notes that are related to the order.
+
+Button bar
+Button  Description
+Back  Returns to the Orders page without saving changes.
+Cancel  Cancels the sales order.
+Send Email  Sends an email about the order to the customer.
+Hold / Unhold Changes the status of the sales order to On Hold. To release the hold on the sales order, choose Unhold.
+Invoice Creates an invoice from the sales order by converting the order to an invoice.
+Ship  Creates a shipment record for the order.
+Notify Order is Ready for Pickup  Appears only when an order is placed as an in-store delivery. Notifies the customer that order is ready for pickup.
+Reorder Creates a sales order based on the current order.
+Edit  Opens a pending order in edit mode. The Edit button isn’t visible for orders with a status of Processing, or orders that are based on negotiated quotes.
+
+
+These are the order completion steps:
+
+Invoice: This step is payment confirmation receipt means when Admin get confirmation of payment then invoice should be generated it may be generated manually(offline or *online) by Admin or automatically in case of online payment with payment action Authorize and Capture.
+
+*online capture(invoice generation) only available when only online payment gateway used with payment action Authorize Only.
+
+Cancel This is just order cancellation process. When online payment used with order and amount authorized in this order then. Order cancellation process will call void action for cancel current transaction.
+
+Void This process is for void the online transaction, if online payment method is used in order then this process will void current transaction and won't be able to further online transaction process for particular order. (For eg: if some order amount is authorize by third party payment gateway and if Admin apply void process he can't be able to capture payment further more) Although in case of void process order will going on smoothly just all process will only offline(i.e offline invoice, offline credit memo).
+
+Hold: This process is only for holding current order, when Admin will unhold the current order then order will work smoothly as usual.
+
+Ship This process is related to shipment action when product will shipped to customer then shipment will generated by Admin
+
+Track the shipment
+Method 1: From order information tab
+
+On the Admin sidebar, go to Sales > Orders.
+
+Find the shipment order in the grid, and click View.
+
+Scroll down to the Shipping & Handling Information section and click Track Order.
+
+Any available tracking information appears in a popup window.
+
+When ready, click Close Window.
+
+Method 2: From order shipment tab
+
+On the Admin sidebar, go to Sales > Shipments.
+
+Find the shipment in the list, and click to open the record.
+
+Click Track this Shipment.
+
+Any available tracking information appears in a popup window.
+
+When ready, click Close Window.
+
+Invoices 
+An invoice is a record of the record of payment for an order. Multiple invoices can be created for a single order, and each can include as many or as few of the purchased products that you specify. You can also create print-ready PDF invoices as sales documents for your customers.
+
+Create an invoice
+Creating an invoice for an order moves it to a state in which it cannot be canceled or changed. A new invoice page looks similar to a completed order, with some additional fields. Every activity that is related to an order is noted in the Comments section of the invoice.
+
+Normally, orders are invoiced and captured when the shipping process starts. If the method of payment is a purchase order, or if the payment action is set to Authorize and Capture, the order is invoiced and payment is captured during checkout. You can generate an invoice with a packing slip, and also print shipping labels from your carrier account. A single order can be divided into partial shipments, which are invoiced separately, if necessary.
+
+When the state of new orders is set to Processing, the option to Automatically Invoice All Items becomes available in the configuration. Some credit card payment methods complete the invoicing step as part of the process when the payment action is set to Authorize and Capture. In such a case, the Invoice button does not appear, and the order is ready to ship.
+
+Partial Shipments: If a customer orders multiple items, but they are shipped at different times, you can generate an invoice only for the items that have shipped.
+
+Shipments
+The Shipments grid lists the shipment record of all invoices that have been prepared for shipping. A shipment record can be generated when an order is invoiced or later.
+
+Adobe Commerce and Magento Open Source support partial and complete order shipment, with additional options available from Inventory Management and third-party extensions.
+
+in orders listing Allocated Source shows where the goods are coming from.
+
+Shipping Information
+Field Description
+Carrier The name of the selected carrier
+Title A descriptive name assigned to the package by the carrier.
+Number  The linked tracking number that is assigned to the package.
+Action  Trashcan icon - Deletes the package information from the shipment record.
+Add Add another package to the shipment.
+
+Creadit memo
+A credit memo is a document that shows the amount that is due the customer for a full or partial refund. The amount can be applied toward a purchase or refunded to the customer. You can print a credit memo for a single order, or for multiple orders as a batch. Before a credit memo can be printed, it must first be generated for the order. The Credit Memos page lists the credit memos that have been issued to customers.
+
+Refund method
+The payment method for the order determines, to an extent, the method by which you refund an order.
+
+You can refund orders in three ways:
+
+Account credit—Orders paid using a credit account can be refunded as an account credit:
+
+Adobe Commerce (Adobe Commerce only) Store Credit
+Adobe Commerce B2B (Available with Adobe Commerce B2B) Payment on Account (offline method)
+Adobe Commerce B2B (Available with Adobe Commerce B2B) Company Credit
+Online refund—Orders paid by credit card through a payment gateway, such as PayPal or Braintree, are refunded online via the payment processor.
+
+Offline refund—Orders that are paid by Cash on Delivery (COD) or by check or money order are refunded offline.
+
+You can issue an offline refund or account credit (if enabled) for any payment method.
+
+An order that was paid by Cash on Delivery (COD) or by check or money order is refunded offline.
+
+Update the Refunds Totals section as follows:
+
+For Refund Shipping, enter any amount that is to be refunded from the shipping fee.
+
+This field initially shows the total shipping amount from the order that is available for refund. It is equal to the full shipping amount from the order, less any shipping amount that has already been refunded. Like the quantity, the amount can be reduced, but not increased.
+
+For Adjustment Refund, enter a value to be added to the total amount refunded as an extra refund that does not apply to any particular part of the order (shipping, items, or tax). It can also be used for partial refund with virtual money, such as a gift card, when an administrator wants to refund a non-virtual payment method first.
+
+The amount entered cannot raise the total refund higher than the paid amount.
+
+For Adjustment Fee, enter a value to be subtracted from the total amount refunded.
+
+This amount is not subtracted from a specific section of the order such as shipping, items, or tax.
+Hours : 6:00:00
+order state and status
+create new status
+  go to store order status create new  status review
+  assign state for this status to onhold
+
+difference between order state and status
+  state is system internal like hold cancel invoice ship 
+  status also make nd assign to state for this status like pending processing hold complated
+  In Magento 2**Order State** is a fixed, system-level phase (e.g.Processing, Complete, New) that determines the order's position in the workflow. Order Status is a customizable, human-readable label assigned to a state (e.g.Packed, Shipped) that provides specific, granular detail about the order. 
+Hours:1:0:0
+  Customer group
+  create customer group customer group customer create new group name vip
+  login customer assgin group vip
+  product advance pricing set rules for vip gorup customer
+
+  create catlog rules for vip customer group 
+  marketing catlog rules inside create rules select vip group 
+  add 20% discount rules 
+
+  Place order in admin panel
+  sales orders click create new order  select customer fill detail add product for order click add selected product to order
+  
+  block 
+  create new block and assign into sub category 
+Hours:1:30:00
+
+
+03/03/2026
+Configuration
+Sales
+  general
+  Field Scope Description
+  Hide Customer IP  Store View  Determines if the customer IP address appears on orders, invoices, shipments, and credit memos. Options: Yes / No
+  
+  Checkout Totals Sort Order
+  Order cancellation
+  Reorder
+  Allow Zero GrandTotal
+  Field Scope Description
+  Allow Zero Grand Total for Credit Memo  Store View  Determines the possibility of creating a Credit Memo with a Zero Grand Total. Options: Yes / No
+  Invoice and Packing Slip Design
+  Field Scope Description
+  Logo for PDF Print-outs Store View  Identifies the logo file that appears in the header of PDF invoices and packing slips. Allowed file types:
+  JPG/JPEG
+  TIF/TIFF
+  PNG
+  (print in pdf that download in admin panel)
+  Logo for HTML Print View  Store View  Identifies the logo file that appears in the header of HTML print view of invoices and packing slips. Allowed file types:
+  JPG /JPEG
+  GIF
+  PNG
+  (print in html print view that download in storefreont)
+  Address Store View  The store address as you want it to appear on invoices and packing slips.
+  (display address in pdf print)
+
+  minimum order amount
+  Field Scope Description
+  Enable  Website Determines if a minimum order amount is set for the site. Options: Yes / No
+  Minimum Amount  Website Specifies the minimum subtotal, order after discounts are applied.
+  Include Discount Amount Website Determines if the minimum order amount includes applied discounts. Options: Yes / No
+  Include Tax to Amount Website Determines if the minimum order amount includes tax. Options: Yes / No
+  Description Message Store View  Determines the message that appears at the top of the shopping cart when the cart total is less than the minimum order amount. If left blank, the following default message appears: Minimum order amount is $[minimum_amount]
+  Error to Show in Shopping Cart  Store View  Determines the message that appears from the mini cart or checkout link when the order amount is less than the minimum order amount required. If left blank, a default message appears.
+  Validate Each Address Separately in Multi-address Checkout  Website For multi-item orders, determines if order items going to separate addresses much meet the minimum order amount. Options: Yes / No
+  Multi-address Description Message Store View  For multi-address orders, determines the message that appears in the shopping cart if the items sent to an address are less than the minimum order amount.
+  Multi-address Error to Show in Shopping Cart  Store View  For multi-address orders, determines the message that appears from the mini cart or checkout link when the order amount is less than the minimum order amount required. If left blank, a default message appears.
+
+Dashboard
+"Use Aggregated Data" = YES (Recommended) 
+Pros: Significantly faster admin dashboard loading speeds.
+Cons: Data is not "real-time" (delayed by the cron schedule). 
+"Use Aggregated Data" = NO (Live/Raw Data) 
+Pros: Data is strictly real-time.
+Cons: If you have high sales volume, loading the dashboard will be slow because Magento must scan thousands of raw rows to calculate totals.
+
+Orders Cron Settings
+Gift Options
+
+Minimum Advertised Price
+Field Scope Description
+Enable MAP  Website Activates Minimum Advertised Price for your store. Options: Yes / No
+Display Actual Price  Website Determines where the actual price of a product is visible to the customer. Options:
+In Cart - Displays the actual product price in the shopping cart.
+Before Order Confirmation - Displays the actual product price at the end of the checkout process, just before the order is confirmed.
+On Gesture - Displays the actual product price in a popup when the customer clicks the “Click for price” or “What’s this?” link.
+Default Popup Text Message  Store View  The text message that appears when the customer selects the “Click for price” link from a category list or product view page.
+Default “What’s This” Text Message  Store View  The text message that appears when the customer clicks the “What’s this?” link from the product view page.
+Manufacturer’s Suggested Retail Price Global  The retail price as suggested by the manufacturer (MSRP). 
+Hours:4:00:00
+Google recaptcha
+create google recaptcha account
+select recaptcha type( recptchav3 and invisible reCAPTCHA badgev2)
+write domain name 
+submit
+copy sitekey and privatekey
+go to store configuration security
+recpatcv2 invisible
+paste google API Website Key
+paste google API Secret Key
+storefront enable for customer login select recaptchav2 invisible
+
+reCAPTCHA v3
+reCAPTCHA v3 allows you to verify if an interaction is legitimate without any user interaction. It is a pure JavaScript API returning a score, giving you the ability to take action in the context of your site: for instance requiring additional factors of authentication, sending a post to moderation, or throttling bots that may be scraping content.
+
+reCAPTCHA v2 ("I'm not a robot" Checkbox)
+The "I'm not a robot" Checkbox requires the user to click a checkbox indicating the user is not a robot. This will either pass the user immediately (with No CAPTCHA) or challenge them to validate whether or not they are human. This is the simplest option to integrate with and only requires two lines of HTML to render the checkbox.
+
+reCAPTCHA v2 (Invisible reCAPTCHA badge)
+The invisible reCAPTCHA badge does not require the user to click on a checkbox, instead it is invoked directly when the user clicks on an existing button on your site or can be invoked via a JavaScript API call. The integration requires a JavaScript callback when reCAPTCHA verification is complete. By default only the most suspicious traffic will be prompted to solve a captcha. To alter this behavior edit your site security preference under advanced settings.
+Hours:1:00:00
+Email Etiquettes Session
+Hours:2:00:00
+Custom theme
+check theme in admin panel : go to content theme (default magento luma and magento blank theme display)
+check theme active :go to content configuration click theme then applied theme display
+where to present magento default theme blank  : magento2/vendor/magento/theme-frontend-blank
+where to present magento default theme luma  : magento2/vendor/magento/theme-frontend-luma
+
+in custom theme three file are mandotary 
+registration.php
+theme.xml
+composer.json
+
+create custom theme
+create directory Customtheme inside magento2/app/design/frontend/
+create directory theme inside Customertheme
+create three file registration.php,theme.xml,composer.json
+
+widget
+widget is an admin panel tool that allows store owners to easily place blocks and dynamic content in specific locations without coding. 
+
+create new block customtheme block
+create widget customtheme hompeage
+assign to theme custometheme mytheme for this widget and assign block customtheme block for this widget
+
+custom theme change logo
+go to content  configuration edit customtheme set logo in header
+
+custom theme change favicon icon
+go to content configuration edit theme set icon in html head favicon icon
+Hours:1:30:00
+
+05/03/2026
+
+system value and config value
+system value : i use configuration than already value is system value is checked system value its store inside etc/config.xml
+its not sotred in database
+config value : i set value in configuration uncheck system value than is
+config value that store in core_config_data table in database
+
+custom theme  design rules 
+user agent rule
+In Magento 2, a User Agent Rule in the design configuration is a mechanism to apply a different theme based on the user's device or browser. This allows administrators to present a device-specific design, such as a specialized mobile theme, to users on particular devices.
+
+HTML head
+favicon icon : set the favicon icon for theme
+Field Scope Description
+Favicon Icon  Store View  Uploads the small graphic image that appears in the address bar and tab of the browser. Allowed file types: ICO, PNG, APNG, GIF, and JPG (JPEG). Not all browsers support these formats.
+Default Page Title  Store View  The title that appears at the title bar of each page when viewed in a browser. The default title is used for all pages, unless another title is specified for individual pages.
+Page Title Prefix Store View  A prefix can be added before the title to create a two- or three-part title. A vertical bar or colon can be used as a separator at the end of the prefix to differentiate it from the text of the main title.
+Page Title Suffix Store View  A suffix can be added after the title to create a two-or three-part title. A vertical bar or colon can be used as a separator at the end of the prefix to differentiate it from the text of the main title.
+Default Meta Description  Store View  The description provides a summary of your site for search engine listings and should not be more than 160 characters in length.
+Default Meta Keywords Store View  A series of keywords that describe your store, each separated by a comma.
+Scripts and Style Sheets  Store View  Contains scripts that must be included in the HTML before the closing <head> tag. For example, any third-party JavaScript that must be placed before the <body> tag can be entered here.
+Display Demo Store Notice Store View  Controls the display of the demo store notice at the top of the page. Options: Yes / No
+
+Header
+Field Scope Description
+Logo Image  Store View  Identifies the path to the logo that appears in the header. Supported file types: PNG, GIF, JPG (JPEG)
+Logo Attribute Width  Store View  The width of your logo image in pixels.
+Logo Attribute Height Store View  The height of your logo image in pixels.
+Welcome Text  Store View  The welcome message appears in the header of the page and includes the name of customers who are logged in.
+Logo Image Alt  Store View  The Alt text that is associated with the logo.
+Translate Title Store View  Determines if the Page Title or Meta Title should be translated.
+
+Footer
+Field Scope Description
+Miscellaneous HTML  Store View  An input box where you can upload miscellaneous scripts to the server that must be placed just before the closing <body> tag.
+Copyright Store View  The copyright statement that appears at the bottom of each page. To include the copyright symbol, use the HTML character entity \&copy; as in the following: \&copy; 2021 Commerce Demo Store. All Rights Reserved. Make sure to replace the sample copyright notice with your own.
+Display Report Bugs Link  Store View  Determines if the bug report link (supported for some themes) is enabled or disabled.
+
+Search Engine Robots
+In this section, you can generate and manage instructions for web crawlers and bots to index your Magento 2 website properly. 
+
+Firstly, it is possible to choose one of the following options in Default Robots:
+
+INDEX, FOLLOW – crawlers can index the website and return later.
+NOINDEX, FOLLOW – crawlers avoid indexing the website, but can return later.
+INDEX, NOFOLLOW – crawlers can index the website once, but cannot return later.
+NOINDEX, NOFOLLOW – crawlers cannot index the website or return later.
+Besides, it is possible to customize the instructions with additional notes in the Edit Custom instruction of robots.txt file box. 
+
+Pagination
+Pagination links appear on the frontend when there are more products in the list than allowed per page. Let’s take a look at how to control them. 
+
+Magento 2 lets you tailor the number of links in the pagination control in the Pagination Frame box. As for Pagination Frame Skip, it enables you to specify the number of items to skip ahead before displaying the next link set in control. For Anchor Text for Previous, you can place an alternative message for the previous pages link that will appear instead of the default arrow image. The same option is available for the Next link.
+
+Product Image Watermarks
+Magento 2 lets you protect original product images with watermarks. You can upload JPG (JPEG), GIF, or PNG image files. The Product Image Watermarks section enables you to configure the Base, Thumbnail, Small, and Swatch Image image settings that contain the same fields: Image Opacity, Image Size, Image Position, and, of course, the Upload button.
+
+Transactional Emails
+In this section, you can determine the logo that appears in the default header template of a transactional email. Besides, you can choose header and footer templates here.
+
+Magento 2 provides the ability to upload not only your prepared logo image but also enter alternate text to identify it (the Logo Image Alt field). Besides, you can specify both the width and height of your logo in pixels – its display dimensions. Add the px abbreviation is not necessary. 
+
+add static block in cms home page using xml
+create static block in content block add new block name homepage-custom identifier
+create Magento_Cms/layout/cms_index_index.xml inside custom theme app/design/frontend/Customtheme/mytheme
+copy  cms_index_index.xml file inside magento2/vendor/magento/module_cms/view/frontend/layout and add content in body 
+
+<referenceContainer name="content">
+  <block class="Magento\Cms\Block\Block" name="unick_block_name">
+    <arguments>
+      <argument name="block_id" xsi:type="string">homepage-custom</argument>
+    </arguments>
+  </block>
+</referenceContainer> (refrence magefan website)
+remember the argument same name as static block identifier
+clear cache and flush
+php/bin magento c:f
+Hours:5:00:00
+layout handle function
+move : In Magento 2, the <move> instruction within a layout XML file is the primary mechanism to change the position of a block or a container element. This instruction sets the declared element as a child of another destination element, optionally specifying its order.
+syntax : <move element="[element_name]" destination="[destination_name]" [before|after]="[reference_element_name|true|false]"/>
+element: The name of the block or container you want to move.
+destination: The name of the new parent block or container where the element will be moved.
+before / after (optional): These attributes control the sorting of the moved element within the destination parent.
+Set to the name of a sibling element to place it before or after that specific element.
+Set to true to place it at the beginning of the destination container.
+Set to false to place it at the end of the destination container. 
+
+Example
+To move the page.main.title block into the product.info.main container and position it before the product.info.price block, you would use the following XML:
+xml
+<move element="page.main.title" destination="product.info.main" before="product.info.price"/>
+in this example page.main.title is element to move  product.info.main is parent to move this element product.info.price is element to move page.main.title element before product.info.price
+
+container
+In Magento 2, a container is a structural element in a layout XML file that acts as a wrapper to organize block elements or other container elements, defining the page structure. Containers themselves do not render output, but they use attributes to control the HTML wrapper and behavior of their child elements. 
+
+Key Functions and Attributes of Containers
+htmlTag: Specifies the HTML tag to use for the container (e.g., div, header, footer).
+htmlClass: Defines the CSS class for the HTML tag, which affects the styling and positioning on the storefront.
+htmlId: Sets the HTML ID for the container, allowing for specific CSS or JavaScript targeting.
+after / before: Positions the container relative to another element using that element's name.
+remove: A boolean attribute (e.g., true) to remove a container and all its children from the layout.
+move: Allows moving a container to a different parent container within the layout structure. 
+
+reference container
+In Magento 2, the <referenceContainer/> instruction is used within a layout handle XML file to target an existing container and modify its contents, such as adding or moving child blocks and containers. This affects the storefront by changing the position and structure of elements on the page.
+
+Function Reference: <referenceContainer/>
+The primary purpose of <referenceContainer/> is to interact with a container that has already been defined elsewhere (e.g., in a base layout file like default.xml). You use its unique name attribute to reference it. 
+
+ 
+Key attributes used with <referenceContainer/> include:
+name: (Required) The unique identifier of the existing container you want to target.
+before / after: Used to position elements added inside the  nced container relative to other elements within that same container.
+remove: Set to true to remove the entire referenced container and its children from the page.
+display: Set to false to hide the container and its contents without removing them from the layout structure.
+
+reference block
+In Magento 2, <referenceBlock> is a layout XML instruction used to modify, move, or remove existing blocks by their name attribute without overriding the entire layout. It acts on specific handles (pages) to update content, such as removing the SKU on product pages, moving elements, or changing templates, directly affecting the storefront
+ <!-- Reference the block by its name and set remove to true -->
+        <referenceBlock name="product.info.sku" remove="true"/>
+
+Common <referenceBlock> Actions & Storefront Affect:
+Remove Block: <referenceBlock name="block.name" remove="true"/> – Removes the block entirely from the frontend.
+Disable Block: <referenceBlock name="block.name" ifconfig="path/to/config" /> or adding display="false" – Hides the block but keeps it loaded in memory.
+Move Block: <move element="name" destination="new.destination" /> – Re-positions a block within the page structure.
+Modify Block: <referenceBlock name="product.info.sku" template="Vendor_Module::new_template.phtml" /> – Changes the .phtml template file.
+
+remove
+In Magento 2, you do not directly "remove a layout handle function". Instead, you remove specific blocks or containers associated with that handle using layout XML instructions or programmaticallymmatically via observers/plugins. The primary method is using the <remove> XML tag.
+
+Using Layout XML (<remove>)
+This is the standard and recommended way to remove elements in Magento 2. You create a custom layout file in your module or theme to override the original layout and apply the removal instruction. 
+
+Example: Removing the "breadcrumbs" block from the category page. 
+Identify the target layout file and block name. The breadcrumbs block often has the name breadcrumbs.
+Create an overriding layout file. For the category page, you'd modify the catalog_category_view.xml in your custom theme or module: app/code/Vendor/Module/view/frontend/layout/catalog_category_view.xml.
+Add the <referenceBlock name="block_name_to_remove"> with the remove="true" attribute. 
+
+before
+In Magento 2, the before attribute in a layout XML file is a powerful tool used to precisely control the order in which blocks or containers are displayed on the storefront. It specifies that the element it's applied to should be rendered before a target element with a specific name. 
+
+Usage in Layout XML
+The before attribute is used within <block> or <container> tags in your custom layout XML files (e.g., catalog_product_view.xml in your module's view/frontend/layout directory). 
+
+  <!-- This new_block will be rendered BEFORE the target_block -->
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" 
+                   name="new_block" 
+                   template="Vendor_Module::new_template.phtml" 
+                   before="target_block"/>
+        </referenceContainer>
+
+name="new_block": This is the unique name of the block you are adding/moving.
+before="target_block": This is the critical attribute. It instructs Magento to place the new_block immediately preceding the target_block in the HTML output. The target_block must be an existing block or container name defined in the page's overall layout structure.
+
+after
+In Magento 2 layout XML, the after attribute is used within <block>, <container>, or <move> elements to specify that the element should be rendered immediately after a named sibling element within the same parent. This controls the visual order and positioning of elements on the storefront.
+
+The <move> instruction is used to change the position of an element that is already defined elsewhere (e.g., in a parent theme or another module's layout file). 
+xml
+<move element="product.info.details" destination="product.info.main" after="product.info.name" />
+This example moves the product.info.details block into the product.info.main container, and positions it after the product.info.name block. 
+
+layout handle function
+Common Layout Handles and Storefront Effects
+Here are some common layout handles and how using them in your theme's XML files (e.g., app/design/frontend/Vendor/Theme/ModuleName/layout/) affects the storefront:
+Layout Handle   Applied To  Storefront Effect Example XML File Name
+default.xml Every single page (frontend)  Defines the base structure, including the header, footer, and main content areas, for the entire website. default.xml
+cms_index_index.xml Home page Customizes the layout specifically for the homepage, allowing unique banners or content blocks to be added or rearranged. cms_index_index.xml
+catalog_category_view.xml All category pages  Applies general layout updates to all category pages, such as adding a left sidebar or changing the product listing style.  catalog_category_view.xml
+catalog_product_view.xml  All product pages Modifies the layout for all product detail pages, for example, by repositioning the product image, description, or 'add to cart' button.  catalog_product_view.xml
+checkout_index_index.xml  Checkout page Customizes the multi-step checkout page, affecting how shipping methods, payment options, and order summaries are displayed.  checkout_index_index.xml
+customer_account_index.xml  Customer dashboard  Changes the layout of the customer account dashboard, allowing the addition of custom links or information sections.  customer_account_index.xml
+Hours:3:30:00
+
+06/03/2026
+layout handle function
+page layout
+1column
+2columns-left
+2columns-right
+3columns
+
+
+childhtml
+In Magento 2, the $block->getChildHtml('child_block_name') function is used within a parent block's .phtml template file to render the output of a specific child block that has been defined in the layout XML. This allows for modular page construction where individual components (child blocks) can be managed separately and dynamically included in a parent's output.
+
+create child block in catalog_product_view.xml
+<!-- Reference the product view container -->
+        <referenceContainer name="product.info.main">
+            <!-- Define the custom block as a child -->
+            <block class="Magento\Framework\View\Element\Template" 
+                   name="custom.product.info" 
+                   template="Magento_Cms::product/view/custom_info.phtml" 
+                   after="product.info.price"/>
+        </referenceContainer>
+create templates custom_info.phtml 
+inside Customtheme/mytheme/Magento_Cms/templates/product/view/custom.info.phtml
+content to this file 
+<div class="custom-product-info"  style="border:1px solid #ccc; padding:10px; margin-top:10px;">
+    <h3>Custom Information</h3>
+    <p>This block is loaded via getChildHtml().</p>
+</div>
+override form.phtml file to display child content
+create templates form.phtml 
+inside Customtheme/mytheme/Magento_Cms/templates/product/view/form.phtml
+content to this file
+<?php echo $block->getChildHtml('custom.product.info'); ?>
+
+toHtml
+In Magento 2, the toHtml() function is a core method of a block class that generates and returns the HTML output for that specific block and its associated template. It's implicitly called by the layout rendering process to output content to the page.
+
+The standard practice in Magento 2 is to declare blocks and templates in your layout XML files, and Magento automatically calls toHtml() during the page rendering phase. 
+
+You typically do not call toHtml() directly within a layout XML file. Instead, you define the blocks and containers in XML, and the Magento framework handles the rendering process, calling toHtml() internally to assemble the final HTML. 
+
+While you don't use toHtml() in layout XML, it is used when you need to programmatically render a block from within another block's PHTML file or in a PHP class 
+<?php
+// This is generally discouraged as a best practice but shows the explicit call
+echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('test')->toHtml();
+?>  
+Hours:7:00:00
+sales checkout configuration
+Checkout Options
+Shopping Cart
+Quote lifetime(days)
+In Magento 2, the Quote Lifetime (days) setting defines how many days a shopping cart quote (active or abandoned) remains valid before it is removed by the system, with a default of 30 days.
+My Cart Link
+Mini Cart
+Payment Failed Emails
+
+pdf print out
+Hours:1:30:000
+
+
+09/03/2026
+toHtml()
+The toHtml() method in Magento 2 (Magento\Framework\View\Element\AbstractBlock::toHtml()) renders a block into HTML, typically by executing its associated template file. It is crucial for generating dynamic content, loading cache, and triggering _beforeToHtml and afterToHtml lifecycle methods. 
+
+create static block test
+content block create test block
+create block in cms_index_index.phtml
+<referenceContainer name="content">
+          <block class="Magento\Framework\View\Element\Template" name="tochildload.block" template="Magento_Cms::product/view/tochildload.phtml" />
+      </referenceContainer>
+create tochildload.phtml in product/view/tochildload.phtml
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('test')->toHtml(); ?>
+render test block content using toHtml() method 
+
+meaninig of code
+$block->getLayout(): Accesses the layout object that handles block rendering in Magento 2.
+->createBlock('Magento\Cms\Block\Block'): Instantiates a new CMS Block object. This tells Magento to use the core CMS Block class to load content.
+->setBlockId('test'): This is the most crucial part. It tells the block object which specific static block to load based on the Identifier you created in the admin (Content > Elements > Blocks).
+->toHtml(): Renders the final HTML output of that block.
+
+revise all layout handle function
+to modify header and footer block then find name in vendor/module-theme/view/layout/default.xml
+perform layout handle function for header changes also create default.xml 
+
+custom module
+module
+all magento2 module are define in insidr in magento 
+
+create custom module
+custom module
+A custom module in Magento 2 is a package of code designed to add specific features or functionalities to an online store. It allows developers to extend, customize, or modify Magento’s default behavior without altering the core code. Custom modules can introduce new product types, payment gateways, shipping methods, or other features tailored to meet unique business needs, ensuring a flexible and scalable e-commerce platform.
+
+Steps to Create a Custom Module in Magento 2
+To create custom modules, you need to complete the following high-level steps:
+
+Step 1: Create the folder of Hello World module
+Step 2: Create etc/module.xml file
+Step 3: Create etc/registration.php file
+Step 4: Enable the module
+
+Step 1: Create the folder of Hello World module
+Name of the module is defined as VendorName_ModuleName. First part is name of the vendor and last part is name of the module: For example: Magento_HelloWorld, Mageplaza_PdfInvoice. Focus on following guide to create the folders:
+
+  app/code/Mageplaza/HelloWorld
+
+Step 2: Create etc/module.xml file.
+Then, it is necessary to create etc folder and add the module.xml file
+
+  app/code/Mageplaza/HelloWorld/etc/module.xml
+Copy
+Contents would be:
+
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Mageplaza_HelloWorld" setup_version="1.0.0">
+    </module>
+</config>
+
+Step 3: Create etc/registration.php file
+In this step, we will add registration.php as following guide:
+
+  app/code/Mageplaza/HelloWorld/registration.php
+Copy
+Contents would be:
+
+<?php
+\Magento\Framework\Component\ComponentRegistrar::register(
+  \Magento\Framework\Component\ComponentRegistrar::MODULE,
+  'Mageplaza_HelloWorld',
+  __DIR__
+);
+Copy
+Step 4: Enable the module
+Finish the step 3, we have already created the HelloWorld module. And we will enable this module in this step
+
+After create the module if you run the command as:
+
+  php bin/magento module:status
+Copy
+You should see the module is disable now:
+
+List of disabled modules: Mageplaza_HelloWorld
+
+Follow exact guide to enable the module right now, let run the command as:
+
+  php bin/magento module:enable Mageplaza_HelloWorld
+
+our module should be available now.
+
+After this step, when you open your website in browser you will get an error saying
+
+Please upgrade your database: Run bin/magento setup:upgrade from the Magento root directory.
+
+Let run the command:
+
+  php bin/magento setup:upgrade
+  reindex  php bin/magento index:rei
+
+Step 5: Create a Controller
+Now, we will create a controller to test module.
+
+Before create a controller, we will create a route for HelloWorld module.
+
+Route’s in magento are divided into 3 parts: Route frontname, controller and action as following example:
+
+http://mageplaza.com/index.php/frontname/controller/action
+Copy
+To add route, it is necessary to create routes.xml file
+
+Step 5.1: Create a routes
+app/code/Mageplaza/HelloWorld/etc/frontend/routes.xml
+
+since this is a frontend route, we added it in frontend/ folder else we need to add it to adminhtml/ folder
+
+Content would be:
+
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route frontName="helloworld" id="helloworld">
+            <module name="Mageplaza_HelloWorld"/>
+        </route>
+    </router>
+</config>
+Copy
+After defining the first part of the route, the URL will be displayed as:
+
+  http://<yourhost.com>/helloworld/*
+Copy
+E.g: http://localhost/helloworld/*
+
+Then, we will continue to create the controller and action
+
+Step 5.2: Create a Action in Controller
+The folder and file you need to create is:
+
+app/code/Mageplaza/HelloWorld/Controller/Index/Test.php
+
+Contents would be:
+
+<?php
+namespace Mageplaza\HelloWorld\Controller\Index;
+
+class Test extends \Magento\Framework\App\Action\Action
+{
+  protected $_pageFactory;
+
+  public function __construct(
+    \Magento\Framework\App\Action\Context $context,
+    \Magento\Framework\View\Result\PageFactory $pageFactory)
+  {
+    $this->_pageFactory = $pageFactory;
+    return parent::__construct($context);
+  }
+
+  public function execute()
+  {
+    echo "Hello World";
+    exit;
+  }
+}
+
+Copy
+After completed, please run php bin/magento cache:clean to check result.
+
+Your URL now should be as:
+
+ http://<yourhost.com>/helloworld/index/test
+Copy
+Hello World
+
+We hope that the above easy-to-understand guide will help you successfully create a custom module in Magento 2.

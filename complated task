@@ -62,16 +62,18 @@
 9/1/2026
 
     -----------------------------------------------------------------------------------
-Hello Sir/Ma'am
+Hello Sir
 Good Evening!
 Hoping you had a great day today,
 Today’s Update:
-    -Change frontendurl and adminurl Task
-    -Create custom conf file and change url
-    -Work on change url http to https
+    -Worked layout handle function
+    -Worked checkout configuration
+    -Worked sales pdf print out configuration
+    
     
 Tomorrow's Plan:
-    -Work on change url http to https
+    -Continue working layout handle function
+    -I will work module development
 Git Link: https://github.com/ashvin-28/PHP-Trainee/tree/feature/DevPHP
 	
 Thank you!
