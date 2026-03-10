@@ -1602,7 +1602,9 @@ $block->getLayout(): Accesses the layout object that handles block rendering in 
 revise all layout handle function
 to modify header and footer block then find name in vendor/module-theme/view/layout/default.xml
 perform layout handle function for header changes also create default.xml 
+Hours:8:30:000
 
+10/03/2026
 custom module
 module
 all magento2 module are define in insidr in magento 
@@ -1741,13 +1743,42 @@ class Test extends \Magento\Framework\App\Action\Action
   }
 }
 
-Copy
 After completed, please run php bin/magento cache:clean to check result.
 
 Your URL now should be as:
 
  http://<yourhost.com>/helloworld/index/test
-Copy
-Hello World
 
-We hope that the above easy-to-understand guide will help you successfully create a custom module in Magento 2.
+Hello World
+Hours:4:30:000
+to store module in database in setup_module table
+also show module in magento2/app/etc/config.php 
+
+  <route frontName="Custommodule" id="Custommodule">
+            <module name="Custommodule_mymodule"/>
+  </route>
+
+  frontName use to access controller for this name  
+  id use to create layout xml file than same name as id name
+
+
+$this->renderLayout(); get layout output and process this output to response body and append response
+
+$this->loadLayout(); creates XML tree at backend.
+
+in custom module  add two block 
+Custommodule/Mymodule add block/Index.php 
+
+create mymodule_index_index.xml file inside view/frontend/layout 
+add two block one is static nd other is custom block
+create phtml inside view/frontend/templates/index.phtml
+
+add css to custom block
+add css link in mymodule_index_index.xml
+ <head>
+        <!-- <title>my module</title> -->
+        <css src="Custommodule_Mymodule::css/custom-styles.css"/>
+ </head>
+create custom-styles.css inside view/frontend/web/css
+add css to phtml content 
+Hours:4:00:000
